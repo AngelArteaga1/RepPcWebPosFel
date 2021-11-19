@@ -1,0 +1,566 @@
+﻿@model Minible5.Models.ViewModels.TiposMovimientos.EditTiposMovimientosViewModels
+
+@{
+    ViewBag.Title = "Editar Tipos de Movimientos";
+    ViewBag.pTitle = "Editar Tipos de Movimientos";
+    ViewBag.pageTitle = "Tipos de Movimientos";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+
+    List<SelectListItem> itemsTipocliente = (List<SelectListItem>)ViewBag.itemsTipocliente;
+    
+
+}
+
+<!-- plugin css -->
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<!-- dropzone css -->
+<link href="~/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+
+@using (Html.BeginForm("Edit", "tiposmovimientosinvs", FormMethod.Post, new { role = "form", @class = "needs-validation ", Novalidate = true }))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="addproduct-accordion" class="custom-accordion">
+                <div class="card">
+                    <a href="#addproduct-billinginfo-collapse" class="text-dark" data-bs-toggle="collapse" aria-expanded="true" aria-controls="addproduct-billinginfo-collapse">
+                        <div class="p-4">
+
+                            <div class="media align-items-center">
+                                <div class="me-3">
+                                    <div class="avatar-xs">
+                                        <div class="avatar-title rounded-circle bg-soft-primary text-primary">
+                                            01
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h5 class="font-size-16 mb-1">Editar Tipos de Movimientos</h5>
+                                    <p class="text-muted text-truncate mb-0">Complete toda la información a continuación</p>
+                                </div>
+                                <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                            </div>
+
+                        </div>
+                    </a>
+
+                    <div id="addproduct-billinginfo-collapse" class="collapse show" data-bs-parent="#addproduct-accordion">
+                        <div class="p-4 border-top">
+
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(d => d.idInternoTiposMovimientos)
+
+
+                            <div class="text-danger mb-3 row">
+                                @Html.ValidationSummary(false)
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.IdTipoMovimiento, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    <div class="input-group has-validation">
+                                        @Html.TextBoxFor(d => d.IdTipoMovimiento, new { @class = "form-control", placeholder = "Codigo Tipo de Movimiento", Required = true })
+                                        <div class="invalid-feedback">
+                                            Porfavor, Ingresar el codigo del tipo de movimiento.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.Descripcion, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    <div class="input-group has-validation">
+                                        @Html.TextBoxFor(d => d.Descripcion, new { @class = "form-control", placeholder = "Descrpcion", Required = true })
+                                        <div class="invalid-feedback">
+                                            Porfavor, Ingresar la descripcion del tipo de movimiento.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.entradaSalida, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(d => d.entradaSalida, "E", new { @class = "form-check-input" })
+                                        @Html.Label("entrada", "Entrada", new { @class = "form-check-label" })
+                                    </div>
+
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(d => d.entradaSalida, "S", new { @class = "form-check-input" })
+                                        @Html.Label("salida", "Salida", new { @class = "form-check-label" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.facturacionInventario, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(d => d.facturacionInventario, "F", new { @class = "form-check-input" })
+                                        @Html.Label("Factura", "Facturacion", new { @class = "form-check-label" })
+                                    </div>
+
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(d => d.facturacionInventario, "I", new { @class = "form-check-input" })
+                                        @Html.Label("inventario", "Inventario", new { @class = "form-check-label" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.poliza, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    <div class="input-group has-validation">
+                                        @Html.TextBoxFor(d => d.poliza, new { @class = "form-control", placeholder = "Poliza", Required = true })
+                                        <div class="invalid-feedback">
+                                            Porfavor, ingrese la Poliza.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.afectaCostoPromedio, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    <div class="form-check">
+                                        @Html.CheckBoxFor(d => d.afectaCostoPromedio, new { @class = "form-check-input" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.afectaCostoRepocicion, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    <div class="form-check">
+                                        @Html.CheckBoxFor(d => d.afectaCostoRepocicion, new { @class = "form-check-input" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.afectaCostoUCompra, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    <div class="form-check">
+                                        @Html.CheckBoxFor(d => d.afectaCostoUCompra, new { @class = "form-check-input" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.afectaestadisticacompra, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    <div class="form-check">
+                                        @Html.CheckBoxFor(d => d.afectaestadisticacompra, new { @class = "form-check-input" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.afectaestadisticaventa, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    <div class="form-check">
+                                        @Html.CheckBoxFor(d => d.afectaestadisticaventa, new { @class = "form-check-input" })
+                                    </div>
+                                </div>
+                            </div>
+                          
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <a href="#addproduct-metadata-collapse" class="text-dark collapsed" data-bs-toggle="collapse" aria-haspopup="true" aria-expanded="false" aria-haspopup="true" aria-controls="addproduct-metadata-collapse">
+                        <div class="p-4">
+
+                            <div class="media align-items-center">
+                                <div class="me-3">
+                                    <div class="avatar-xs">
+                                        <div class="avatar-title rounded-circle bg-soft-primary text-primary">
+                                            02
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h5 class="font-size-16 mb-1">Detalle Tipos Movimientos</h5>
+
+                                </div>
+                                <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                            </div>
+
+                        </div>
+                    </a>
+
+                    <div id="addproduct-metadata-collapse" class="collapse" data-bs-parent="#addproduct-accordion">
+                        <div class="p-4 border-top">
+                            <div class="table-responsive">
+
+                                @for (int i = 0; i < Model.contador; i++)
+                                {
+                                <div id="@("divConceptosEdit"+i )">
+                                    @Html.HiddenFor(d => d.conceptos[i].idInternoTiposMovimientos)
+                                    @Html.HiddenFor(d => d.conceptos[i].idInternoTIposMovimientosSeries)
+
+                                    @Html.LabelFor(d => d.conceptos[i].idSerie, new { @class = "col-md-2 col-form-label" })
+                                    <div class="col-md-10">
+                                        <div class="input-group has-validation">
+                                            @Html.TextBoxFor(d => d.conceptos[i].idSerie, new { @class = "form-control", placeholder = "" })
+
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(d => d.conceptos[i].secuencia, new { @class = "col-md-2 col-form-label" })
+                                    <div class="col-md-10">
+                                        <div class="input-group has-validation">
+                                            @Html.TextBoxFor(d => d.conceptos[i].secuencia, new { @class = "form-control", placeholder = "" })
+
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(d => d.conceptos[i].correlativo, new { @class = "col-md-2 col-form-label" })
+                                    <div class="col-md-10">
+                                        <div class="input-group has-validation">
+                                            @Html.TextBoxFor(d => d.conceptos[i].correlativo, new { @class = "form-control", placeholder = "" })
+
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(d => d.conceptos[i].formatoImpresion, new { @class = "col-md-2 col-form-label" })
+                                    <div class="col-md-10">
+                                        <div class="input-group has-validation">
+                                            @Html.TextBoxFor(d => d.conceptos[i].formatoImpresion, new { @class = "form-control", placeholder = "" })
+
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(d => d.conceptos[i].resolucionNumero, new { @class = "col-md-2 col-form-label" })
+                                    <div class="col-md-10">
+                                        <div class="input-group has-validation">
+                                            @Html.TextBoxFor(d => d.conceptos[i].resolucionNumero, new { @class = "form-control", placeholder = "" })
+
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(d => d.conceptos[i].fechaAutorizacion, new { @class = "col-md-2 col-form-label" })
+                                    <div class="col-md-10">
+                                        <div class="input-group has-validation">
+                                            @Html.TextBoxFor(d => d.conceptos[i].fechaAutorizacion, new { @class = "form-control", placeholder = "" })
+
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(d => d.conceptos[i].res_del, new { @class = "col-md-2 col-form-label" })
+                                    <div class="col-md-10">
+                                        <div class="input-group has-validation">
+                                            @Html.TextBoxFor(d => d.conceptos[i].res_al, new { @class = "form-control", placeholder = "" })
+
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" id="idContador" />
+                                    <a href="javascript:void(0);" onclick="@("Delete("+i )@(")")" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>
+                                </div>
+                                    }
+
+                                
+
+                                <div class="row">
+                                    <div class="form-group">
+
+                                        <input type="text" id="Serie" placeholder="Serie" />
+                                        <input type="text" id="Secuencia" placeholder="Secuencia" />
+                                        <input type="text" id="Correlativo" placeholder="Correlativo" />
+                                        <label>
+                                            <input type="checkbox" id="Automatico" placeholder="Automatico" checked />
+                                            Automatico
+                                        </label>
+
+                                        <input type="text" id="Formato" placeholder="Formato de Impresion" />
+                                        <input type="text" id="Resolucion" placeholder="Resolucion" />
+                                        <input type="date" id="Fecha" placeholder="Fecha Autorizacion" />
+                                        <input type="text" id="Del" placeholder="Del" />
+                                        <input type="text" id="Al" placeholder="Al" />
+
+                                        <button type="button" class="btn btn-secondary" onclick="AgregaConcepto(); return false;">Agregar</button>
+                                    </div>
+
+                                </div>
+
+                                <br />
+
+                            </div>
+
+                            <br />
+
+                            <div id="divConceptosAdd">
+                                <table id="tablaConceptos" style="width:100%;">
+                                    <tr>
+                                        <th>Serie</th>
+                                        <th>Secuencia</th>
+                                        <th>Correlativo</th>
+                                        <th>Automatico</th>
+                                        <th>Formato de Impresion</th>
+                                        <th>Resolucion</th>
+                                        <th>Fecha Autorizacion</th>
+                                        <th>Del</th>
+                                        <th>Al</th>
+
+                                    </tr>
+
+                                </table>
+
+                            </div>
+
+                            <div id="divConceptosDelete">
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+
+
+    <div id="hiddenEmpresas"></div>
+
+    <div class="row mb-4">
+        <div class="col text-end">
+            <a href="@Url.Action("Index", "tiposmovimientosinvs")" class="btn btn-danger"> <i class="uil uil-times me-1"></i> Cancelar </a>
+            <button type="submit" class="btn btn-success"> <i class="uil uil-file-alt me-1"></i> Guardar </button>
+        </div> <!-- end col -->
+    </div> <!-- end row-->
+}
+
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+<script src="~/assets/js/pages/form-validation.init.js"></script>
+<script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- plugins -->
+<script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Table Editable plugin -->
+<script src="~/assets/libs/table-edits/build/table-edits.min.js"></script>
+<script src="~/assets/js/pages/table-editable.int.js"></script>
+
+<!-- dropzone plugin -->
+<script src="~/assets/libs/dropzone/min/dropzone.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/ecommerce-add-product.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+
+<script>
+
+    var num = 0;
+
+
+    function AgregaConcepto() {
+        let Serie = document.getElementById("Serie").value;
+        let Secuencia = document.getElementById("Secuencia").value;
+        let Correlativo = document.getElementById("Correlativo").value;
+        let Automatico = document.getElementById("Automatico").checked;
+        let Formato = document.getElementById("Formato").value;
+        let Resolucion = document.getElementById("Resolucion").value;
+        let Fecha = document.getElementById("Fecha").value;
+        let Del = document.getElementById("Del").value;
+        let Al = document.getElementById("Al").value;
+
+        //console.log(Automatico);
+
+        //agregamos tabla
+        let Tabla = document.getElementById("tablaConceptos");
+        let TR = document.createElement("tr");
+        let TDSerie = document.createElement("td");
+        let TDSecuencia = document.createElement("td");
+        let TDCorrelativo = document.createElement("td");
+        let TDAutomatico = document.createElement("td");
+        let TDFormato = document.createElement("td");
+        let TDResolucion = document.createElement("td");
+        let TDFecha = document.createElement("td");
+        let TDDel = document.createElement("td");
+        let TDAl = document.createElement("td");
+
+
+        TR.appendChild(TDSerie);
+        TR.appendChild(TDSecuencia);
+        TR.appendChild(TDCorrelativo);
+        TR.appendChild(TDAutomatico);
+        TR.appendChild(TDFormato);
+        TR.appendChild(TDResolucion);
+        TR.appendChild(TDFecha);
+        TR.appendChild(TDDel);
+        TR.appendChild(TDAl);
+
+
+        TDSerie.innerHTML = Serie;
+        TDSecuencia.innerHTML = Secuencia;
+        TDCorrelativo.innerHTML = Correlativo;
+        if (Automatico) {
+            TDAutomatico.innerHTML = "SI";
+        } else {
+            TDAutomatico.innerHTML = "NO";
+        }
+        TDFormato.innerHTML = Formato;
+        TDResolucion.innerHTML = Resolucion;
+        TDFecha.innerHTML = Fecha;
+        TDDel.innerHTML = Del;
+        TDAl.innerHTML = Al;
+        Tabla.appendChild(TR);
+
+        //agregamos hiddens
+        let DivConceptos = document.getElementById("divConceptosAdd");
+        let HiddenIndex = document.createElement("input");
+        let HiddenSerie = document.createElement("input");
+        let HiddenSecuencia = document.createElement("input");
+        let HiddenCorrelativo = document.createElement("input");
+        let HiddenAutomatico = document.createElement("input");
+        let HiddenFormato = document.createElement("input");
+        let HiddenResolucion = document.createElement("input");
+        let HiddenFecha = document.createElement("input");
+        let HiddenDel = document.createElement("input");
+        let HiddenAl = document.createElement("input");
+        let HiddenActualizar = document.createElement("input");
+
+        HiddenIndex.name = "conceptosAdd.Index";
+        HiddenIndex.value = num;
+        HiddenIndex.type = "hidden";
+
+        HiddenSerie.name = "conceptosAdd[" + num + "].idSerie";
+        HiddenSerie.value = Serie;
+        HiddenSerie.type = "hidden";
+        HiddenSecuencia.name = "conceptosAdd[" + num + "].secuencia";
+        HiddenSecuencia.value = Secuencia;
+        HiddenSecuencia.type = "hidden";
+        HiddenCorrelativo.name = "conceptosAdd[" + num + "].correlativo";
+        HiddenCorrelativo.value = Correlativo;
+        HiddenCorrelativo.type = "hidden";
+
+        HiddenAutomatico.name = "conceptosAdd[" + num + "].usaCorrelativo";
+        HiddenAutomatico.type = "checkbox";
+        if (Automatico) {
+            HiddenAutomatico.value = "S";
+            HiddenAutomatico.checked = true;
+        } else {
+            HiddenAutomatico.value = "N";
+            HiddenAutomatico.checked = false;
+        }
+
+        HiddenFormato.name = "conceptosAdd[" + num + "].formatoImpresion";
+        HiddenFormato.value = Formato;
+        HiddenFormato.type = "hidden";
+        HiddenResolucion.name = "conceptosAdd[" + num + "].resolucionNumero";
+        HiddenResolucion.value = Resolucion;
+        HiddenResolucion.type = "hidden";
+        HiddenFecha.name = "conceptosAdd[" + num + "].fechaAutorizacion";
+        HiddenFecha.value = Fecha;
+        HiddenFecha.type = "hidden";
+        HiddenDel.name = "conceptosAdd[" + num + "].res_del";
+        HiddenDel.value = Del;
+        HiddenDel.type = "hidden";
+        HiddenAl.name = "conceptosAdd[" + num + "].res_al";
+        HiddenAl.value = Al;
+        HiddenAl.type = "hidden";
+
+        HiddenActualizar.name = "conceptosAdd[" + num + "].actualizar";
+        HiddenActualizar.value = "N";
+        HiddenActualizar.type = "hidden";
+
+
+        DivConceptos.appendChild(HiddenIndex);
+        DivConceptos.appendChild(HiddenSerie);
+        DivConceptos.appendChild(HiddenSecuencia);
+        DivConceptos.appendChild(HiddenCorrelativo);
+        DivConceptos.appendChild(HiddenAutomatico);
+        DivConceptos.appendChild(HiddenFormato);
+        DivConceptos.appendChild(HiddenResolucion);
+        DivConceptos.appendChild(HiddenFecha);
+        DivConceptos.appendChild(HiddenDel);
+        DivConceptos.appendChild(HiddenAl);
+        DivConceptos.appendChild(HiddenActualizar);
+
+
+        document.getElementById("Serie").value = "";
+        document.getElementById("Secuencia").value = "";
+        document.getElementById("Correlativo").value = "";
+        document.getElementById("Formato").value = "";
+        document.getElementById("Resolucion").value = "";
+        document.getElementById("Fecha").value = "";
+        document.getElementById("Del").value = "";
+        document.getElementById("Al").value = "";
+        //document.getElementById("Automatico").value = "";
+
+        num++;
+    }
+
+    /* ====================Eliminar Los Detalles de Tipos movimientos ======== */
+
+    function Delete(id) {
+
+        //console.log(id);
+        Swal.fire({
+            title: "Estas seguro?", text: "No hay forma de rehacer esta función!", icon: "warning", showCancelButton: !0, confirmButtonText: "Si, Eliminar!", cancelButtonText: "No, Cancelar!", confirmButtonClass: "btn btn-success mt-2", cancelButtonClass: "btn btn-danger ms-2 mt-2", buttonsStyling: !1
+        }).then(async function (t) {
+            if (t.value) {
+                //SI CONFIRMA
+                
+                
+                //Hacemos una lista de campos ocultos que se eliminaran 
+                let DivConceptos = document.getElementById("divConceptosDelete");
+                let num = document.getElementById("idContador").value;
+                let HiddenIdSerieMovSerie = document.createElement("input");                
+                let idMovSerie = "conceptos_" + id + "__idInternoTIposMovimientosSeries";
+                
+                let IdSerieMovSerie = document.getElementById(idMovSerie).value;
+
+                
+                HiddenIdSerieMovSerie.name = "conceptosDelete[" + num + "].idInternoTIposMovimientosSeries";
+                HiddenIdSerieMovSerie.value = IdSerieMovSerie;
+                HiddenIdSerieMovSerie.type = "hidden";
+                
+                DivConceptos.appendChild(HiddenIdSerieMovSerie);
+              
+                //Eliminamos del DOM los elementos
+                var div = document.getElementById("divConceptosEdit" + id);
+                if (div != null) {
+
+                    while (div.hasChildNodes()) {
+                        div.removeChild(div.lastChild);
+                    }
+                }
+                num++;
+
+                Swal.fire({ title: "Eliminado!", text: "El Tipo de movimiento ha sido eliminado.", icon: "success" })
+            } else {
+                //SI CANCELA
+                t.dismiss === Swal.DismissReason.cancel && Swal.fire({ title: "Cancelado", text: "El Tipo de movimiento no se ha eliminado :)", icon: "error" })
+            }
+        })
+    }
+
+</script>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e12eb3dab2e24c3a95c0c9dd6b8264b1" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.articulosdetallegenericos" Width="1.5" PointX="12" PointY="42" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.articulosdetalleinv" Width="1.5" PointX="19.5" PointY="62.5" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.articulosinv" Width="1.5" PointX="14.25" PointY="47.625" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.bitacora" Width="1.5" PointX="8.25" PointY="64.25" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.bitacoraresoluciones" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.bodegasinv" Width="1.5" PointX="3.75" PointY="45.25" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.clases" Width="1.5" PointX="3.75" PointY="69.5" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.clasesproveedores" Width="1.5" PointX="0.75" PointY="54.125" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.clientes" Width="1.5" PointX="6" PointY="50.875" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.cobradores" Width="1.5" PointX="3.75" PointY="78.25" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.combosdetalleinv" Width="1.5" PointX="16.5" PointY="104.875" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.cotizacionesinv" Width="1.5" PointX="8.25" PointY="56.125" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.cotizacionesinvdetalle" Width="1.5" PointX="10.5" PointY="63.625" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.departamentos" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.espera" Width="1.5" PointX="14.25" PointY="72.5" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.esperadetalle" Width="1.5" PointX="16.5" PointY="62.75" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.estadocivil" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.familiasinv" Width="1.5" PointX="12" PointY="45.625" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.formulasdetalle" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.genericos" Width="1.5" PointX="9.75" PointY="42.125" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.importacionescargosinv" Width="1.5" PointX="11.25" PointY="51.125" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.impresoras" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.localidades" Width="1.5" PointX="3.75" PointY="66.125" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.marcasinv" Width="1.5" PointX="12" PointY="68.375" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.medidasinv" Width="1.5" PointX="12" PointY="71.5" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.movimientoscaja" Width="1.5" PointX="9" PointY="30" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.movimientosdetallecaja" Width="1.5" PointX="11.25" PointY="35.5" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.movimientosdetallecomboshistoricosinv" Width="1.5" PointX="16.5" PointY="47.875" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.movimientosdetallecombosinv" Width="1.5" PointX="22.5" PointY="55" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.movimientosdetallehistoricosinv" Width="1.5" PointX="18.75" PointY="73.375" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.movimientosdetalleinv" Width="1.5" PointX="27.75" PointY="73.375" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.movimientoshistoricosinv" Width="1.5" PointX="16.5" PointY="71.75" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.movimientosinv" Width="1.5" PointX="25.5" PointY="49.375" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.municipios" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.ofertas" Width="1.5" PointX="17.25" PointY="43.75" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.ofertasdetalle" Width="1.5" PointX="19.5" PointY="52.875" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.paises" Width="1.5" PointX="0.75" PointY="58.125" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.pedidosclientesinv" Width="1.5" PointX="17.25" PointY="32.5" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.pedidosclientesinvdetalle" Width="1.5" PointX="19.5" PointY="56.875" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.pedidostransitodetallehistoricoinv" Width="1.5" PointX="7.5" PointY="93.125" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.pedidostransitodetalleinv" Width="1.5" PointX="16.5" PointY="57.625" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.pedidostransitohistoricoinv" Width="1.5" PointX="5.25" PointY="92.375" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.pedidostransitoinv" Width="1.5" PointX="11.25" PointY="56.875" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.periodos" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.proveedores" Width="1.5" PointX="3" PointY="54" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.rutas" Width="1.5" PointX="1.5" PointY="78.25" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.sectores" Width="1.5" PointX="5.75" PointY="41.75" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.security_companies" Width="1.5" PointX="3" PointY="12.625" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.security_company_users" Width="1.5" PointX="5.25" PointY="1.75" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.security_groups" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.security_users" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.tiposmovimientosinv" Width="1.5" PointX="2.625" PointY="35.875" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.tiposmovimientosseriesinv" Width="1.5" PointX="6.75" PointY="35" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.traslados" Width="1.5" PointX="19.5" PointY="35.25" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.vendedores" Width="1.5" PointX="3.75" PointY="72.625" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.zonas" Width="1.5" PointX="3.75" PointY="81.875" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosdetallegenericos28" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refgenericos31" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosdetalleinv53" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosdetalleinv84" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosinv83" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refbodegasinv7" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosinv24" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosinv30" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosinv57" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosinv61" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosinv70" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosinv74" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosinv77" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refarticulosinv82" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reffamiliasinv3" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refmarcasinv17" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refmedidasinv5" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refproveedores4" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refclientes26" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refbodegasinv35" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refbodegasinv37" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refbodegasinv38" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refbodegasinv52" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refbodegasinv56" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refbodegasinv60" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refbodegasinv63" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refbodegasinv80" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refclases20" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refclasesproveedores18" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refclientes25" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refcobradores23" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reflocalidades22" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refpaises48" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refsectores98" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refvendedores49" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refzonas51" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refrutas47" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refcombosdetalleinv73" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refcombosdetalleinv79" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refcotizacionesinv13" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refvendedores81" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refdepartamentos27" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refespera29" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refvendedores58" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refproveedores64" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reftiposmovimientosseriesinv46" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reflocalidades55" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refmovimientoscaja14" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reftiposmovimientosseriesinv54" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reftiposmovimientosseriesinv67" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refmovimientosinv15" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refproveedores76" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refmovimientoshistoricosinv34" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refproveedores78" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refmovimientosinv11" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refvendedores72" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reftiposmovimientosseriesinv69" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refvendedores44" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refpedidosclientesinv96" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refpedidostransitoinv95" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reftiposmovimientosseriesinv8" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refvendedores68" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refofertas32" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refpaises19" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refpedidosclientesinv36" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refpedidosclientesinv94" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reftiposmovimientosseriesinv66" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refvendedores65" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refpedidostransitohistoricoinv39" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refpedidostransitoinv41" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refproveedores40" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refproveedores42" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refzonas45" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refrutas43" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refrutas97" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refsecurity_companies91" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refsecurity_users90" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Refsecurity_groups88" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reftiposmovimientosinv9" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reftiposmovimientosseriesinv92" />
+        <EntityTypeShape EntityType="db_pcsolutions_webModel.tiposcargosimportacionesinv" Width="1.5" PointX="10.375" PointY="5" />
+        <AssociationConnector Association="db_pcsolutions_webModel.Reftiposcargosimportacionesinv99" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,136 @@
+﻿@model Minible5.Models.bodegasinv
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>bodegasinv</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdBodega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdBodega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Encargado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Encargado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cta_bodega_inventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cta_bodega_inventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idcentrocosto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idcentrocosto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipobodega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipobodega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BodegaCentral)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BodegaCentral)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_baja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_baja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo_Empresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo_Empresa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,154 @@
+﻿@model Minible5.Models.familiasinv
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>familiasinv</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdFamilia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdFamilia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cta_Ventas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cta_Ventas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cta_Costo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cta_Costo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cta_Inventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cta_Inventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cta_Impuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cta_Impuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cta_Rebaja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cta_Rebaja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesviacionBlanco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesviacionBlanco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesviacionAmarillo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesviacionAmarillo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesviacionRojo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesviacionRojo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cta_costos_exento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cta_costos_exento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cta_prodproceso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cta_prodproceso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentaje_comision)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentaje_comision)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cta_Ventas_exento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cta_Ventas_exento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_baja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_baja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo_Empresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo_Empresa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdInternoFamilias }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

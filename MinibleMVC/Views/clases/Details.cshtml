@@ -1,0 +1,58 @@
+﻿@model Minible5.Models.clases
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>clases</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdClase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdClase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_baja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_baja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo_Empresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo_Empresa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdInternoClases }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
