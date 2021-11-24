@@ -645,6 +645,7 @@
     <Content Include="assets\js\pages\timeline.init.js" />
     <Content Include="assets\js\pages\toastr.init.js" />
     <Content Include="assets\js\pages\vector-maps.init.js" />
+    <Content Include="assets\js\TiposMovEdit.js" />
     <Content Include="assets\libs\admin-resources\bootstrap-filestyle\bootstrap-filestyle.min.js" />
     <Content Include="assets\libs\admin-resources\jquery.vectormap\jquery-jvectormap-1.2.2.css" />
     <Content Include="assets\libs\admin-resources\jquery.vectormap\jquery-jvectormap-1.2.2.min.js" />
@@ -2113,7 +2114,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61161</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44346/</IISUrl>
+          <IISUrl>https://localhost:44346/index/Index/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

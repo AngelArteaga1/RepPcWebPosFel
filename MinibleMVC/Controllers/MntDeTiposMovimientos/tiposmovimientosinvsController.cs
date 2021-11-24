@@ -440,31 +440,26 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
         }
 
 
-        // GET: tiposmovimientosinvs/Delete/5
+        // POST: tiposmovimientosinvs/Delete/5
+        [HttpPost, ActionName("Delete")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tiposmovimientosinv tiposmovimientosinv = db.tiposmovimientosinv.Find(id);
-            if (tiposmovimientosinv == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tiposmovimientosinv);
+
+            var oTiposMov = db.tiposmovimientosinv.Find(id);
+            oTiposMov.status = "B";
+            oTiposMov.Fecha_baja = DateTime.Now;
+
+            db.Entry(oTiposMov).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+
         }
 
-        // POST: tiposmovimientosinvs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            tiposmovimientosinv tiposmovimientosinv = db.tiposmovimientosinv.Find(id);
-            db.tiposmovimientosinv.Remove(tiposmovimientosinv);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         public List<SelectListItem> getTipoPrecio()
         {

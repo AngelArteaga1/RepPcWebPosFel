@@ -198,7 +198,7 @@
 
                     <div id="addproduct-metadata-collapse" class="collapse" data-bs-parent="#addproduct-accordion">
                         <div class="p-4 border-top">
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="divConceptosEditPadre">
 
                                 @for (int i = 0; i < Model.contador; i++)
                                 {
@@ -257,17 +257,26 @@
                                     @Html.LabelFor(d => d.conceptos[i].res_del, new { @class = "col-md-2 col-form-label" })
                                     <div class="col-md-10">
                                         <div class="input-group has-validation">
-                                            @Html.TextBoxFor(d => d.conceptos[i].res_al, new { @class = "form-control", placeholder = "" })
+                                            @Html.TextBoxFor(d => d.conceptos[i].res_del, new { @class = "form-control", placeholder = "" })
 
                                         </div>
                                     </div>
 
-                                    <input type="hidden" id="idContador" />
-                                    <a href="javascript:void(0);" onclick="@("Delete("+i )@(")")" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>
-                                </div>
-                                    }
+                                    @Html.LabelFor(d => d.conceptos[i].res_al, new { @class = "col-md-2 col-form-label" })
+                                    <div class="col-md-10">
+                                        <div class="input-group has-validation">
+                                            @Html.TextBoxFor(d => d.conceptos[i].res_al, new { @class = "form-control", placeholder = "" })
 
+                                        </div>
+                                    </div>                                    
+
+                                <a id="@("buttonDelete"+i)" href="javascript:void(0);" onclick="@("Delete("+i )@(")")" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>
+                                </div>
+                                }
                                 
+                                <input type="hidden" id="idItemUltimoELiminado" value=-1 />
+                                <input type="hidden" id="idContador" value=0 />
+                                <input type="hidden" id="idIteracion" value=@Model.contador />
 
                                 <div class="row">
                                     <div class="form-group">
@@ -374,193 +383,4 @@
 
 <script src="~/assets/js/app.js"></script>
 
-
-<script>
-
-    var num = 0;
-
-
-    function AgregaConcepto() {
-        let Serie = document.getElementById("Serie").value;
-        let Secuencia = document.getElementById("Secuencia").value;
-        let Correlativo = document.getElementById("Correlativo").value;
-        let Automatico = document.getElementById("Automatico").checked;
-        let Formato = document.getElementById("Formato").value;
-        let Resolucion = document.getElementById("Resolucion").value;
-        let Fecha = document.getElementById("Fecha").value;
-        let Del = document.getElementById("Del").value;
-        let Al = document.getElementById("Al").value;
-
-        //console.log(Automatico);
-
-        //agregamos tabla
-        let Tabla = document.getElementById("tablaConceptos");
-        let TR = document.createElement("tr");
-        let TDSerie = document.createElement("td");
-        let TDSecuencia = document.createElement("td");
-        let TDCorrelativo = document.createElement("td");
-        let TDAutomatico = document.createElement("td");
-        let TDFormato = document.createElement("td");
-        let TDResolucion = document.createElement("td");
-        let TDFecha = document.createElement("td");
-        let TDDel = document.createElement("td");
-        let TDAl = document.createElement("td");
-
-
-        TR.appendChild(TDSerie);
-        TR.appendChild(TDSecuencia);
-        TR.appendChild(TDCorrelativo);
-        TR.appendChild(TDAutomatico);
-        TR.appendChild(TDFormato);
-        TR.appendChild(TDResolucion);
-        TR.appendChild(TDFecha);
-        TR.appendChild(TDDel);
-        TR.appendChild(TDAl);
-
-
-        TDSerie.innerHTML = Serie;
-        TDSecuencia.innerHTML = Secuencia;
-        TDCorrelativo.innerHTML = Correlativo;
-        if (Automatico) {
-            TDAutomatico.innerHTML = "SI";
-        } else {
-            TDAutomatico.innerHTML = "NO";
-        }
-        TDFormato.innerHTML = Formato;
-        TDResolucion.innerHTML = Resolucion;
-        TDFecha.innerHTML = Fecha;
-        TDDel.innerHTML = Del;
-        TDAl.innerHTML = Al;
-        Tabla.appendChild(TR);
-
-        //agregamos hiddens
-        let DivConceptos = document.getElementById("divConceptosAdd");
-        let HiddenIndex = document.createElement("input");
-        let HiddenSerie = document.createElement("input");
-        let HiddenSecuencia = document.createElement("input");
-        let HiddenCorrelativo = document.createElement("input");
-        let HiddenAutomatico = document.createElement("input");
-        let HiddenFormato = document.createElement("input");
-        let HiddenResolucion = document.createElement("input");
-        let HiddenFecha = document.createElement("input");
-        let HiddenDel = document.createElement("input");
-        let HiddenAl = document.createElement("input");
-        let HiddenActualizar = document.createElement("input");
-
-        HiddenIndex.name = "conceptosAdd.Index";
-        HiddenIndex.value = num;
-        HiddenIndex.type = "hidden";
-
-        HiddenSerie.name = "conceptosAdd[" + num + "].idSerie";
-        HiddenSerie.value = Serie;
-        HiddenSerie.type = "hidden";
-        HiddenSecuencia.name = "conceptosAdd[" + num + "].secuencia";
-        HiddenSecuencia.value = Secuencia;
-        HiddenSecuencia.type = "hidden";
-        HiddenCorrelativo.name = "conceptosAdd[" + num + "].correlativo";
-        HiddenCorrelativo.value = Correlativo;
-        HiddenCorrelativo.type = "hidden";
-
-        HiddenAutomatico.name = "conceptosAdd[" + num + "].usaCorrelativo";
-        HiddenAutomatico.type = "checkbox";
-        if (Automatico) {
-            HiddenAutomatico.value = "S";
-            HiddenAutomatico.checked = true;
-        } else {
-            HiddenAutomatico.value = "N";
-            HiddenAutomatico.checked = false;
-        }
-
-        HiddenFormato.name = "conceptosAdd[" + num + "].formatoImpresion";
-        HiddenFormato.value = Formato;
-        HiddenFormato.type = "hidden";
-        HiddenResolucion.name = "conceptosAdd[" + num + "].resolucionNumero";
-        HiddenResolucion.value = Resolucion;
-        HiddenResolucion.type = "hidden";
-        HiddenFecha.name = "conceptosAdd[" + num + "].fechaAutorizacion";
-        HiddenFecha.value = Fecha;
-        HiddenFecha.type = "hidden";
-        HiddenDel.name = "conceptosAdd[" + num + "].res_del";
-        HiddenDel.value = Del;
-        HiddenDel.type = "hidden";
-        HiddenAl.name = "conceptosAdd[" + num + "].res_al";
-        HiddenAl.value = Al;
-        HiddenAl.type = "hidden";
-
-        HiddenActualizar.name = "conceptosAdd[" + num + "].actualizar";
-        HiddenActualizar.value = "N";
-        HiddenActualizar.type = "hidden";
-
-
-        DivConceptos.appendChild(HiddenIndex);
-        DivConceptos.appendChild(HiddenSerie);
-        DivConceptos.appendChild(HiddenSecuencia);
-        DivConceptos.appendChild(HiddenCorrelativo);
-        DivConceptos.appendChild(HiddenAutomatico);
-        DivConceptos.appendChild(HiddenFormato);
-        DivConceptos.appendChild(HiddenResolucion);
-        DivConceptos.appendChild(HiddenFecha);
-        DivConceptos.appendChild(HiddenDel);
-        DivConceptos.appendChild(HiddenAl);
-        DivConceptos.appendChild(HiddenActualizar);
-
-
-        document.getElementById("Serie").value = "";
-        document.getElementById("Secuencia").value = "";
-        document.getElementById("Correlativo").value = "";
-        document.getElementById("Formato").value = "";
-        document.getElementById("Resolucion").value = "";
-        document.getElementById("Fecha").value = "";
-        document.getElementById("Del").value = "";
-        document.getElementById("Al").value = "";
-        //document.getElementById("Automatico").value = "";
-
-        num++;
-    }
-
-    /* ====================Eliminar Los Detalles de Tipos movimientos ======== */
-
-    function Delete(id) {
-
-        //console.log(id);
-        Swal.fire({
-            title: "Estas seguro?", text: "No hay forma de rehacer esta función!", icon: "warning", showCancelButton: !0, confirmButtonText: "Si, Eliminar!", cancelButtonText: "No, Cancelar!", confirmButtonClass: "btn btn-success mt-2", cancelButtonClass: "btn btn-danger ms-2 mt-2", buttonsStyling: !1
-        }).then(async function (t) {
-            if (t.value) {
-                //SI CONFIRMA
-                
-                
-                //Hacemos una lista de campos ocultos que se eliminaran 
-                let DivConceptos = document.getElementById("divConceptosDelete");
-                let num = document.getElementById("idContador").value;
-                let HiddenIdSerieMovSerie = document.createElement("input");                
-                let idMovSerie = "conceptos_" + id + "__idInternoTIposMovimientosSeries";
-                
-                let IdSerieMovSerie = document.getElementById(idMovSerie).value;
-
-                
-                HiddenIdSerieMovSerie.name = "conceptosDelete[" + num + "].idInternoTIposMovimientosSeries";
-                HiddenIdSerieMovSerie.value = IdSerieMovSerie;
-                HiddenIdSerieMovSerie.type = "hidden";
-                
-                DivConceptos.appendChild(HiddenIdSerieMovSerie);
-              
-                //Eliminamos del DOM los elementos
-                var div = document.getElementById("divConceptosEdit" + id);
-                if (div != null) {
-
-                    while (div.hasChildNodes()) {
-                        div.removeChild(div.lastChild);
-                    }
-                }
-                num++;
-
-                Swal.fire({ title: "Eliminado!", text: "El Tipo de movimiento ha sido eliminado.", icon: "success" })
-            } else {
-                //SI CANCELA
-                t.dismiss === Swal.DismissReason.cancel && Swal.fire({ title: "Cancelado", text: "El Tipo de movimiento no se ha eliminado :)", icon: "error" })
-            }
-        })
-    }
-
-</script>
+<script src="~/assets/js/TiposMovEdit.js"> </script>

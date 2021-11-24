@@ -184,7 +184,9 @@ namespace Minible5.Models.ViewModels.TiposMovimientos
         public string resolucionNumero { get; set; }
 
         [Display(Name = "Secuencia")]
-        public int secuencia { get; set; }        
+        public int secuencia { get; set; }   
+        
+        
 
     }
 
