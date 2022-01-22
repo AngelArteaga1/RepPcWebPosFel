@@ -157,8 +157,39 @@ namespace Minible5.Controllers.MntDeMedidas
         }
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        public ActionResult Details(int? id)
+        {
+
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditMedidasViewModel model = new EditMedidasViewModel();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oMedidas = db.medidasinv.Find(id);
+            if (oMedidas == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.idInternoMedidas = oMedidas.IdInternoMedidas;
+            model.idMedidas = oMedidas.IdMedida;
+            model.descripcion = oMedidas.Descripcion;
+            model.felMedida = oMedidas.fel_medida;
+            return View(model);
+        }
+
+
+        [HttpPost]        
         public ActionResult Edit(EditMedidasViewModel model)
         {
             /*

@@ -1,106 +1,277 @@
-﻿@model Minible5.Models.vendedores
+﻿@using Minible5.Models.ViewModels.Vendedores
+@model Minible5.Models.ViewModels.Vendedores.EditVendedoresViewModels
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalle Vendedores";
+    ViewBag.pTitle = "Detalle Vendedores";
+    ViewBag.pageTitle = "Vendedores";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+    List<SelectListItem> itemsRutas = (List<SelectListItem>)ViewBag.itemsRutas;
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+    List<SelectListItem> companies = (List<SelectListItem>)ViewBag.companies;
+
 }
 
-<h2>Details</h2>
+<!-- plugin css -->
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 
-<div>
-    <h4>vendedores</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdVendedor)
-        </dt>
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<!-- dropzone css -->
+<link href="~/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 
-        <dd>
-            @Html.DisplayFor(model => model.IdVendedor)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/font-awesome/css/font-awesome.min.css">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Porcentajecomision)
-        </dt>
+<!-- daterange picker -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/bootstrap-daterangepicker/daterangepicker.css">
 
-        <dd>
-            @Html.DisplayFor(model => model.Porcentajecomision)
-        </dd>
+<!-- bootstrap datepicker -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="~/assets/LTE/plugins/iCheck/all.css">
 
-        <dd>
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
+<!-- Bootstrap time Picker -->
+<link rel="stylesheet" href="~/assets/LTE/plugins/timepicker/bootstrap-timepicker.min.css">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Celular)
-        </dt>
+<!-- Theme style -->
+<link rel="stylesheet" href="~/assets/LTE/dist/css/AdminLTE.min.css">
 
-        <dd>
-            @Html.DisplayFor(model => model.Celular)
-        </dd>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="p-4 border-top">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Encabezado</h3>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emailvende)
-        </dt>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
 
-        <dd>
-            @Html.DisplayFor(model => model.emailvende)
-        </dd>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.idVendedor)
+                                    @Html.TextBoxFor(d => d.idVendedor, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.descripcion)
+                                    @Html.TextBoxFor(d => d.descripcion, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha_baja)
-        </dt>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.porcentajeComision)
+                                    @Html.TextBoxFor(d => d.porcentajeComision, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.telefono)
+                                    @Html.TextBoxFor(d => d.telefono, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
 
-        <dd>
-            @Html.DisplayFor(model => model.Fecha_baja)
-        </dd>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.celular)
+                                    @Html.TextBoxFor(d => d.celular, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.emailVende)
+                                    @Html.TextBoxFor(d => d.emailVende, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
 
-        <dt>
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
+                        <br />
+                        <div class="row">                            
+                            <div class="form-group">
+                                @Html.LabelFor(d => d.idInternoRutas)
+                                @Html.DropDownListFor(d => d.idInternoRutas, itemsRutas, "ruta del vendedor", new { @class = "form-control select2", @disabled = "disabled" })
+                            </div>                                                      
+                        </div>
+                        <!-- /.row -->
 
-        <dd>
-            @Html.DisplayFor(model => model.status)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Codigo_Empresa)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Codigo_Empresa)
-        </dd>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
 
-        <dt>
-            @Html.DisplayNameFor(model => model.rutas.IdRuta)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.rutas.IdRuta)
-        </dd>
-
-    </dl>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdInternoVendedores }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<!-- end row -->
+
+
+<div id="hiddenEmpresas"></div>
+
+<div class="row mb-4">
+    <div class="col text-end">
+        <a href="@Url.Action("Index", "vendedores")" class="btn btn-primary"> <i class="uil-arrow-left font-size-18"></i> Regresar </a>
+        <a href="@Url.Action("Edit", "vendedores", new { id = Model.idInternoRutas})" class="btn btn btn-success"> <i class="uil uil-pen font-size-18"></i> Editar </a>
+        <a href="javascript:void(0);" onclick="@("Delete("+Model.idInternoRutas )@(")")" class="btn btn-danger"><i class="uil uil-trash-alt font-size-18"></i>Elimanar</a>
+    </div> <!-- end col -->
+</div> <!-- end row-->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+
+<!-- Required datatable js -->
+<script src="~/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+<script src="~/assets/js/pages/form-validation.init.js"></script>
+<script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- dropzone plugin -->
+<script src="~/assets/libs/dropzone/min/dropzone.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/ecommerce-add-product.init.js"></script>
+<script src="~/assets/js/app.js"></script>
+
+
+
+
+
+<!-- Bootstrap 3.3.7 -->
+<script src="~/assets/LTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="~/assets/LTE/bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="~/assets/LTE/bower_components/moment/min/moment.min.js"></script>
+<script src="~/assets/LTE/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="~/assets/LTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<!-- bootstrap time picker -->
+<script src="~/assets/LTE/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- SlimScroll -->
+<!-- iCheck 1.0.1 -->
+<script src="~/assets/LTE/plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<!-- AdminLTE App -->
+<script src="~/assets/LTE/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+
+
+@section scripts{
+    <script>
+
+
+        $(function () {
+
+
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            })
+            //Red color scheme for iCheck
+            $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                checkboxClass: 'icheckbox_minimal-red',
+                radioClass: 'iradio_minimal-red'
+            })
+            //Flat red color scheme for iCheck
+            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+            })
+
+        });
+
+
+        function deleteData(id) {
+             return $.ajax({
+                type: "POST",
+                url: '@Url.Action("Delete", "vendedores")/?id=' + id,
+                success: function (data) {
+                    if (data.success) {
+                        //usersTable.ajax.reload();
+                    }
+                }
+            });
+        }
+
+        function Delete(id) {
+            Swal.fire({
+                title: "Estas seguro?", text: "No hay forma de rehacer esta función!", icon: "warning", showCancelButton: !0, confirmButtonText: "Si, Eliminar!", cancelButtonText: "No, Cancelar!", confirmButtonClass: "btn btn-success mt-2", cancelButtonClass: "btn btn-danger ms-2 mt-2", buttonsStyling: !1
+            }).then(async function (t) {
+                if (t.value) {
+                    //SI CONFIRMA
+                    await deleteData(id)
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Eliminado!',
+                        showConfirmButton: false,
+                        text: "El vendedor ha sido eliminado.",
+                        timer: 2000
+                    })
+
+                    setTimeout(function () { window.location.href = "Index"; }, 2500);
+
+                } else {
+                    //SI CANCELA
+                    t.dismiss === Swal.DismissReason.cancel && Swal.fire({ title: "Cancelado", text: "El vendedor no se ha eliminado :)", icon: "error" })
+                }
+            })
+        }
+
+
+
+    </script>
+
+}

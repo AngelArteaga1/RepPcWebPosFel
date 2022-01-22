@@ -90,15 +90,7 @@ namespace Minible5.Controllers.MntDeFamilias
         // GET: familiasinvs/Create
         public ActionResult Create()
         {
-            FamiliasViewModels model = new FamiliasViewModels();
-            /*Inicializando por Default*/
-            model.desviacionAmarillo = (decimal)valDefault;
-            model.desviacionBlanco = (decimal)valDefault;
-            model.desviacionRojo  = (decimal)valDefault;
-            model.porcentajeComision = (decimal)valDefault;
-
-
-            return View(model);
+            return View();
         }
 
 
@@ -127,14 +119,8 @@ namespace Minible5.Controllers.MntDeFamilias
                 oFamilias.Cta_Costo = model.ctaCostos;
                 oFamilias.Cta_Inventario = model.ctaInventario;
                 oFamilias.Cta_Impuesto = model.ctaImpuesto;
-                oFamilias.Cta_Rebaja = model.ctaRebaja;
-                oFamilias.DesviacionBlanco = model.desviacionBlanco;
-                oFamilias.DesviacionAmarillo = model.desviacionAmarillo;
-                oFamilias.DesviacionRojo = model.desviacionRojo;
-                oFamilias.cta_costos_exento = model.ctaCostoExcento;
-                oFamilias.cta_prodproceso = model.ctaProdProceso;
-                oFamilias.porcentaje_comision = model.porcentajeComision;
-                oFamilias.Cta_Ventas_exento = model.ctaVentaExcento;
+                oFamilias.Cta_Rebaja = model.ctaRebaja;                
+                oFamilias.cta_prodproceso = model.ctaProdProceso;                
                 oFamilias.status = "A";
                 oFamilias.Codigo_Empresa = "001"; //Tomar en cuenta que este campo NO tiene que ser estatico y tiene que estar en los Modelos..
                 db.familiasinv.Add(oFamilias);
@@ -147,8 +133,6 @@ namespace Minible5.Controllers.MntDeFamilias
             {
                 return RedirectToAction("Index", "familiasinvs", new { success = "Error Guardando en la Base de datos" });
             }
-
-
             
         }
 
@@ -184,22 +168,16 @@ namespace Minible5.Controllers.MntDeFamilias
             model.ctaCostos = oFamilia.Cta_Costo;
             model.ctaInventario = oFamilia.Cta_Inventario;
             model.ctaImpuesto = oFamilia.Cta_Impuesto;
-            model.ctaRebaja = oFamilia.Cta_Rebaja;
-            model.desviacionBlanco = (decimal)oFamilia.DesviacionBlanco;
-            model.desviacionAmarillo = (decimal)oFamilia.DesviacionAmarillo ;
-            model.desviacionRojo = (decimal)oFamilia.DesviacionRojo ;
+            model.ctaRebaja = oFamilia.Cta_Rebaja;            
             model.ctaCostoExcento  = oFamilia.cta_costos_exento;
-            model.ctaProdProceso = oFamilia.cta_prodproceso;
-            model.porcentajeComision = (decimal)oFamilia.porcentaje_comision;
-            model.ctaVentaExcento = oFamilia.Cta_Ventas_exento;
+            model.ctaProdProceso = oFamilia.cta_prodproceso;            
 
 
             return View(model);
         }
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public ActionResult Edit(EditFamiliasViewModels model)
         {
             /*
@@ -224,14 +202,9 @@ namespace Minible5.Controllers.MntDeFamilias
                 oFamilia.Cta_Costo = model.ctaCostos;
                 oFamilia.Cta_Inventario = model.ctaInventario;
                 oFamilia.Cta_Impuesto = model.ctaImpuesto;
-                oFamilia.Cta_Rebaja = model.ctaRebaja;
-                oFamilia.DesviacionBlanco = model.desviacionBlanco;
-                oFamilia.DesviacionAmarillo = model.desviacionAmarillo;
-                oFamilia.DesviacionRojo = model.desviacionRojo;
+                oFamilia.Cta_Rebaja = model.ctaRebaja;                
                 oFamilia.cta_costos_exento = model.ctaCostoExcento;
-                oFamilia.cta_prodproceso = model.ctaProdProceso;
-                oFamilia.porcentaje_comision = model.porcentajeComision;
-                oFamilia.Cta_Ventas_exento = model.ctaVentaExcento;
+                oFamilia.cta_prodproceso = model.ctaProdProceso;                
 
 
                 db.Entry(oFamilia).State = System.Data.Entity.EntityState.Modified;
@@ -243,6 +216,44 @@ namespace Minible5.Controllers.MntDeFamilias
             return RedirectToAction("Index", "familiasinvs", new { success = "Se editó correctamente!" });
         }
 
+
+        public ActionResult Details(int? id)
+        {
+
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditFamiliasViewModels model = new EditFamiliasViewModels();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oFamilia = db.familiasinv.Find(id);
+            if (oFamilia == null)
+            {
+                return HttpNotFound();
+            }
+            model.IdInternoFamilias = oFamilia.IdInternoFamilias;
+            model.IdFamilia = oFamilia.IdFamilia;
+            model.descripcion = oFamilia.Descripcion;
+            model.ctaVentas = oFamilia.Cta_Ventas;
+            model.ctaCostos = oFamilia.Cta_Costo;
+            model.ctaInventario = oFamilia.Cta_Inventario;
+            model.ctaImpuesto = oFamilia.Cta_Impuesto;
+            model.ctaRebaja = oFamilia.Cta_Rebaja;            
+            model.ctaCostoExcento = oFamilia.cta_costos_exento;
+            model.ctaProdProceso = oFamilia.cta_prodproceso;            
+
+
+            return View(model);
+        }
 
         // POST : bodegasinvs/Delete/5
         [HttpPost]

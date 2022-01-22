@@ -323,8 +323,7 @@ namespace Minible5.Controllers.MntDeClientes
             return View(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public ActionResult Edit(EditClientesViewModels model)
         {
             /*
@@ -396,6 +395,110 @@ namespace Minible5.Controllers.MntDeClientes
         }
 
 
+        public ActionResult Details(int? id)
+        {
+
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditClientesViewModels model = new EditClientesViewModels();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oClientes = db.clientes.Find(id);
+            if (oClientes == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.idInternoClientes = oClientes.IdInternoClientes;
+            model.idCliente = oClientes.IdCliente;
+            model.nombreComercial = oClientes.NombreComercial;
+            model.razonSocial = oClientes.RazonSocial;
+            model.direccion = oClientes.direccion;
+            model.telefono = oClientes.Telefono;
+            model.fax = oClientes.Fax;
+            model.apartadopostal = oClientes.ApartadoPostal;
+            model.cedula = oClientes.Cedula;
+            model.nit = oClientes.nit;
+            model.fechadealta = (DateTime)oClientes.FechadeAlta;
+            model.diascredito = (int)oClientes.DiasCredito;
+            model.limitecredito = (Decimal)oClientes.LimiteCredito;
+            model.observaciones = oClientes.Observaciones;
+            model.e_mail = oClientes.E_Mail;
+            model.diapago = oClientes.DiaPago;
+            model.personacontacto_1 = oClientes.PersonaContacto_1;
+            model.personacontacto_2 = oClientes.PersonaContacto_2;
+            //model.fechabaja = (DateTime)oClientes.FechaBaja;
+            model.diasprontopago = (int)oClientes.DiasProntoPago;
+            model.descprontopago = (decimal)oClientes.DescProntoPago;
+
+            model.tipoprecio = oClientes.TipoPrecio;
+            model.cuentacontable = oClientes.CuentaContable;
+            model.contador_luz = oClientes.contador_luz;
+            model.sexo = oClientes.sexo;
+            model.dias_max_credito = oClientes.dias_max_credito;
+            if (oClientes.agenteretenedor == "S")
+            {
+                model.agenteretenedor = true;
+            }
+            else
+            {
+                model.agenteretenedor = false;
+            }
+
+            model.altabaja = oClientes.AltaBaja;
+            model.idInternoClase = oClientes.IdInternoClases;
+            model.idInternoLocalidad = oClientes.IdInternoLocalidades;
+            model.idInternoCobrador = oClientes.IdInternoCobrador;
+            model.idInternoPais = oClientes.IdInternoPaises;
+            model.idInternoVendedor = oClientes.IdInternoVendedores;
+            //model.idInternoRuta = oClientes.IdInternoRutas;
+            model.idInternoSectores = oClientes.IdInternoSectores;
+            model.idInternoZona = oClientes.IdInternoZonas;
+            model.idInternoBodega = oClientes.IdInternoBodegas;
+
+
+            var itemsPaises = getPaises();
+            ViewBag.itemsPaises = itemsPaises;
+
+            var itemsZonas = getZonas();
+            ViewBag.itemsZonas = itemsZonas;
+
+            var itemsLocalidades = getLocalidades();
+            ViewBag.itemsLocalidades = itemsLocalidades;
+
+            var itemsBodegas = getBodegas();
+            ViewBag.itemsBodegas = itemsBodegas;
+
+            var itemsClases = getClases();
+            ViewBag.itemsClases = itemsClases;
+
+            var itemsCobradores = getCobradores();
+            ViewBag.itemsCobradores = itemsCobradores;
+
+            var itemsVendedores = getVendedores();
+            ViewBag.itemsVendedores = itemsVendedores;
+
+            var itemsSectores = getSectores();
+            ViewBag.itemsSectores = itemsSectores;
+
+            var itemsDiaPago = getDiaPago();
+            ViewBag.itemsDiaPago = itemsDiaPago;
+
+            var itemsTipoPrecio = getTipoPrecio();
+            ViewBag.itemsTipoPrecio = itemsTipoPrecio;
+
+            return View(model);
+        }
 
 
 

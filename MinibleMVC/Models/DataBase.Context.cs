@@ -76,11 +76,12 @@ namespace Minible5.Models
         public virtual DbSet<security_company_users> security_company_users { get; set; }
         public virtual DbSet<security_groups> security_groups { get; set; }
         public virtual DbSet<security_users> security_users { get; set; }
+        public virtual DbSet<tiposcargosimportacionesinv> tiposcargosimportacionesinv { get; set; }
         public virtual DbSet<tiposmovimientosinv> tiposmovimientosinv { get; set; }
         public virtual DbSet<tiposmovimientosseriesinv> tiposmovimientosseriesinv { get; set; }
         public virtual DbSet<traslados> traslados { get; set; }
         public virtual DbSet<vendedores> vendedores { get; set; }
         public virtual DbSet<zonas> zonas { get; set; }
-        public virtual DbSet<tiposcargosimportacionesinv> tiposcargosimportacionesinv { get; set; }
+        public virtual DbSet<tarjetasbancos> tarjetasbancos { get; set; }
     }
 }

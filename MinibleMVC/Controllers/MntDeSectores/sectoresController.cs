@@ -172,8 +172,7 @@ namespace Minible5.Controllers.MntDeSectores
         // POST: sectores/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public ActionResult Edit(EditSectoresViewModels model)
         {
             /*
@@ -202,6 +201,41 @@ namespace Minible5.Controllers.MntDeSectores
             return RedirectToAction("Index", "sectores", new { success = "Se editó correctamente!" });
         }
 
+
+        // GET: sectores/Edit/5
+        public ActionResult Details(int? id)
+        {
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditSectoresViewModels model = new EditSectoresViewModels();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oSector = db.sectores.Find(id);
+            if (oSector == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.idInternoSectores = oSector.IdInternoSectores;
+            model.IdSector = oSector.IdSector;
+            model.descripcion = oSector.descripcion;
+            model.IdInternoRutas = oSector.IdInternoRutas;
+
+            var itemsRutas = getRutas();
+            ViewBag.itemsRutas = itemsRutas;
+
+            return View(model);
+        }
 
 
         // POST: sectores/Delete/5

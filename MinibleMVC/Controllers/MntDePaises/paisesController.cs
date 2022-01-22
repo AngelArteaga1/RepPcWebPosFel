@@ -159,8 +159,7 @@ namespace Minible5.Controllers.MntDePaises
         // POST: paises/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public ActionResult Edit(EditPaisesViewModels model)
         {
             /*
@@ -189,6 +188,37 @@ namespace Minible5.Controllers.MntDePaises
             return RedirectToAction("Index", "paises", new { success = "Se editó correctamente!" });
         }
 
+
+        // GET: paises/Edit/5
+        public ActionResult Details(int? id)
+        {
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditPaisesViewModels model = new EditPaisesViewModels();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oPais = db.paises.Find(id);
+            if (oPais == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.idInternoPaises = oPais.IdInternoPaises;
+            model.idPais = oPais.IdPais;
+            model.descripcion = oPais.Descripcion;
+
+            return View(model);
+        }
 
 
         // POST: paises/Delete/5

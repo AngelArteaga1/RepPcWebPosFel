@@ -15,6 +15,7 @@ namespace Minible5.Controllers.Security
         // GET: Users
         public ActionResult Index(string success)
         {
+            //var oUser = (security_users)Session["User"];
             ViewBag.Success = success;
             return View();
         }

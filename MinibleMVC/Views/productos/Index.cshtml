@@ -1,0 +1,468 @@
+﻿@model Minible5.Models.ViewModels.PtoDeVenta.PtoDeVentaViewModel
+@{
+    ViewBag.Title = "Productos";
+    ViewBag.pTitle = "Productos";
+    ViewBag.pageTitle = "Punto de Venta";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+    List<SelectListItem> familias = (List<SelectListItem>)ViewBag.familias;
+    List<SelectListItem> marcas = (List<SelectListItem>)ViewBag.marcas;
+}
+
+<!-- ION Slider -->
+<link href="~/assets/libs/ion-rangeslider/css/ion.rangeSlider.min.css" rel="stylesheet" type="text/css" />
+<!-- Select2 css -->
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/libs/select2-bootstrap/dist/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>
+                                <h5 id="info"></h5>
+                                <ol class="breadcrumb p-0 bg-transparent mb-2">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Productos</a></li>
+                                    <li class="breadcrumb-item active">Presentación</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-inline float-md-end">
+                                <div class="search-box ml-2">
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control bg-light border-light rounded" placeholder="Search..." id="searchValue">
+                                        <i class="mdi mdi-magnify search-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <ul class="nav nav-tabs nav-tabs-custom mt-3 mb-2 ecommerce-sortby-list">
+                        <li class="nav-item">
+                            <a class="nav-link disabled fw-medium" href="#" tabindex="-1" aria-disabled="true">Ordenar por:</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" id="order-nombre"><i class="uil-arrow-up"></i> Nombre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="order-codigo"><i class="uil-arrow-up"></i> Código</a>
+                        </li>
+
+                    </ul>
+
+                    <!-- Grid donde iran todos los productos-->
+                    <div class="row" id="products-grid"></div>
+                    <!-- end row -->
+
+                    <div class="row mt-4">
+                        <div class="col-sm-6">
+                            <div>
+                                <p class="mb-sm-0" id="page-info">Página _ de _</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="float-sm-end">
+                                <ul class="pagination pagination-rounded mb-sm-0" id="pagination">
+                                    <li class="page-item disabled">
+                                        <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a href="#" class="page-link">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#" class="page-link">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#" class="page-link">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#" class="page-link">4</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#" class="page-link">5</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4">
+        <div class="mt-5 mt-lg-0">
+            <div class="card border shadow-none">
+                <div class="card-header bg-transparent border-bottom py-3 px-4">
+                    <h5 class="font-size-16 mb-0">Informacióm de la Factura</h5>
+                    <p class="font-size-16 mb-0">Serie: <span class="float-end">@Model.nombreSerie</span></p>
+                    <br />
+                    <p class="font-size-16 mb-0">NIT: <span class="float-end">@Model.nit</span></p>
+                    <p class="font-size-16 mb-0">Cliente: <span class="float-end">@Model.nombre</span></p>
+                    <br />
+                    <p class="font-size-16 mb-0">Bodega: <span class="float-end">@Model.nombrebodega</span></p>
+                    <p class="font-size-16 mb-0">Vendedor: <span class="float-end">@Model.nombreVendedor</span></p>
+
+                </div>
+                <div class="card-body p-4">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <tbody>
+                                <tr>
+                                    <td>Sub Total :</td>
+                                    <td class="text-end" id="subtotal">Q @String.Format("{0:0.00}", Model.subtotal)</td>
+                                </tr>
+                                <tr>
+                                    <td>Descuento : </td>
+                                    <td class="text-end" id="descuento">- Q @String.Format("{0:0.00}", Model.descuento)</td>
+                                </tr>
+                                <tr class="bg-light">
+                                    <th>Total :</th>
+                                    <td class="text-end">
+                                        <span class="fw-bold" id="total">
+                                            Q @String.Format("{0:0.00}", Model.total)
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end table-responsive -->
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-transparent border-bottom">
+                    <h5 class="mb-0">Filtros</h5>
+                </div>
+                <div class="custom-accordion">
+                    <div class="p-4 border-top">
+                        <div>
+                            <h5 class="font-size-14 mb-0"><a href="#filtersizes-collapse" class="text-dark d-block" data-bs-toggle="collapse">Familias <i class="mdi mdi-chevron-up float-end accor-down-icon"></i></a></h5>
+
+                            <div class="collapse" id="filtersizes-collapse">
+                                <div class="mt-4">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <h5 class="font-size-15 mb-0">Seleccione la familia</h5>
+                                        </div>
+                                        <div class="w-lg">
+                                            @Html.DropDownList("familias", familias, "Sin filtro", new { @class = "form-control select2" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="custom-accordion">
+                        <div class="p-4 border-top">
+                            <div>
+                                <h5 class="font-size-14 mb-0"><a href="#marcas-collapse" class="text-dark d-block" data-bs-toggle="collapse">Marcas <i class="mdi mdi-chevron-up float-end accor-down-icon"></i></a></h5>
+
+                                <div class="collapse" id="marcas-collapse">
+                                    <div class="mt-4">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <h5 class="font-size-15 mb-0">Seleccione la Marca</h5>
+                                            </div>
+                                            <div class="w-lg">
+                                                @Html.DropDownList("marcas", marcas, "Sin filtro", new { @class = "form-control select2" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-sm-6">
+                    <a href=@Url.Action("Index", "carrito") class="btn btn-link text-muted">
+                        <i class="uil uil-arrow-left me-1"></i> Ir al Carrito
+                    </a>
+                </div> <!-- end col -->
+            </div>
+        </div>
+
+    </div>
+</div>
+    <!-- end row -->
+    <!-- JAVASCRIPT -->
+    <script src="~/assets/libs/jquery/jquery.min.js"></script>
+    <script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="~/assets/libs/node-waves/waves.min.js"></script>
+    <script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+    <!-- Ion Range Slider-->
+    <script src="~/assets/libs/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+
+    <!-- Select2 -->
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+    <!-- init js -->
+    <script src="~/assets/js/pages/product-filter-range.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+
+    <!-- Aqui todo el codigo para el grid-->
+<script>
+    $(document).ready(function () {
+        pageNumber = 1;
+        ordenamiento = {
+            columna: "descripcion",
+            direccion:"asc"
+        };
+        familia = "";
+        marca = "";
+        $("#order-nombre").click(function () {
+            if (ordenamiento.columna == "descripcion") {
+                if (ordenamiento.direccion == "asc") {
+                    ordenamiento.direccion = "desc";
+                    $(this).find("i").removeClass("uil-arrow-up");
+                    $(this).find("i").addClass("uil-arrow-down");
+                } else {
+                    ordenamiento.direccion = "asc";
+                    $(this).find("i").removeClass("uil-arrow-down");
+                    $(this).find("i").addClass("uil-arrow-up");
+                }
+            } else {
+                ordenamiento.columna = "descripcion";
+                ordenamiento.direccion = "asc";
+                $(this).find("i").removeClass("uil-arrow-down");
+                $(this).find("i").addClass("uil-arrow-up");
+            }
+            $("#order-nombre").addClass("active");
+            $("#order-codigo").removeClass("active");
+            llenarItems(1, $("#searchValue").val())
+        });
+        $("#order-codigo").click(function () {
+            if (ordenamiento.columna == "codigo") {
+                if (ordenamiento.direccion == "asc") {
+                    ordenamiento.direccion = "desc";
+                    $(this).find("i").removeClass("uil-arrow-up");
+                    $(this).find("i").addClass("uil-arrow-down");
+                } else {
+                    ordenamiento.direccion = "asc";
+                    $(this).find("i").addClass("uil-arrow-up");
+                    $(this).find("i").removeClass("uil-arrow-down");
+                }
+            } else {
+                ordenamiento.columna = "codigo";
+                ordenamiento.direccion = "asc";
+                $(this).find("i").removeClass("uil-arrow-down");
+                $(this).find("i").addClass("uil-arrow-up");
+            }
+            $("#order-nombre").removeClass("active");
+            $("#order-codigo").addClass("active");
+            llenarItems(1, $("#searchValue").val())
+        });
+        $("#pagination").on('click', 'button', function () {
+            //Aqui tenemos que consular si el NIT existe
+            let page = $(this).attr("id");
+            console.log(page);
+            if (page == "next") {
+                console.log(pageNumber);
+                llenarItems(pageNumber + 1, $("#searchValue").val());
+            } else if (page == "prev") {
+                console.log(pageNumber);
+                llenarItems(pageNumber - 1, $("#searchValue").val());
+            } else {
+                llenarItems(page, $("#searchValue").val());
+            }
+            $("html, body").animate({ scrollTop: 0 }, 350);
+        });
+        $("#products-grid").on('click', '.product-box', function (e) {
+            //Esto es para pasar a ver el detalle del producto
+            if (!$(e.target).hasClass("btn")) {
+                let id = $(this).attr("id").split("-")[1];
+                console.log(id);
+                var url = '@Url.Action("Index", "detalleProducto")/?id=' + id;
+                window.location.href = url;
+            }
+        });
+        function llenarItems(page, searchValue) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("getProducts", "productos")',
+                data: {
+                    page: page,
+                    searchValue: searchValue,
+                    column: ordenamiento.columna,
+                    direction: ordenamiento.direccion,
+                    idFamilia: familia,
+                    idMarca: marca
+                },
+                success: function (data) {
+                    if (data.success) {
+                        //Actualizamos la pagina
+                        pageNumber = data.page;
+                        //Eliminamos todos los hijos del grid
+                        $("#products-grid").empty();
+                        //Recorremos el arreglo que nos entra
+                        for (i in data.list){
+                            //Creamos el card del producto
+                            let item = data.list[i];
+                            if (item.descuento > 0) {
+                                itemHTML = `<div class="col-xl-4 col-sm-6">
+                                                <div class="product-box" id="product-` + item.id + `">
+                                                    <div class="product-img pt-4 px-4">
+                                                        <div class="product-ribbon badge bg-danger">
+                                                            - ` + item.descuento + `%
+                                                        </div>
+                                                        <img src="` + item.foto + `" alt="" class="img-fluid mx-auto d-block" style="height:280px;width:280px;padding-bottom:10px;">
+                                                    </div>
+
+                                                    <div class="text-center product-content p-4">
+
+                                                        <h5 class="mb-1"><a href="#" class="text-dark">` + item.descripcion + `</a></h5>
+                                                        <p class="text-muted font-size-13">` + item.codigo + `</p>
+
+                                                        <h5 class="mt-3 mb-0"><span class="text-muted me-2"><del>Q` + item.precio.toFixed(2) + `</del></span> Q` + item.subtotal.toFixed(2) + `</h5>
+
+                                                        <ul class="list-inline mb-0 text-muted product-color">
+                                                            <button type="button" onclick="addProduct(` + item.id + `)" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"><i class="uil-shopping-cart-alt"></i> Añadir al Carrito</button>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>`
+                            } else {
+                                itemHTML = `<div class="col-xl-4 col-sm-6">
+                                                <div class="product-box" id="product-` + item.id + `">
+                                                    <div class="product-img pt-4 px-4">
+                                                        <img src="` + item.foto + `" alt="" class="img-fluid mx-auto d-block" style="height:280px;width:280px;padding-bottom:10px;">
+                                                    </div>
+
+                                                    <div class="text-center product-content p-4">
+
+                                                        <h5 class="mb-1"><a href="#" class="text-dark">` + item.descripcion + `</a></h5>
+                                                        <p class="text-muted font-size-13">` + item.codigo + `</p>
+
+                                                        <h5 class="mt-3 mb-0"><span class="text-muted me-2"></span> Q` + item.subtotal.toFixed(2) + `</h5>
+
+                                                        <ul class="list-inline mb-0 text-muted product-color">
+                                                            <button type="button" onclick="addProduct(` + item.id + `)" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"><i class="uil-shopping-cart-alt"></i> Añadir al Carrito</button>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>`
+                            }
+
+                            //Agregamos el html del item a nuestro div
+                            $("#products-grid").append(itemHTML);
+                        }
+                        //Cambiamos la informacion de la pagina
+                        $("#page-info").text("Página " + data.page + " de " + data.pagesTotal);
+                        //Seteamos la barrita de las paginas a elegir
+                        $("#pagination").empty();
+                        //Ponemos la flecha de la izquierda
+                        let leftHTML = "";
+                        if (data.left) {
+                            leftHTML =
+                                `<li class="page-item">
+                                    <button class="page-link" id="prev"><i class="mdi mdi-chevron-left"></i></button>
+                                </li>`
+                        } else {
+                            leftHTML =
+                                `<li class="page-item disabled">
+                                    <button href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></button>
+                                </li>`
+                        }
+                        $("#pagination").append(leftHTML);
+                        for (i in data.pages) {
+                            pagina = data.pages[i];
+                            let pageHTML = "";
+                            if (pagina.activo == true) {
+                                pageHTML =
+                                    `<li class="page-item active">
+                                        <button class="page-link" id="` + pagina.numero + `">` + pagina.numero + `</button>
+                                    </li>`;
+                            } else {
+                                pageHTML =
+                                    `<li class="page-item">
+                                        <button class="page-link" id="` + pagina.numero + `">` + pagina.numero + `</button>
+                                    </li>`;
+                            }
+                            $("#pagination").append(pageHTML);
+                        }
+                        let rightHTML = "";
+                        if (data.right) {
+                            rightHTML =
+                                `<li class="page-item">
+                                    <button class="page-link" id="next"><i class="mdi mdi-chevron-right"></i></button>
+                                </li>`
+                        } else {
+                            rightHTML =
+                                `<li class="page-item disabled">
+                                    <button class="page-link"><i class="mdi mdi-chevron-right"></i></button>
+                                </li>`
+                        }
+                        $("#pagination").append(rightHTML);
+
+                        console.log(data);
+                    } else {
+                        toastr["info"]("El cliente es nuevo, ingrese sus datos.");
+                    }
+                }
+            });
+        }
+        //Evento cuando se busca un nuevo elemento
+        $("#searchValue").keyup(function () {
+            if ($("#searchValue").val() == "") {
+                $("#info").text('');
+            } else {
+                $("#info").text('Mostrando resultados para "' + $("#searchValue").val() + '"');
+            }
+            llenarItems(1, $("#searchValue").val());
+        });
+        $("#familias").change(function () {
+            familia = $(this).val();
+            llenarItems(1, $("#searchValue").val());
+        });
+        $("#marcas").change(function () {
+            marca = $(this).val();
+            llenarItems(1, $("#searchValue").val());
+        });
+        $("#familias").select2({
+            theme: "bootstrap"
+        });
+        $("#marcas").select2({
+            theme: "bootstrap"
+        });
+        llenarItems(1,"");
+    });
+
+    function addProduct(id) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddProduct", "carrito")/?id=' + id,
+            success: function (data) {
+                if (data.success) {
+                        var url = '@Url.Action("Index", "carrito")';
+                        window.location.href = url;
+                } else {
+                    toastr["info"]("El cliente es nuevo, ingrese sus datos.");
+                }
+            }
+        });
+    }
+</script>

@@ -167,8 +167,7 @@ namespace Minible5.Controllers.MntDeRutas
         // POST: rutas/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public ActionResult Edit(EditRutasViewModels model)
         {
             /*
@@ -197,6 +196,38 @@ namespace Minible5.Controllers.MntDeRutas
 
 
             return RedirectToAction("Index", "rutas", new { success = "Se editó correctamente!" });
+        }
+
+        // GET: rutas/Edit/5        
+        public ActionResult Details(int? id)
+        {
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditRutasViewModels model = new EditRutasViewModels();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oRutas = db.rutas.Find(id);
+            if (oRutas == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.idInternoRutas = oRutas.IdInternoRutas;
+            model.idRuta = oRutas.IdRuta;
+            model.descripcion = oRutas.Descripcion;
+            model.recorrido = oRutas.Recorrido;
+
+            return View(model);
         }
 
 

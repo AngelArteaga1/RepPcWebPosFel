@@ -1,330 +1,441 @@
-﻿@model Minible5.Models.proveedores
-
+﻿@using Minible5.Models.ViewModels
+@model Minible5.Models.ViewModels.EditProveedoresViewModels
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalle Proveedores";
+    ViewBag.pTitle = "Detalle Proveedores";
+    ViewBag.pageTitle = "Proveedores";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+    List<SelectListItem> itemsClasesProveedores = (List<SelectListItem>)ViewBag.itemsClasesProveedores;
+    List<SelectListItem> itemsPaises = (List<SelectListItem>)ViewBag.itemsPaises;
+    List<SelectListItem> itemsZonas = (List<SelectListItem>)ViewBag.itemsZonas;
+    List<SelectListItem> itemsLocalidades = (List<SelectListItem>)ViewBag.itemsLocalidades;
+    List<SelectListItem> itemsDiaPago = (List<SelectListItem>)ViewBag.itemsDiaPago;
+
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>proveedores</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdProveedor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdProveedor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NombreComercial)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NombreComercial)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RazonSocial)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RazonSocial)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Direccion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Fax)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Fax)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ApartadoPostal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApartadoPostal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cedula)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cedula)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nit)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nit)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechadeAlta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechadeAlta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DiasCredito)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DiasCredito)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LimiteCredito)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LimiteCredito)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SaldoAnterior)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SaldoAnterior)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Debe)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Debe)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Haber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Haber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Observaciones)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Observaciones)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.E_Mail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.E_Mail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DiaPago)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DiaPago)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PersonaContacto_1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PersonaContacto_1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PersonaContacto_2)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PersonaContacto_2)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AltaBaja)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AltaBaja)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaBaja)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaBaja)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DiasProntoPago)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DiasProntoPago)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DescProntoPago)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DescProntoPago)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MontoPorAplicar)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MontoPorAplicar)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MontoProvicional)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MontoProvicional)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SaldoInicioPeriodo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SaldoInicioPeriodo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MontoPorAplicarPeriodo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MontoPorAplicarPeriodo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MontoProvicionalPeriodo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MontoProvicionalPeriodo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Idcuenta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Idcuenta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.registro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.registro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.giro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.giro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha_baja)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Fecha_baja)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Codigo_empresa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Codigo_empresa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.clasesproveedores.IdClase)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.clasesproveedores.IdClase)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.localidades.IdLocalidad)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.localidades.IdLocalidad)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.paises.IdPais)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.paises.IdPais)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.zonas.IdZona)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.zonas.IdZona)
-        </dd>
-
-    </dl>
+<!-- plugin css -->
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<!-- dropzone css -->
+<link href="~/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/font-awesome/css/font-awesome.min.css">
+
+<!-- daterange picker -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+<!-- bootstrap datepicker -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="~/assets/LTE/plugins/iCheck/all.css">
+
+<!-- Bootstrap time Picker -->
+<link rel="stylesheet" href="~/assets/LTE/plugins/timepicker/bootstrap-timepicker.min.css">
+
+<!-- Theme style -->
+<link rel="stylesheet" href="~/assets/LTE/dist/css/AdminLTE.min.css">
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="p-4 border-top">
+
+
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Encabezado</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        @Html.HiddenFor(d => d.idInternoProveedores)
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.idProveedor)
+                                    @Html.TextBoxFor(d => d.idProveedor, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.nombreComercial)
+                                    @Html.TextBoxFor(d => d.nombreComercial, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.razonSocial)
+                                    @Html.TextBoxFor(d => d.razonSocial, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.direccion)
+                                    @Html.TextBoxFor(d => d.direccion, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.telefono)
+                                    @Html.TextBoxFor(d => d.telefono, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.fax)
+                                    @Html.TextBoxFor(d => d.fax, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.apartadoPostal)
+                                    @Html.TextBoxFor(d => d.apartadoPostal, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.cedula)
+                                    @Html.TextBoxFor(d => d.cedula, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.nit)
+                                    @Html.TextBoxFor(d => d.nit, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.fechaAlta)
+                                    @Html.TextBoxFor(d => d.fechaAlta, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.diasCredito)
+                                    @Html.TextBoxFor(d => d.diasCredito, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.limiteCredito)
+                                    @Html.TextBoxFor(d => d.limiteCredito, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.observaciones)
+                                    @Html.TextBoxFor(d => d.observaciones, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.email)
+                                    @Html.TextBoxFor(d => d.email, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.diaPago)
+                                    @Html.DropDownListFor(d => d.diaPago, itemsDiaPago, "Dia de Pago", new { @class = "form-control select2", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.personaContacto1)
+                                    @Html.TextBoxFor(d => d.personaContacto1, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.personaContacto2)
+                                    @Html.TextBoxFor(d => d.personaContacto2, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.diasProntoPago)
+                                    @Html.TextBoxFor(d => d.diasProntoPago, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.descProntoPago)
+                                    @Html.TextBoxFor(d => d.descProntoPago, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.idCuenta)
+                                    @Html.TextBoxFor(d => d.idCuenta, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.idInternoClasesProveedores)
+                                    @Html.DropDownListFor(d => d.idInternoClasesProveedores, itemsClasesProveedores, "Clase Proveedor", new { @class = "form-control select2", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.idInternoPaises)
+                                    @Html.DropDownListFor(d => d.idInternoPaises, itemsPaises, "Pais del Proveedor", new { @class = "form-control select2", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.idInternoZonas)
+                                    @Html.DropDownListFor(d => d.idInternoZonas, itemsZonas, "Zona del Proveedor", new { @class = "form-control select2", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.idInternoLocalidades)
+                                    @Html.DropDownListFor(d => d.idInternoLocalidades, itemsLocalidades, "Localidad del Proveedor", new { @class = "form-control select2", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdInternoProveedores }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<!-- end row -->
+
+
+<div id="hiddenEmpresas"></div>
+
+<div class="row mb-4">
+    <div class="col text-end">
+        <a href="@Url.Action("Index", "proveedores")" class="btn btn-primary"> <i class="uil-arrow-left font-size-18"></i> Regresar </a>
+        <a href="@Url.Action("Edit", "proveedores", new { id = Model.idInternoProveedores})" class="btn btn btn-success"> <i class="uil uil-pen font-size-18"></i> Editar </a>
+        <a href="javascript:void(0);" onclick="@("Delete("+Model.idInternoProveedores )@(")")" class="btn btn-danger"><i class="uil uil-trash-alt font-size-18"></i>Elimanar</a>
+    </div> <!-- end col -->
+</div> <!-- end row-->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+
+<!-- Required datatable js -->
+<script src="~/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+<script src="~/assets/js/pages/form-validation.init.js"></script>
+<script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- dropzone plugin -->
+<script src="~/assets/libs/dropzone/min/dropzone.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/ecommerce-add-product.init.js"></script>
+<script src="~/assets/js/app.js"></script>
+
+
+
+
+
+<!-- Bootstrap 3.3.7 -->
+<script src="~/assets/LTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="~/assets/LTE/bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="~/assets/LTE/bower_components/moment/min/moment.min.js"></script>
+<script src="~/assets/LTE/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="~/assets/LTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<!-- bootstrap time picker -->
+<script src="~/assets/LTE/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- SlimScroll -->
+<!-- iCheck 1.0.1 -->
+<script src="~/assets/LTE/plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<!-- AdminLTE App -->
+<script src="~/assets/LTE/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+
+
+@section scripts{
+    <script>
+
+
+        $(function () {
+
+
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            })
+            //Red color scheme for iCheck
+            $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                checkboxClass: 'icheckbox_minimal-red',
+                radioClass: 'iradio_minimal-red'
+            })
+            //Flat red color scheme for iCheck
+            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+            })
+
+        });
+
+
+        function deleteData(id) {
+             return $.ajax({
+                type: "POST",
+                url: '@Url.Action("Delete", "proveedores")/?id=' + id,
+                success: function (data) {
+                    if (data.success) {
+                        //usersTable.ajax.reload();
+                    }
+                }
+            });
+        }
+
+        function Delete(id) {
+            Swal.fire({
+                title: "Estas seguro?", text: "No hay forma de rehacer esta función!", icon: "warning", showCancelButton: !0, confirmButtonText: "Si, Eliminar!", cancelButtonText: "No, Cancelar!", confirmButtonClass: "btn btn-success mt-2", cancelButtonClass: "btn btn-danger ms-2 mt-2", buttonsStyling: !1
+            }).then(async function (t) {
+                if (t.value) {
+                    //SI CONFIRMA
+                    await deleteData(id)
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Eliminado!',
+                        showConfirmButton: false,
+                        text: "El proveedor ha sido eliminado.",
+                        timer: 2000
+                    })
+
+                    setTimeout(function () { window.location.href = "Index"; }, 2500);
+
+                } else {
+                    //SI CANCELA
+                    t.dismiss === Swal.DismissReason.cancel && Swal.fire({ title: "Cancelado", text: "El proveedor no se ha eliminado :)", icon: "error" })
+                }
+            })
+        }
+
+
+
+    </script>
+
+}

@@ -9,83 +9,82 @@ namespace Minible5.Models.ViewModels.TiposMovimientos
     public class TiposMovimientosViewModels
     {
         [Required]
-        [Display(Name ="Codigo")]
+        [Display(Name = "Codigo")]
         public string IdTipoMovimiento { get; set; }
 
         [Required]
-        [Display (Name ="Tipo de Movimiento")]
+        [Display(Name = "Tipo de Movimiento")]
         public string Descripcion { get; set; }
 
-        
-        [Display(Name ="Afecta costo promedio")]
+
+        [Display(Name = "Afecta costo promedio")]
         public bool afectaCostoPromedio { get; set; }
 
-        
-        [Display (Name ="Afecta Costo Reposicion")]
+
+        [Display(Name = "Afecta Costo Reposicion")]
         public bool afectaCostoRepocicion { get; set; }
 
-        
-        [Display (Name ="Afecta Costo Ultima Compra")]
+
+        [Display(Name = "Afecta Costo Ultima Compra")]
         public bool afectaCostoUCompra { get; set; }
 
-        
-        [Display (Name ="Afecta Estadistica de Ventas")]
+
+        [Display(Name = "Afecta Estadistica de Ventas")]
         public bool afectaestadisticaventa { get; set; }
 
-        
-        [Display(Name ="Afecta estadistica de Compra")]
+
+        [Display(Name = "Afecta estadistica de Compra")]
         public bool afectaestadisticacompra { get; set; }
 
-        
-        [Display (Name ="Entrada/Salida")]
+
+        [Display(Name = "Entrada/Salida")]
         public string entradaSalida { get; set; }
 
-        
-        [Display(Name ="Factura/Inventario")]
+
+        [Display(Name = "Factura/Inventario")]
         public string facturacionInventario { get; set; }
-        
-        
-        [Display (Name ="Cliente/Proveedor")]
-        public string clienteProveedor { get; set; } 
+
+
+        [Display(Name = "Cliente/Proveedor")]
+        public string clienteProveedor { get; set; }
 
         [Required]
-        [Display (Name ="Poliza")]
+        [Display(Name = "Poliza")]
         public string poliza { get; set; }
 
-         public List<TiposMovimientosSeriesViewModels> conceptos { get; set; }
+        public List<TiposMovimientosSeriesViewModels> conceptosAdd { get; set; }
     }
 
     public class TiposMovimientosSeriesViewModels
-    {        
+    {
 
         [Required]
-        [Display(Name ="Serie")]
+        [Display(Name = "Serie")]
         public string idSerie { get; set; }
 
         [Required]
-        [Display (Name ="Correlativo")]
+        [Display(Name = "Correlativo")]
         public string correlativo { get; set; }
 
-        [Required]
-        [Display (Name ="Usa Correlativo")]
+        [Display(Name = "Usa Correlativo")]
         public string usaCorrelativo { get; set; }
 
-        [Display (Name ="Formato de Impresion")]
+        [Display(Name = "Formato de Impresion")]
         public string formatoImpresion { get; set; }
 
-        [Display (Name ="Fecha de Autorizacion")]
+        [Display(Name = "Fecha de Autorizacion")]
         public DateTime fechaAutorizacion { get; set; }
 
-        [Display (Name ="Del")]
+        [Display(Name = "Del")]
         public string res_del { get; set; }
 
-        [Display (Name ="Al")]
+        [Display(Name = "Al")]
         public string res_al { get; set; }
 
-        [Display (Name ="Numero de Resolucion")]
+        [Display(Name = "Numero de Resolucion")]
         public string resolucionNumero { get; set; }
 
-        [Display (Name = "Secuencia")]
+        [Display(Name = "Secuencia")]
         public int secuencia { get; set; }
 
     }
@@ -142,7 +141,7 @@ namespace Minible5.Models.ViewModels.TiposMovimientos
 
         public int contador { get; set; }
 
-        public List<EditTiposMovimientosSeriesViewModels> conceptos { get; set; }
+        public List<EditTiposMovimientosSeriesViewModels> conceptosEdit { get; set; }
         public List<TiposMovimientosSeriesViewModels> conceptosAdd { get; set; }
 
         public List<DeleteTiposMovimientosSeriesViewModels> conceptosDelete { get; set; }
@@ -164,7 +163,7 @@ namespace Minible5.Models.ViewModels.TiposMovimientos
         [Required]
         [Display(Name = "Correlativo")]
         public string correlativo { get; set; }
-        
+
         [Display(Name = "Usa Correlativo")]
         public string usaCorrelativo { get; set; }
 
@@ -184,7 +183,9 @@ namespace Minible5.Models.ViewModels.TiposMovimientos
         public string resolucionNumero { get; set; }
 
         [Display(Name = "Secuencia")]
-        public int secuencia { get; set; }        
+        public int secuencia { get; set; }
+
+
 
     }
 
@@ -192,8 +193,8 @@ namespace Minible5.Models.ViewModels.TiposMovimientos
     public class DeleteTiposMovimientosSeriesViewModels
     {
         [Required]
-        public int idInternoTIposMovimientosSeries { get; set; }    
-      
+        public int idInternoTIposMovimientosSeries { get; set; }
+
     }
 
 }

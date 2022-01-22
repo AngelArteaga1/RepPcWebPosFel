@@ -1,0 +1,442 @@
+﻿@model Minible5.Models.ViewModels.Articulos.ArticulosViewModels
+
+@{
+    ViewBag.Title = "Crear Articulos";
+    ViewBag.pTitle = "Crear Articulos";
+    ViewBag.pageTitle = "Articulos";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+
+    List<SelectListItem> itemsFamilias = (List<SelectListItem>)ViewBag.itemsFamilias;
+    List<SelectListItem> itemsMarcas = (List<SelectListItem>)ViewBag.itemsMarcas;
+    List<SelectListItem> itemsTipo = (List<SelectListItem>)ViewBag.itemsTipo;
+    List<SelectListItem> itemsMedidas = (List<SelectListItem>)ViewBag.itemsMedidas;
+    List<SelectListItem> itemsProveedores = (List<SelectListItem>)ViewBag.itemsProveedores;
+    List<SelectListItem> itemsArticulogenerico = (List<SelectListItem>)ViewBag.itemsArticulogenerico;
+
+}
+
+<!-- plugin css -->
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<!-- dropzone css -->
+<link href="~/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet" href="~/assets/LTE/bower_components/font-awesome/css/font-awesome.min.css">
+
+<!-- daterange picker -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+<!-- bootstrap datepicker -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="~/assets/LTE/plugins/iCheck/all.css">
+
+<!-- Bootstrap time Picker -->
+<link rel="stylesheet" href="~/assets/LTE/plugins/timepicker/bootstrap-timepicker.min.css">
+
+<!-- Theme style -->
+<link rel="stylesheet" href="~/assets/LTE/dist/css/AdminLTE.min.css">
+
+
+<div class="card">
+    <div class="card-body">
+
+        <h4 class="card-title">Subir imagen articulo</h4>       
+
+        <div>
+            <form action="~/articulosinvs/SaveUploadedFile" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
+                <div class="fallback">
+                    <input name="file" type="file" multiple="multiple">
+                </div>
+                <div class="dz-message needsclick">
+                    <div class="mb-3">
+                        <i class="display-4 text-muted uil uil-cloud-upload"></i>
+                    </div>
+
+                    <h4>Suelta los archivos aquí o haz clic para subir.</h4>
+                </div>
+            </form>
+        </div>       
+    </div>
+</div>
+
+
+
+
+@using (Html.BeginForm("Create", "articulosinvs", FormMethod.Post, new { role = "form", @class = "needs-validation ", Novalidate = true }))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="p-4 border-top">
+
+
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Encabezado</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+
+                           
+
+                            @Html.HiddenFor(d => d.foto, new {Value= "/assets/images/products/Default.png" });
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.idInternoFamilias)
+                                        <div class="has-validation">
+                                            @Html.DropDownListFor(d => d.idInternoFamilias, itemsFamilias, "Seleccione la familia del articulo", new { @class = "form-control select2", Required = true })
+                                            <div class="invalid-feedback">
+                                                Porfavor, ingresar la familia.
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.idInternoMarcas)
+                                        <div class="has-validation">
+                                            @Html.DropDownListFor(d => d.idInternoMarcas, itemsMarcas, "Seleccione la marca del articulo", new { @class = "form-control select2", Required = true })
+                                            <div class="invalid-feedback">
+                                                Porfavor, ingresar la marca.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.idArticulo)
+                                        <div class="has-validation">
+                                            @Html.TextBoxFor(d => d.idArticulo, new { @class = "form-control", placeholder = "Código del articulo", Required = true })
+                                            @Html.ValidationMessageFor(d => d.idArticulo)
+                                            <div class="invalid-feedback">
+                                                Porfavor, ingresar el código  del articulo.
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.nombreArticulo)
+                                        <div class="has-validation">
+                                            @Html.TextBoxFor(d => d.nombreArticulo, new { @class = "form-control", placeholder = "Nombre del articulo", Required = true })
+                                            <div class="invalid-feedback">
+                                                Por favor, ingresar el nombre del articulo.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.tipo)
+                                        <div class="has-validation">
+                                            @Html.DropDownListFor(d => d.tipo, itemsTipo, "Seleccione tipo de articulo", new { @class = "form-control select2", Required = true })
+                                            <div class="invalid-feedback">
+                                                Porfavor, ingresar el tipo de articulo.
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.idInternoMedidas)
+                                        <div class="has-validation">
+                                            @Html.DropDownListFor(d => d.idInternoMedidas, itemsMedidas, "Seleccione la medida del articulo", new { @class = "form-control select2", Required = true })
+                                            <div class="invalid-feedback">
+                                                Porfavor, ingrese la medida del articulo.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.codigoBarras)
+                                        @Html.TextBoxFor(d => d.codigoBarras, new { @class = "form-control", placeholder = "Codigo de barras"})
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.idInternoProveedores)
+                                        <div class="has-validation">
+                                            @Html.DropDownListFor(d => d.idInternoProveedores, itemsProveedores, "Seleccione el proveedor", new { @class = "form-control select2", Required = true })
+                                            <div class="invalid-feedback">
+                                                Porfavor, ingrese el proveedor.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.idinternoArticuloDetalleGenerico)
+                                        <div class="has-validation">
+                                            @Html.DropDownListFor(d => d.idinternoArticuloDetalleGenerico, itemsArticulogenerico, "Seleccione el articulo generico", new { @class = "form-control select2", Required = true })
+                                            <div class="invalid-feedback">
+                                                Porfavor, ingrese el articulo generico.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.statusMenudeo, new { @class = "col-form-label" })
+                                        @Html.CheckBoxFor(d => d.statusMenudeo, new { @class = "flat-red" })
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->               
+                            
+
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.precioVenta_1_1)
+                                        @Html.TextBoxFor(d => d.precioVenta_1_1, new { @class = "form-control", placeholder = "Precio", @type = "number", step = "0.01" })
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.precioVenta_2_2)
+                                        @Html.TextBoxFor(d => d.precioVenta_2_2, new { @class = "form-control", placeholder = "Precio 2", @type = "number", step = "0.01" })
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.porcentajeDescuento1_1)
+                                        @Html.TextBoxFor(d => d.precioVenta_2_2, new { @class = "form-control", placeholder = "Porcentaje descuento", @type = "number", step = "0.1" })
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.porcentajeDescuento2_2)
+                                        @Html.TextBoxFor(d => d.porcentajeDescuento2_2, new { @class = "form-control", placeholder = "Porcentaje descuento 2", @type = "number", step = "0.1" })
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.porcentajeDescuento3_3)
+                                        @Html.TextBoxFor(d => d.porcentajeDescuento3_3, new { @class = "form-control", placeholder = "Porcentaje descuento 3", @type = "number", step = "0.1" })
+                                    </div>
+                                </div>
+                                <!-- /.col -->                                
+                            </div>
+                            <!-- /.row -->
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+
+
+    <div class="row mb-4">
+        <div class="col text-end">
+            <a href="@Url.Action("Index", "articulosinvs")" class="btn btn-danger"> <i class="uil uil-times me-1"></i> Cancelar </a>
+            <button type="submit" class="btn btn-success"> <i class="uil uil-file-alt me-1"></i> Guardar </button>
+        </div> <!-- end col -->
+    </div> <!-- end row-->
+}
+
+
+
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+<script src="~/assets/js/pages/form-validation.init.js"></script>
+<script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+
+
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Table Editable plugin -->
+<script src="~/assets/libs/table-edits/build/table-edits.min.js"></script>
+<script src="~/assets/js/pages/table-editable.int.js"></script>
+
+<!-- dropzone plugin -->
+<script src="~/assets/libs/dropzone/min/dropzone.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/ecommerce-add-product.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+
+
+<!-- jQuery 3 -->
+<script src="~/assets/LTE/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="~/assets/LTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="~/assets/LTE/bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="~/assets/LTE/bower_components/moment/min/moment.min.js"></script>
+<script src="~/assets/LTE/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="~/assets/LTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<!-- bootstrap time picker -->
+<script src="~/assets/LTE/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- SlimScroll -->
+<!-- iCheck 1.0.1 -->
+<script src="~/assets/LTE/plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<!-- AdminLTE App -->
+<script src="~/assets/LTE/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $(function () {
+            //Date picker
+            $('#datepicker').datepicker({
+                autoclose: true
+            })
+
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            })
+            //Red color scheme for iCheck
+            $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                checkboxClass: 'icheckbox_minimal-red',
+                radioClass: 'iradio_minimal-red'
+            })
+            //Flat red color scheme for iCheck
+            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+            })
+
+        });
+        
+        //File Upload response from the server
+        Dropzone.options.dropzoneForm = {
+            maxFiles: 1,
+            init: function () {
+
+                this.on("maxfilesexceeded", function (data) {
+                    //var res = eval('(' + data.xhr.responseText + ')');
+                    //console.log(res);                    
+                    
+                });
+                this.on("addedfile", function (file) {
+                    //Solo permite subir una imagen, si se desea  mas quitar el while
+                    while (this.files.length > this.options.maxFiles) {
+                        this.removeFile(this.files[0]);
+                    }
+
+                    var name = "/assets/images/products/" + file.name;
+                    document.getElementById("foto").value = name;
+
+
+                    // Create the remove button
+                    var removeButton = Dropzone.createElement("<button class='btn btn-danger' >Remover Archivos</button>");                    
+
+                    // Capture the Dropzone instance as closure.
+                    var _this = this;
+
+                    // Listen to the click event
+                    removeButton.addEventListener("click", function (e) {
+                        // Make sure the button click doesn't submit the form:
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Remove the file preview.
+                        _this.removeFile(file);
+                        // If you want to the delete the file on the server as well,
+                        // you can do the AJAX request here.
+                        document.getElementById("foto").value = "/assets/images/products/Default.png";
+                    });
+
+                    // Add the button to the file preview element.
+                    file.previewElement.appendChild(removeButton);
+                });
+                
+
+            }
+        }; 
+
+
+    </script>
+}

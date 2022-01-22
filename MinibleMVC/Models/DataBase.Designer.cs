@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'Z:\AngelOswaldo\Asp.net\PcWeb_PosFel\MinibleMVC\Models\DataBase.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo '\\192.168.15.10\Pb_desarrollo\AngelOswaldo\Asp.net\RepPcWebPosFel\MinibleMVC\Models\DataBase.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

@@ -255,8 +255,77 @@ namespace Minible5.Controllers.MntDeProveedores
         }
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        public ActionResult Details(int? id)
+        {
+
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditProveedoresViewModels model = new EditProveedoresViewModels();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oProveedor = db.proveedores.Find(id);
+            if (oProveedor == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.idInternoProveedores = oProveedor.IdInternoProveedores;
+            model.idProveedor = oProveedor.IdProveedor;
+            model.nombreComercial = oProveedor.NombreComercial;
+            model.razonSocial = oProveedor.RazonSocial;
+            model.direccion = oProveedor.Direccion;
+            model.telefono = oProveedor.Telefono;
+            model.fax = oProveedor.Fax;
+            model.apartadoPostal = oProveedor.ApartadoPostal;
+            model.cedula = oProveedor.Cedula;
+            model.nit = oProveedor.Nit;
+            model.fechaAlta = (DateTime)oProveedor.FechadeAlta;
+            model.diasCredito = (decimal)oProveedor.DiasCredito;
+            model.limiteCredito = (decimal)oProveedor.LimiteCredito;
+            model.observaciones = oProveedor.Observaciones;
+            model.email = oProveedor.E_Mail;
+            model.diaPago = oProveedor.DiaPago;
+            model.personaContacto1 = oProveedor.PersonaContacto_1;
+            model.personaContacto2 = oProveedor.PersonaContacto_2;
+            model.altaBaja = oProveedor.AltaBaja;
+            model.diasProntoPago = (decimal)oProveedor.DiasProntoPago;
+            model.descProntoPago = (decimal)oProveedor.DescProntoPago;
+            model.idCuenta = oProveedor.Idcuenta;
+            model.idInternoClasesProveedores = oProveedor.IdInternoClasesProveedores;
+            model.idInternoPaises = oProveedor.IdInternoPaises;
+            model.idInternoZonas = oProveedor.IdInternoZonas;
+            model.idInternoLocalidades = oProveedor.IdInternoLocalidades;
+
+            var itemsClasesProveedores = getClasesProveedores();
+            ViewBag.itemsClasesProveedores = itemsClasesProveedores;
+
+            var itemsPaises = getPaises();
+            ViewBag.itemsPaises = itemsPaises;
+
+            var itemsZonas = getZonas();
+            ViewBag.itemsZonas = itemsZonas;
+
+            var itemsLocalidades = getLocalidades();
+            ViewBag.itemsLocalidades = itemsLocalidades;
+
+            var itemsDiaPago = getDiaPago();
+            ViewBag.itemsDiaPago = itemsDiaPago;
+
+            return View(model);
+        }
+
+
+        [HttpPost]        
         public ActionResult Edit(EditProveedoresViewModels model)
         {
             /*

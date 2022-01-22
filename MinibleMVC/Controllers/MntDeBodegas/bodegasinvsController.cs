@@ -110,21 +110,30 @@ namespace Minible5.Controllers.MntDeBodegas
             //GUARDAMOS LA BODEGA
             if (ModelState.IsValid)
             {
-                bodegasinv oBodegas = new bodegasinv();
-
+                try
+                {
+                    bodegasinv oBodegas = new bodegasinv();
                 
-                oBodegas.IdBodega = model.IdBodega;
-                oBodegas.Descripcion = model.Descripcion;
-                oBodegas.Encargado = model.Encargado;
-                oBodegas.Direccion = model.Direccion;
-                oBodegas.Telefono = model.Telefono;
-                oBodegas.idcentrocosto = model.idcentrocosto;
-                oBodegas.Tipo = model.Tipo;
-                oBodegas.cta_bodega_inventario = model.cta_bodega_inventario;
-                oBodegas.status = "A";
-                oBodegas.Codigo_Empresa = "001"; //Tomar en cuenta que este campo NO tiene que ser estatico y tiene que estar en los Modelos..
-                db.bodegasinv.Add(oBodegas);
-                db.SaveChanges();
+                    oBodegas.IdBodega = model.IdBodega;
+                    oBodegas.Descripcion = model.Descripcion;
+                    oBodegas.Encargado = model.Encargado;
+                    oBodegas.Direccion = model.Direccion;
+                    oBodegas.Telefono = model.Telefono;
+                    oBodegas.idcentrocosto = model.idcentrocosto;
+                    oBodegas.Tipo = model.Tipo;
+                    oBodegas.cta_bodega_inventario = model.cta_bodega_inventario;
+                    oBodegas.status = "A";
+                    oBodegas.Codigo_Empresa = "001"; //Tomar en cuenta que este campo NO tiene que ser estatico y tiene que estar en los Modelos..
+                    db.bodegasinv.Add(oBodegas);
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "bodegasinvs", new { id = oBodegas.IdInternoBodegas });
+                }
+                catch (Exception ex)
+                {
+                    return RedirectToAction("Index", "bodegasinvs", new { error = ex.Message });
+
+                }
+                
 
             }
 
@@ -172,8 +181,7 @@ namespace Minible5.Controllers.MntDeBodegas
         }
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public ActionResult Edit(EditBodegasViewModel model)
         {
             /*
@@ -211,6 +219,44 @@ namespace Minible5.Controllers.MntDeBodegas
         }
 
 
+        public ActionResult Details(int? id)
+        {
+
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditBodegasViewModel model = new EditBodegasViewModel();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oBodega = db.bodegasinv.Find(id);
+            if (oBodega == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.IdInternoBodegas = oBodega.IdInternoBodegas;
+            model.IdBodega = oBodega.IdBodega;
+            model.Descripcion = oBodega.Descripcion;
+            model.Encargado = oBodega.Encargado;
+            model.Direccion = oBodega.Direccion;
+            model.Telefono = oBodega.Telefono;
+            model.idcentrocosto = oBodega.idcentrocosto;
+            model.Tipo = oBodega.Tipo;
+            model.cta_bodega_inventario = oBodega.cta_bodega_inventario;
+
+            return View(model);
+        }
+
+
         // POST : bodegasinvs/Delete/5
         [HttpPost]
         public ActionResult Delete(int? id)
@@ -231,8 +277,6 @@ namespace Minible5.Controllers.MntDeBodegas
 
         }
 
-       
 
-       
     }
 }

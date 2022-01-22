@@ -164,8 +164,7 @@ namespace Minible5.Controllers.MntDeClases
         // POST: clases/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public ActionResult Edit(EditClasesViewModels model)
         {
             /*
@@ -193,6 +192,36 @@ namespace Minible5.Controllers.MntDeClases
 
 
             return RedirectToAction("Index", "clases", new { success = "Se editó correctamente!" });
+        }
+
+        public ActionResult Details(int? id)
+        {
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditClasesViewModels model = new EditClasesViewModels();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oClase = db.clases.Find(id);
+            if (oClase == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.idInternoClases = oClase.IdInternoClases;
+            model.idClase = oClase.IdClase;
+            model.descripcion = oClase.Descripcion;
+
+            return View(model);
         }
 
 

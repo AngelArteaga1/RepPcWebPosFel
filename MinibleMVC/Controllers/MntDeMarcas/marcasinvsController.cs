@@ -158,8 +158,7 @@ namespace Minible5.Controllers.MntDeMarcas
 
 
         // POST: marcasinvs/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public ActionResult Edit(EditMarcasViewModel model)
         {
             /*
@@ -190,6 +189,35 @@ namespace Minible5.Controllers.MntDeMarcas
         }
 
 
+        public ActionResult Details(int? id)
+        {
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditMarcasViewModel model = new EditMarcasViewModel();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oMarca = db.marcasinv.Find(id);
+            if (oMarca == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.idInternoMarcas = oMarca.IdInternoMarcas;
+            model.idMarca = oMarca.IdMarca;
+            model.descripcion = oMarca.Descripcion;
+
+            return View(model);
+        }
 
         // POST: marcasinvs/Delete/5
         [HttpPost]

@@ -177,14 +177,12 @@ namespace Minible5.Controllers.MntDeCobradores
 
             return View(model);
         }
-
-
+        
 
         // POST: cobradores/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public ActionResult Edit(EditCobradoresViewModels model)
         {
             /*
@@ -216,6 +214,42 @@ namespace Minible5.Controllers.MntDeCobradores
             return RedirectToAction("Index", "cobradores", new { success = "Se editó correctamente!" });
         }
 
+
+        // GET: cobradores/Edit/5
+        public ActionResult Details(int? id)
+        {
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditCobradoresViewModels model = new EditCobradoresViewModels();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oCobrador = db.cobradores.Find(id);
+            if (oCobrador == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.idInternoCobrador = oCobrador.IdInternoCobrador;
+            model.idCobrador = oCobrador.IdCobrador;
+            model.descripcion = oCobrador.Descripcion;
+            model.porcentajeComision = (decimal)oCobrador.Porcentajecomision;
+            model.IdInternoRutas = oCobrador.IdInternoRutas;
+
+            var itemsRutas = getRutas();
+            ViewBag.itemsRutas = itemsRutas;
+
+            return View(model);
+        }
 
 
         // POST: cobradores/Delete/5

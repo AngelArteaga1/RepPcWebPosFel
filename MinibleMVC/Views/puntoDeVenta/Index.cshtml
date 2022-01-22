@@ -1,0 +1,460 @@
+﻿@model Minible5.Models.ViewModels.PtoDeVenta.PtoDeVentaViewModel
+@{
+    ViewBag.Title = "Punto de Venta";
+    ViewBag.pTitle = "Punto de Venta";
+    ViewBag.pageTitle = "Transacciones";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+    List<SelectListItem> vendedores = (List<SelectListItem>)ViewBag.vendedores;
+}
+
+<!-- toastr Alert-->
+<link rel="stylesheet" type="text/css" href="~/assets/libs/toastr/build/toastr.min.css">
+<!-- DataTables -->
+<link href="~/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<!-- Select2 css -->
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/libs/select2-bootstrap/dist/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- Responsive datatable examples -->
+<link href="~/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Basic Wizard</h4>
+
+                <div id="basic-example">
+                    <!-- Seller Details -->
+                    <h3>Datos del Cliente</h3>
+                    <section>
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="nit-input">NIT</label>
+                                        <div class="input-group">
+                                            <button type="button" class="input-group-text" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable"><i class="uil-search"></i></button>
+                                            <input type="text" class="form-control" id="nit-input">
+                                        </div>
+                                        <p id="log"></p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="nombre-input">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre-input">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="email-input">Email</label>
+                                        <input type="text" class="form-control" id="email-input">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="vendedor">Vendedor</label>
+                                        @Html.DropDownListFor(d => d.vendedor, vendedores, "Seleccione el vendedor", new { @class = "form-control select2-container" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-3">
+                                        <label for="direccion-input">Dirección</label>
+                                        <textarea id="direccion-input" class="form-control" rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- Company Document -->
+                    <h3>Artículos</h3>
+                    <section>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a class="btn btn-success waves-effect waves-light mb-3" data-bs-toggle="modal" data-bs-target="#ArticulosModal"><i class="mdi mdi-plus me-1"></i> Agregar ítem</a>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-editable table-nowrap align-middle table-edits" id="tabla-articulos">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Age</th>
+                                        <th>Gender</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-id="1">
+                                        <td data-field="id" style="width: 80px">1</td>
+                                        <td data-field="name">David McHenry</td>
+                                        <td data-field="age">24</td>
+                                        <td data-field="gender">Male</td>
+                                    </tr>
+                                    <tr data-id="2">
+                                        <td data-field="id">2</td>
+                                        <td data-field="name">Frank Kirk</td>
+                                        <td data-field="age">22</td>
+                                        <td data-field="gender">Male</td>
+                                    </tr>
+                                    <tr data-id="3">
+                                        <td data-field="id">3</td>
+                                        <td data-field="name">Rafael Morales</td>
+                                        <td data-field="age">26</td>
+                                        <td data-field="gender">Male</td>
+                                    </tr>
+                                    <tr data-id="4">
+                                        <td data-field="id">4</td>
+                                        <td data-field="name">Mark Ellison</td>
+                                        <td data-field="age">32</td>
+                                        <td data-field="gender">Male</td>
+                                    </tr>
+                                    <tr data-id="5">
+                                        <td data-field="id">5</td>
+                                        <td data-field="name">Minnie Walter</td>
+                                        <td data-field="age">27</td>
+                                        <td data-field="gender">Female</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Bank Details -->
+                    <h3>Bank Details</h3>
+                    <section>
+                        <div>
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="basicpill-namecard-input">Name on Card</label>
+                                            <input type="text" class="form-control" id="basicpill-namecard-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label>Credit Card Type</label>
+                                            <select class="form-select">
+                                                <option selected>Select Card Type</option>
+                                                <option value="AE">American Express</option>
+                                                <option value="VI">Visa</option>
+                                                <option value="MC">MasterCard</option>
+                                                <option value="DI">Discover</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="basicpill-cardno-input">Credit Card Number</label>
+                                            <input type="text" class="form-control" id="basicpill-cardno-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="basicpill-card-verification-input">Card Verification Number</label>
+                                            <input type="text" class="form-control" id="basicpill-card-verification-input">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="basicpill-expiration-input">Expiration Date</label>
+                                            <input type="text" class="form-control" id="basicpill-expiration-input">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Confirm Details -->
+                    <h3>Confirm Detail</h3>
+                    <section>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+                                <div class="text-center">
+                                    <div class="mb-4">
+                                        <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Confirm Detail</h5>
+                                        <p class="text-muted">If several languages coalesce, the grammar of the resulting</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+
+<!-- begin modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Busqueda de cliente</h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive mb-4">
+                    <table class="table table-centered datatable dt-responsive nowrap table-card-list" id="client-table"
+                           style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;">
+                        <thead>
+                            <tr class="bg-transparent">
+                                <th>NIT</th>
+                                <th>Nombre</th>
+                                <th style="width: 120px;">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- begin modal -->
+<div class="modal fade" id="ArticulosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Busqueda de cliente</h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive mb-4">
+                    <table class="table table-centered datatable dt-responsive nowrap table-card-list" id="item-table"
+                           style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;">
+                        <thead>
+                            <tr class="bg-transparent">
+                                <th>Descripción</th>
+                                <th>Código</th>
+                                <th>Existencia</th>
+                                <th>U. de Medida</th>
+                                <th style="width: 120px;">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+<!-- jquery step -->
+<script src="~/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
+
+<!-- form wizard init -->
+<script src="~/assets/js/pages/form-wizard.init.js"></script>
+
+<!-- toastr plugin -->
+<script src="~/assets/libs/toastr/build/toastr.min.js"></script>
+<script src="~/assets/js/pages/notificaciones.init.js"></script>
+
+<!-- Required datatable js -->
+<script src="~/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Select2 -->
+<script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+<!-- Table Editable plugin -->
+<script src="~/assets/libs/jquery-editable-table/bstable.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+<script>
+    //Esto es para que busque el NIT cada vez que pierda el focus en el input
+    $(document).ready(function () {
+        $("#basic-example").on('change', '#nit-input', function () {
+            //Aqui tenemos que consular si el NIT existe
+            let nit = $("#nit-input").val();
+            setClient(nit);
+        });
+
+        clientsTable = $("#client-table").DataTable({
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ usuarios",
+                "zeroRecords": "No encontrado, lo sentimos   :'(",
+                "info": "Página _PAGE_ de _PAGES_",
+                "infoEmpty": "No existen registros",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                'loadingRecords': '<div class="spinner"><i class="mdi mdi-spin mdi-loading spin-icon"></i></div>',
+                'processing': '<div class="spinner"><i class="mdi mdi-spin mdi-loading spin-icon"></i></div>',
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "@Url.Content("~/puntoDeVenta/GetClients")",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "pageLength": 10,
+            "filter": true,
+            "data": null,
+            "columns": [
+                { "data": "nit", "name": "nit" },
+                { "data": "nombre", "name": "nombre" },
+                {
+                    "data": "nit2", "render": function (data) {
+                        return '<button type="button" onclick="setClient(\'' + data + '\')" data-bs-dismiss="modal" aria-label="Close" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">Seleccionar</button>'
+                    },
+                    "orderable": false,
+                    "searchable": false
+                }
+            ]
+        });
+
+        itemsTable = $("#item-table").DataTable({
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ usuarios",
+                "zeroRecords": "No encontrado, lo sentimos   :'(",
+                "info": "Página _PAGE_ de _PAGES_",
+                "infoEmpty": "No existen registros",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                'loadingRecords': '<div class="spinner"><i class="mdi mdi-spin mdi-loading spin-icon"></i></div>',
+                'processing': '<div class="spinner"><i class="mdi mdi-spin mdi-loading spin-icon"></i></div>',
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "@Url.Content("~/puntoDeVenta/GetItems")",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "pageLength": 10,
+            "filter": true,
+            "data": null,
+            "columns": [
+                { "data": "descripcion", "name": "descripcion" },
+                { "data": "codigo", "name": "codigo" },
+                { "data": "existencia", "name": "existencia" },
+                { "data": "unidadMedida", "name": "unidadMedida" },
+                {
+                    "data": "id", "render": function (data) {
+                        return '<button type="button" onclick="setClient(\'' + data + '\')" data-bs-dismiss="modal" aria-label="Close" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">Seleccionar</button>'
+                    },
+                    "orderable": false,
+                    "searchable": false
+                }
+            ]
+        });
+
+        $("#vendedor").select2({
+            theme: "bootstrap"
+        });
+
+        //Intentamos iniciar la tabla
+        var editableTable = new BSTable("tabla-articulos", {
+            editableColumns: "1,2",
+            advanced: {
+                columnLabel: "Acciones",
+                buttonHTML:
+                    `<div class="btn-group pull-right">
+                        <button id="bEdit" type="button" class="btn px-3 text-primary" title="Edit">
+                            <i class="uil uil-pen font-size-18"></i>
+                        </button>
+                        <button id="bDel" type="button" class="btn px-3 text-danger">
+                          <i class="uil uil-trash-alt font-size-18"></i>
+                        </button>
+                        <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;">
+                          <span class="fa fa-check-circle" > </span>
+                        </button>
+                        <button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;">
+                          <span class="fa fa-times-circle" > </span>
+                        </button>
+                    </div>`
+
+            },
+            onBeforeEdit: function () {
+                console.log("a");
+            }
+        });
+        editableTable.init()
+
+    });
+
+    function setClient(nit) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GetClient", "puntoDeVenta")/?nit=' + nit,
+            success: function (data) {
+                if (data.success) {
+                    //Seteamos los inputs con los valores del cliente
+                    $("#nit-input").val(nit);
+                    $("#nombre-input").val(data.nombre);
+                    $("#email-input").val(data.email);
+                    $("#direccion-input").val(data.direccion);
+                    //notificamos que se encontro el cliente
+                    toastr["success"]("Datos del cliente asignados.");
+                } else {
+                    //Seteamos los inputs con los valores del cliente
+                    $("#nombre-input").val("");
+                    $("#email-input").val("");
+                    $("#direccion-input").val("");
+                    //notificamos que no se encontro el cliente
+                    toastr["info"]("El cliente es nuevo, ingrese sus datos.");
+                }
+            }
+        });
+    }
+</script>

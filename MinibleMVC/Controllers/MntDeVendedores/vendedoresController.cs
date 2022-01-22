@@ -188,8 +188,7 @@ namespace Minible5.Controllers.MntDeVendedores
         // POST: vendedores/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public ActionResult Edit(EditVendedoresViewModels model)
         {
             /*
@@ -223,6 +222,45 @@ namespace Minible5.Controllers.MntDeVendedores
             return RedirectToAction("Index", "vendedores", new { success = "Se editó correctamente!" });
         }
 
+
+        // GET: vendedores/Edit/5
+        public ActionResult Details(int? id)
+        {
+            /*          
+            ViewBag.items = items;
+            var companies = getCompanies();
+            ViewBag.companies = companies; */
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditVendedoresViewModels model = new EditVendedoresViewModels();
+            //Empresas del usuario
+            //var userCompanies = getUserCompanies(id);
+            //ViewBag.userCompanies = userCompanies;
+
+            var oVendedor = db.vendedores.Find(id);
+            if (oVendedor == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.idInternoVendedores = oVendedor.IdInternoVendedores;
+            model.idVendedor = oVendedor.IdVendedor;
+            model.descripcion = oVendedor.Descripcion;
+            model.porcentajeComision = (decimal)oVendedor.Porcentajecomision;
+            model.telefono = oVendedor.Telefono;
+            model.celular = oVendedor.Celular;
+            model.emailVende = oVendedor.emailvende;
+            model.idInternoRutas = oVendedor.IdInternoRutas;
+
+            var itemsRutas = getRutas();
+            ViewBag.itemsRutas = itemsRutas;
+
+            return View(model);
+        }
 
 
         // POST: vendedores/Delete/5

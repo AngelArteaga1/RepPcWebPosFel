@@ -86,8 +86,70 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
             });
 
         }
+        
+
+        [HttpPost]
+        public ActionResult GetTiposMovimientosDetalle(int? id)
+        {
+            
+            List<TableTiposMovimientosSeriesinvViewModel> lst = new List<TableTiposMovimientosSeriesinvViewModel>();
+
+            //logistica datatable
+            var draw = Request.Form.GetValues("draw").FirstOrDefault();
+            var start = Request.Form.GetValues("start").FirstOrDefault();
+            var length = Request.Form.GetValues("length").FirstOrDefault();
+            var sortColumn = Request.Form.GetValues("columns[" + Request.Form.GetValues("order[0][column]").FirstOrDefault() + "][name]").FirstOrDefault();
+            var sortColumnDir = Request.Form.GetValues("order[0][dir]").FirstOrDefault();
+            var searchValue = Request.Form.GetValues("search[value]").FirstOrDefault();
+            pageSize = length != null ? Convert.ToInt32(length) : 0;
+            skip = start != null ? Convert.ToInt32(start) : 0;
+            recordsTotal = 0;
+
+            IQueryable<TableTiposMovimientosSeriesinvViewModel> query =
+                (from d in db.tiposmovimientosseriesinv
+                 join v in db.tiposmovimientosinv on d.IdInternoTiposMovimientos equals v.IdInternoTiposMovimientos
+                 where d.IdInternoTiposMovimientos == id
+                 where d.status == "A"
+
+                 select new TableTiposMovimientosSeriesinvViewModel
+                 {
+                     idInternoTIposMovimientosSeries = d.IdInternoTIposMovimientosSeries,
+                     idSerie = d.IdSerie,
+                     correlativo = d.correlativo,
+                     usaCorrelativo = d.UsaCorrelativo,
+                     formatoImpresion = d.FormatoImpresion,
+                     fechaAutorizacion = d.FechaAutorizacion.ToString(),
+                     res_del = d.res_del,
+                     res_al = d.res_al,
+                     resolucionNumero = d.ResolucionNumero,
+                     secuencia = d.Secuencia.ToString(),
+                     status = d.status
+                 });
 
 
+            query = query.Where(d =>  d.status.Equals(vStatus));
+
+            //Searching by name
+            if (searchValue != "")
+            {
+                query = query.Where(d => d.idSerie.Contains(searchValue) || d.idSerie.Contains(searchValue));
+            }
+            //Sorting    
+            if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDir)))
+            {
+                query = query.OrderBy(sortColumn + " " + sortColumnDir);
+            }
+            recordsTotal = query.Count();
+            lst = query.Skip(skip).Take(pageSize).ToList();
+            return Json(new
+            {
+                draw = draw,
+                recordsFiltered = recordsTotal,
+                recordsTotal = recordsTotal,
+                data = lst
+            });
+
+        }
 
         // GET: tiposmovimientosinvs/Create
         public ActionResult Create()
@@ -153,7 +215,7 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
                     db.SaveChanges();
 
 
-                    foreach (var oC in model.conceptos)
+                    foreach (var oC in model.conceptosAdd)
                     {
                         tiposmovimientosseriesinv Otiposmovserie = new tiposmovimientosseriesinv();
 
@@ -165,9 +227,17 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
                         else
                         {
                             Otiposmovserie.Secuencia = oC.secuencia;
-                        }                       
+                        }
                         Otiposmovserie.correlativo = oC.correlativo;
-                        Otiposmovserie.UsaCorrelativo = oC.usaCorrelativo;
+
+                        if (oC.usaCorrelativo == null)
+                        {
+                            Otiposmovserie.UsaCorrelativo = "N";
+                        }
+                        else
+                        {
+                            Otiposmovserie.UsaCorrelativo = "S";
+                        }
                         Otiposmovserie.FormatoImpresion = oC.formatoImpresion;
                         Otiposmovserie.ResolucionNumero = oC.resolucionNumero;
                         Otiposmovserie.FechaAutorizacion = oC.fechaAutorizacion;
@@ -181,11 +251,11 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
                     }
 
                     db.SaveChanges();
-                    return RedirectToAction("Index", "tiposmovimientosinvs", new { success = "Se agregó correctamente!" });
+                    return RedirectToAction("Details", "tiposmovimientosinvs", new { id = OtiposMov.IdInternoTiposMovimientos });
                 }
                 catch (Exception ex)
                 {
-                    return RedirectToAction("Index", "tiposmovimientosinvs", new { success = "Excepcion" });
+                    return RedirectToAction("Index", "tiposmovimientosinvs", new { error = ex.Message });
 
                 }
             }
@@ -251,9 +321,9 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
             IQueryable<EditarTiposMovimientosInv> query =
                 (from d in db.tiposmovimientosseriesinv
                  join v in db.tiposmovimientosinv on d.IdInternoTiposMovimientos equals v.IdInternoTiposMovimientos
-                 where d.IdInternoTiposMovimientos == model.idInternoTiposMovimientos 
+                 where d.IdInternoTiposMovimientos == model.idInternoTiposMovimientos
                  where d.status == "A"
-                 
+
                  select new EditarTiposMovimientosInv
                  {
                      idInternoTiposMovimientos = d.IdInternoTiposMovimientos,
@@ -292,17 +362,17 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
                 Oedit.res_del = oC.res_del;
                 Oedit.res_al = oC.res_al;
                 Oedit.resolucionNumero = oC.resolucionNumero;
-                Oedit.secuencia = oC.secuencia;                
+                Oedit.secuencia = oC.secuencia;
                 oLista.Add(Oedit);
                 contador++;
             }
 
-            model.conceptos = oLista;
+            model.conceptosEdit = oLista;
 
             var itemsTipocliente = getTipoPrecio();
             ViewBag.itemsTipocliente = itemsTipocliente;
             model.contador = contador;
-            
+
 
             return View(model);
         }
@@ -312,8 +382,7 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
         // POST: tiposmovimientosinvs/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public ActionResult Edit(EditTiposMovimientosViewModels model)
         {
             /*
@@ -332,7 +401,7 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
 
                 var OtiposMov = db.tiposmovimientosinv.Find(model.idInternoTiposMovimientos);
 
-                OtiposMov.IdTipoMovimiento = model.IdTipoMovimiento;                
+                OtiposMov.IdTipoMovimiento = model.IdTipoMovimiento;
                 OtiposMov.Descripcion = model.Descripcion;
                 OtiposMov.EntradaSalida = model.entradaSalida;
                 OtiposMov.FacturacionInventario = model.facturacionInventario;
@@ -353,11 +422,11 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
                 else { OtiposMov.Afectaestadisticaventa = "N"; }
 
                 OtiposMov.ClienteProveedor = model.clienteProveedor;
-               
+
                 db.Entry(OtiposMov).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
 
-                
+
                 if (model.conceptosAdd != null)
                 {
                     foreach (var oC in model.conceptosAdd)
@@ -365,10 +434,26 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
 
                         tiposmovimientosseriesinv Otiposmovserie = new tiposmovimientosseriesinv();
 
-                        Otiposmovserie.IdSerie = oC.idSerie;
-                        Otiposmovserie.Secuencia = oC.secuencia;
+                        Otiposmovserie.IdSerie = oC.idSerie;                        
+                        Otiposmovserie.correlativo = oC.correlativo;                        
+                        if (oC.correlativo == null)
+                        {
+                            Otiposmovserie.Secuencia = 1;
+                        }
+                        else
+                        {
+                            Otiposmovserie.Secuencia = oC.secuencia;
+                        }
                         Otiposmovserie.correlativo = oC.correlativo;
-                        Otiposmovserie.UsaCorrelativo = oC.usaCorrelativo;
+
+                        if (oC.usaCorrelativo == null)
+                        {
+                            Otiposmovserie.UsaCorrelativo = "N";
+                        }
+                        else
+                        {
+                            Otiposmovserie.UsaCorrelativo = "S";
+                        }
                         Otiposmovserie.FormatoImpresion = oC.formatoImpresion;
                         Otiposmovserie.ResolucionNumero = oC.resolucionNumero;
                         Otiposmovserie.FechaAutorizacion = oC.fechaAutorizacion;
@@ -387,7 +472,7 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
                 if (addMovSerie)
                 {
                     addMovSerie = false;
-                    db.SaveChanges();                    
+                    db.SaveChanges();
                 }
 
 
@@ -400,39 +485,39 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
                         oTiposMovSerie.status = "B";
                         oTiposMovSerie.Fecha_baja = DateTime.Now;
                         db.Entry(oTiposMovSerie).State = System.Data.Entity.EntityState.Modified;
-                        db.SaveChanges();                      
+                        db.SaveChanges();
 
                     }
                 }
-               
 
-                if(model.conceptos != null)
+
+                if (model.conceptosEdit != null)
                 {
-                    foreach (var oC in model.conceptos)
-                    {                    
-                            var OtiposmovserieAtualizar = db.tiposmovimientosseriesinv.Find(oC.idInternoTIposMovimientosSeries);
+                    foreach (var oC in model.conceptosEdit)
+                    {
+                        var OtiposmovserieAtualizar = db.tiposmovimientosseriesinv.Find(oC.idInternoTIposMovimientosSeries);
 
-                            OtiposmovserieAtualizar.IdSerie = oC.idSerie;
-                            OtiposmovserieAtualizar.Secuencia = oC.secuencia;
-                            OtiposmovserieAtualizar.correlativo = oC.correlativo;
-                            OtiposmovserieAtualizar.UsaCorrelativo = oC.usaCorrelativo;
-                            OtiposmovserieAtualizar.FormatoImpresion = oC.formatoImpresion;
-                            OtiposmovserieAtualizar.ResolucionNumero = oC.resolucionNumero;
-                            OtiposmovserieAtualizar.FechaAutorizacion = oC.fechaAutorizacion;
-                            OtiposmovserieAtualizar.res_del = oC.res_del;
-                            OtiposmovserieAtualizar.res_al = oC.res_al;
+                        OtiposmovserieAtualizar.IdSerie = oC.idSerie;
+                        OtiposmovserieAtualizar.Secuencia = oC.secuencia;
+                        OtiposmovserieAtualizar.correlativo = oC.correlativo;
+                        OtiposmovserieAtualizar.UsaCorrelativo = oC.usaCorrelativo;
+                        OtiposmovserieAtualizar.FormatoImpresion = oC.formatoImpresion;
+                        OtiposmovserieAtualizar.ResolucionNumero = oC.resolucionNumero;
+                        OtiposmovserieAtualizar.FechaAutorizacion = oC.fechaAutorizacion;
+                        OtiposmovserieAtualizar.res_del = oC.res_del;
+                        OtiposmovserieAtualizar.res_al = oC.res_al;
 
-                            db.Entry(OtiposmovserieAtualizar).State = System.Data.Entity.EntityState.Modified;
-                   
+                        db.Entry(OtiposmovserieAtualizar).State = System.Data.Entity.EntityState.Modified;
+
                     }
 
                     db.SaveChanges();
                 }
-                
 
 
 
-                return RedirectToAction("Index", "tiposmovimientosinvs", new { success = "Se agregó correctamente!" }); 
+
+                return RedirectToAction("Index", "tiposmovimientosinvs", new { success = "Se agregó correctamente!" });
             }
 
 
@@ -440,31 +525,88 @@ namespace Minible5.Controllers.MntDeTiposMovimientos
         }
 
 
-        // GET: tiposmovimientosinvs/Delete/5
+        public ActionResult Details(int? id)
+        {           
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EditTiposMovimientosViewModels model = new EditTiposMovimientosViewModels();            
+
+            var OtiposMov = db.tiposmovimientosinv.Find(id);
+            if (OtiposMov == null)
+            {
+                return HttpNotFound();
+            }
+
+            model.idInternoTiposMovimientos = OtiposMov.IdInternoTiposMovimientos;
+            model.IdTipoMovimiento = OtiposMov.IdTipoMovimiento;
+            model.Descripcion = OtiposMov.Descripcion;
+            model.entradaSalida = OtiposMov.EntradaSalida;
+            model.facturacionInventario = OtiposMov.FacturacionInventario;
+            model.poliza = OtiposMov.Poliza;
+            if (OtiposMov.AfectaCostoPromedio == "S") { model.afectaCostoPromedio = true; }
+            else { model.afectaCostoPromedio = false; }
+
+            if (OtiposMov.AfectaCostoRepocicion == "S") { model.afectaCostoRepocicion = true; }
+            else { model.afectaCostoRepocicion = false; }
+
+            if (OtiposMov.AfectaCostoUCompra == "S") { model.afectaCostoUCompra = true; }
+            else { model.afectaCostoUCompra = false; }
+
+            if (OtiposMov.Afectaestadisticacompra == "S") { model.afectaestadisticacompra = true; }
+            else { model.afectaestadisticacompra = false; }
+
+            if (OtiposMov.Afectaestadisticaventa == "S") { model.afectaestadisticaventa = true; }
+            else { model.afectaestadisticaventa = false; }
+
+            model.clienteProveedor = OtiposMov.ClienteProveedor;           
+            return View(model);
+        }
+
+
+
+        // POST: tiposmovimientosinvs/Delete/5
+        [HttpPost, ActionName("Delete")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tiposmovimientosinv tiposmovimientosinv = db.tiposmovimientosinv.Find(id);
-            if (tiposmovimientosinv == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tiposmovimientosinv);
+
+            var oTiposMov = db.tiposmovimientosinv.Find(id);
+            oTiposMov.status = "B";
+            oTiposMov.Fecha_baja = DateTime.Now;
+
+            db.Entry(oTiposMov).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+
         }
 
-        // POST: tiposmovimientosinvs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public ActionResult DeleteFromDetails(int? id)
         {
-            tiposmovimientosinv tiposmovimientosinv = db.tiposmovimientosinv.Find(id);
-            db.tiposmovimientosinv.Remove(tiposmovimientosinv);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var oTiposMov = db.tiposmovimientosinv.Find(id);
+            oTiposMov.status = "B";
+            oTiposMov.Fecha_baja = DateTime.Now;
+
+            db.Entry(oTiposMov).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index");
+
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet); ;
+
         }
+
 
         public List<SelectListItem> getTipoPrecio()
         {

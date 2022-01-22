@@ -115,8 +115,10 @@
                     },
                     {
                         "data": "idInternoTiposMovimientos", "render": function (data) {
-                            return '<a href=@Url.Action("Edit", "tiposmovimientosinvs")?id=' + data + ' class="px-3 text-primary"><i class="uil uil-pen font-size-18"></i></a>' +
+                            return '<a href=@Url.Action("Details", "tiposmovimientosinvs")?id=' + data + ' class="px-3 text-primary"><i class="uil uil-eye font-size-18"></i></a>' +
+                                '<a href=@Url.Action("Edit", "tiposmovimientosinvs")?id=' + data + ' class="px-3 text-primary"><i class="uil uil-pen font-size-18"></i></a>' +
                                 '<a href="javascript:void(0);" onclick="Delete(' + data + ')" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>'
+
                         },
                         "orderable": false,
                         "searchable": false
@@ -148,6 +150,7 @@
             "hideMethod": "fadeOut"
         }
 
+        
         var usersTable
 
         function deleteData(id) {
@@ -182,6 +185,8 @@
             if ("@ViewBag.Success" != "") {
                 toastr["success"]("@ViewBag.Success")
             }
+           
+
         });
     </script>
 }

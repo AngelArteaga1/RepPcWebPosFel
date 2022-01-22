@@ -1,0 +1,519 @@
+﻿@model Minible5.Models.ViewModels.PtoDeVenta.PtoDeVentaViewModel
+@using Minible5.Models.ViewModels.PtoDeVenta
+@{
+    ViewBag.Title = "Realizar Transacción";
+    ViewBag.pTitle = "Realizar Transacción";
+    ViewBag.pageTitle = "Punto de Venta";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+    List<ListItemsViewModel> articulos = (List<ListItemsViewModel>)ViewBag.articulos;
+    List<SelectListItem> bancos = (List<SelectListItem>)ViewBag.bancos;
+    List<SelectListItem> tarjetas = (List<SelectListItem>)ViewBag.tarjetas;
+}
+
+<!-- Select2 css -->
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/libs/select2-bootstrap/dist/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <div class="col-xl-8">
+        <div class="custom-accordion">
+            <div class="card">
+                <a href="#checkout-billinginfo-collapse" class="text-dark" data-bs-toggle="collapse">
+                    <div class="p-4">
+
+                        <div class="media align-items-center">
+                            <div class="me-3">
+                                <i class="uil uil-receipt text-primary h2"></i>
+                            </div>
+                            <div class="media-body overflow-hidden">
+                                <h5 class="font-size-16 mb-1">Información del Cliente</h5>
+                                <p class="text-muted text-truncate mb-0">Ingrese los datos del cliente a facturar</p>
+                            </div>
+                            <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                        </div>
+
+                    </div>
+                </a>
+
+                <div id="checkout-billinginfo-collapse" class="collapse">
+                    <div class="p-4 border-top">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    @Html.LabelFor(d => d.nit)
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(d => d.nit, new { @class = "form-control", placeholder = "Ingrese NIT", id = "nit-input", Readonly = "true" })
+                                    </div>
+                                    <p id="log"></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    @Html.LabelFor(d => d.nombre)
+                                    @Html.TextBoxFor(d => d.nombre, new { @class = "form-control", placeholder = "Ingrese nombre", id = "nombre-input", Readonly = "true" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    @Html.LabelFor(d => d.email)
+                                    @Html.TextBoxFor(d => d.email, new { @class = "form-control", placeholder = "Ingrese nombre", id = "email-input", Readonly = "true" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    @Html.LabelFor(d => d.direccion)
+                                    @Html.TextAreaFor(d => d.direccion, new { @class = "form-control", rows = "2", placeholder = "Ingrese dirección completa", id = "direccion-input", Readonly = "true" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <a href="#checkout-paymentinfo-collapse" class="collapsed text-dark" data-bs-toggle="collapse">
+                    <div class="p-4">
+
+                        <div class="media align-items-center">
+                            <div class="me-3">
+                                <i class="uil uil-bill text-primary h2"></i>
+                            </div>
+                            <div class="media-body overflow-hidden">
+                                <h5 class="font-size-16 mb-1">Información de Pago</h5>
+                                <p class="text-muted text-truncate mb-0">Ingrese los datos de la forma de pago que se utilizará en la transacción</p>
+                            </div>
+                            <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                        </div>
+
+                    </div>
+                </a>
+
+                <div id="checkout-paymentinfo-collapse" class="collapse show">
+                    <div class="p-4 border-top">
+                        <div>
+                            <h5 class="font-size-14 mb-3">Método de Pago :</h5>
+
+                            <div class="row">
+
+                                <div class="col-lg-3 col-sm-6">
+                                    <div data-bs-toggle="collapse">
+                                        <label class="card-radio-label">
+                                            <input type="radio" name="pay-method" id="pay-methodoption1" class="card-radio-input" checked>
+
+                                            <span class="card-radio text-center text-truncate">
+
+                                                <i class="uil uil-money-bill d-block h2 mb-3"></i>
+                                                Efectivo
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-6">
+                                    <div>
+                                        <label class="card-radio-label">
+                                            <input type="radio" name="pay-method" id="pay-methodoption2" class="card-radio-input">
+
+                                            <span class="card-radio text-center text-truncate">
+                                                <i class="uil uil-edit-alt d-block h2 mb-3"></i>
+                                                Cheque
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-6">
+                                    <div>
+                                        <label class="card-radio-label">
+                                            <input type="radio" name="pay-method" id="pay-methodoption3" class="card-radio-input">
+
+                                            <span class="card-radio text-center text-truncate">
+                                                <i class="uil uil-postcard d-block h2 mb-3"></i>
+                                                <span>Tarjeta de Crédito / Débito</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-6">
+                                    <div>
+                                        <label class="card-radio-label">
+                                            <input type="radio" name="pay-method" id="pay-methodoption4" class="card-radio-input">
+
+                                            <span class="card-radio text-center text-truncate">
+                                                <i class="uil uil-dollar-alt d-block h2 mb-3"></i>
+                                                <span>Dólares</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 collapse show" id="opcion1-info">
+                                    <div class="mt-4">
+                                        <label class="form-label" for="input-currency">Efectivo:</label>
+                                        <input id="input-currency" class="form-control input-mask text-start" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'digits': 2, 'digitsOptional': false, 'prefix': 'Q ', 'placeholder': '0'">
+                                    </div>
+                                </div>
+                                <div class="col-12 collapse" id="opcion2-info">
+                                    <div class="repeater mt-4">
+                                        <div id="table-bancos">
+                                            <div class="row" id="metodoBanco-0">
+                                                <div class="mb-3 col-lg-3">
+                                                    <label class="form-label" for="name">Banco</label>
+                                                    @Html.DropDownList("bancos-0", bancos, "Seleccione el Banco", new { @class = "form-control select2" })
+                                                </div>
+
+                                                <div class="mb-3 col-lg-3">
+                                                    <label class="form-label" for="email">Cheque</label>
+                                                    <input id="email" class="form-control" />
+                                                </div>
+
+                                                <div class="mb-3 col-lg-3">
+                                                    <label class="form-label" for="subject">Monto</label>
+                                                    <input id="input-currency0" class="form-control input-mask text-start" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'digits': 2, 'digitsOptional': false, 'prefix': 'Q ', 'placeholder': '0'">
+                                                </div>
+
+                                                <div class="col-lg-3 align-self-center d-grid">
+                                                    <input type="button" id="delete-0" class="btn btn-primary btn-block" value="Eliminar" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="button" id="addBanco" class="btn btn-success mt-3 mt-lg-0" value="Añadir" />
+                                    </div>
+                                </div>
+                                <div class="col-12 collapse" id="opcion3-info">
+                                    <div class="repeater mt-4">
+                                        <div id="table-tarjetas">
+                                            <div class="row" id="metodoTarjeta-0">
+
+                                                <div class="mb-3 col-lg">
+                                                    <label class="form-label" for="email">No. Tarjeta</label>
+                                                    <input id="email" class="form-control input-mask text-start" data-inputmask="'mask': '9999 9999 9999 9999'">
+                                                </div>
+
+                                                <div class="mb-3 col-lg">
+                                                    <label class="form-label" for="name">Emisor</label>
+                                                    @Html.DropDownList("tarjetas-0", tarjetas, "Seleccione la Tarjeta", new { @class = "form-control select2" })
+                                                </div>
+
+                                                <div class="mb-3 col-lg">
+                                                    <label class="form-label" for="autorizacion">Autorización</label>
+                                                    <input id="autorizacion" class="form-control" />
+                                                </div>
+
+
+                                                <div class="mb-3 col-lg">
+                                                    <label class="form-label" for="subject">Monto</label>
+                                                    <input id="input-currencya" class="form-control input-mask text-start" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'digits': 2, 'digitsOptional': false, 'prefix': 'Q ', 'placeholder': '0'">
+                                                </div>
+
+                                                <div class="col-lg align-self-center d-grid">
+                                                    <input type="button" id="delete-0" class="btn btn-primary btn-block" value="Eliminar" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="button" id="addTarjeta" class="btn btn-success mt-3 mt-lg-0" value="Añadir" />
+                                    </div>
+                                </div>
+                                <div class="col-12 collapse" id="opcion4-info">
+                                    <div class="mt-4">
+                                        <label class="form-label" for="input-currency">Tasa de Cambio:</label>
+                                        <input id="input-currency1" class="form-control input-mask text-start" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'digits': 2, 'digitsOptional': false, 'placeholder': '0'">
+                                    </div>
+                                    <div class="mt-4">
+                                        <label class="form-label" for="input-currency">Monto Dólares:</label>
+                                        <input id="input-currency2" class="form-control input-mask text-start" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'">
+                                    </div>
+                                    <div class="mt-4">
+                                        <label class="form-label" for="input-currency">Monto Quetzales:</label>
+                                        <input id="input-currency3" class="form-control input-mask text-start" readonly placeholder="Q 0.00" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="card checkout-order-summary">
+            <div class="card-body">
+                <div class="p-3 bg-light mb-4">
+                    <h5 class="font-size-16 mb-0">Resumen de la Factura</h5>
+                    <p class="font-size-16 mb-0">Serie: <span class="float-end">@Model.nombreSerie</span></p>
+                    <br />
+                    <p class="font-size-16 mb-0">Bodega: <span class="float-end">@Model.nombrebodega</span></p>
+                    <p class="font-size-16 mb-0">Vendedor: <span class="float-end">@Model.nombreVendedor</span></p>
+                </div>
+                <div class="table-responsive overflow-auto" style="height:300px;" id="product-list">
+                    <table class="table table-centered mb-0 table-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0" style="width: 110px;" scope="col">Producto</th>
+                                <th class="border-top-0" scope="col">Desc del Producto</th>
+                                <th class="border-top-0" scope="col">Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var articulo in articulos)
+                            {
+                                <tr>
+                                    <th scope="row"><img src="@articulo.foto" alt="product-img" title="product-img" class="avatar-md"></th>
+                                    <td style="max-width:50px;">
+                                        <h5 class="font-size-14 text-truncate"><a href="@Url.Action("Index", "detalleProducto")/?id=@articulo.id" class="text-dark">@articulo.descripcion</a></h5>
+                                        <p class="text-muted mb-0">Q @String.Format("{0:0.00}", articulo.precio) x @articulo.unidades</p>
+                                    </td>
+                                    <td>Q @String.Format("{0:0.00}", articulo.precio * articulo.unidades)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <table class="table table-centered mb-0 table-nowrap">
+                    <tbody>
+                        <tr>
+                            <td colspan="2">
+                                <h5 class="font-size-14 m-0">Sub Total :</h5>
+                            </td>
+                            <td>
+                                Q @String.Format("{0:0.00}", Model.subtotal)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <h5 class="font-size-14 m-0">Descuento :</h5>
+                            </td>
+                            <td>
+                                - Q @String.Format("{0:0.00}", Model.descuento)
+                            </td>
+                        </tr>
+
+                        <tr class="bg-light">
+                            <td colspan="2">
+                                <h5 class="font-size-14 m-0">Total a Pagar :</h5>
+                            </td>
+                            <td>
+                                Q @String.Format("{0:0.00}", Model.total)
+                            </td>
+                        </tr>
+                        <tr class="bg-light">
+                            <td colspan="2">
+                                <h5 class="font-size-14 m-0">Recibido :</h5>
+                            </td>
+                            <td>
+                                Q 0.00
+                            </td>
+                        </tr>
+                        <tr class="bg-light">
+                            <td colspan="2">
+                                <h5 class="font-size-14 m-0">Vuelto :</h5>
+                            </td>
+                            <td class="text-danger">
+                                - Q @String.Format("{0:0.00}", Model.total)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col">
+                <a href=@Url.Action("Index", "carrito") class="btn btn-link text-muted">
+                    <i class="uil uil-arrow-left me-1"></i> Ir al Carrito
+                </a>
+            </div> <!-- end col -->
+            <div class="col">
+                <div class="text-sm-end mt-2 mt-sm-0">
+                    <a href="#" class="btn btn-success">
+                        <i class="uil uil-shopping-cart-alt me-1"></i> Proceder
+                    </a>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row-->
+    </div>
+</div>
+<!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+<!-- form mask -->
+<script src="~/assets/libs/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+
+<!-- Select2 -->
+<script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+<script>
+    $(document).ready(function () {
+        //Funcion para colocar la barra de scroll hasta abajo
+        function setScrollBar() {
+            var messageBody = document.querySelector('#product-list');
+            messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+            var right = $('#product-list').width();
+            $('#product-list').scrollLeft(right);
+        }
+        setScrollBar();
+
+        //Para los inputs con mask y dropdowns
+        $(".input-mask").inputmask()
+        $("#bancos-0").select2({ theme: "bootstrap" });
+        $("#tarjetas-0").select2({ theme: "bootstrap" });
+
+        //Estos eventos solo son para cambiar el tipo de pago
+        $("#pay-methodoption1").change(function () {
+            if (this.checked) {
+
+                $("#opcion2-info").hide();
+                $("#opcion3-info").hide();
+                $("#opcion4-info").hide();
+
+                $("#opcion1-info").fadeIn();
+            }
+        });
+        $("#pay-methodoption2").change(function () {
+            if (this.checked) {
+
+                $("#opcion1-info").hide();
+                $("#opcion3-info").hide();
+                $("#opcion4-info").hide();
+
+                $("#opcion2-info").fadeIn();
+            }
+        });
+        $("#pay-methodoption3").change(function () {
+            if (this.checked) {
+
+                $("#opcion1-info").hide();
+                $("#opcion2-info").hide();
+                $("#opcion4-info").hide();
+
+                $("#opcion3-info").fadeIn();
+            }
+        });
+        $("#pay-methodoption4").change(function () {
+            if (this.checked) {
+
+                $("#opcion1-info").hide();
+                $("#opcion2-info").hide();
+                $("#opcion3-info").hide();
+
+                $("#opcion4-info").fadeIn();
+            }
+        });
+
+        //Para agregar fila a los detalles
+        $("#addBanco").click(function () {
+            inputGroup =
+                `<div class="row" id="metodoBanco-` + bancosCont + `">
+                    <div class="mb-3 col-lg-3">
+                        <label class="form-label" for="name">Banco</label>
+                        <select class="form-control select2" id="bancos-` + bancosCont + `" name="bancos-` + bancosCont + `" tabindex="0" aria-hidden="false">
+                            <option value="">Seleccione el Banco</option>
+                            @foreach(var banco in bancos)
+                            {
+                                <option value="@banco.Value">@banco.Text</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mb-3 col-lg-3">
+                        <label class="form-label" for="email">Cheque</label>
+                        <input type="email" id="email" class="form-control" />
+                    </div>
+
+                    <div class="mb-3 col-lg-3">
+                        <label class="form-label" for="subject">Monto</label>
+                        <input id="input-currency0" class="form-control input-mask text-start" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'digits': 2, 'digitsOptional': false, 'prefix': 'Q ', 'placeholder': '0'">
+                    </div>
+
+                    <div class="col-lg-3 align-self-center d-grid">
+                        <input type="button" class="btn btn-primary btn-block" id="delete-` + bancosCont + `" value="Eliminar" />
+                    </div>
+                </div>`;
+            $("#table-bancos").append($(inputGroup).hide().fadeIn());
+            $(".input-mask").inputmask()
+            $("#bancos-" + bancosCont).select2({
+                theme: "bootstrap"
+            });
+            bancosCont++;
+        });
+        $("#addTarjeta").click(function () {
+            inputGroup =
+                `<div class="row" id="metodoTarjeta-` + tarjetasCont + `">
+
+                    <div class="mb-3 col-lg">
+                        <label class="form-label" for="email">No. Tarjeta</label>
+                        <input id="email" class="form-control input-mask text-start" data-inputmask="'mask': '9999 9999 9999 9999'">
+                    </div>
+
+                    <div class="mb-3 col-lg">
+                        <label class="form-label" for="name">Emisor</label>
+                        <select class="form-control select2" id="tarjetas-` + tarjetasCont + `" name="tarjetas-` + tarjetasCont + `" tabindex="0" aria-hidden="false">
+                            <option value="">Seleccione la Tarjeta</option>
+                            @foreach(var tarjeta in tarjetas)
+                            {
+                                <option value="@tarjeta.Value">@tarjeta.Text</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mb-3 col-lg">
+                        <label class="form-label" for="autorizacion">Autorización</label>
+                        <input id="autorizacion" class="form-control" />
+                    </div>
+
+
+                    <div class="mb-3 col-lg">
+                        <label class="form-label" for="subject">Monto</label>
+                        <input id="input-currencya" class="form-control input-mask text-start" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'digits': 2, 'digitsOptional': false, 'prefix': 'Q ', 'placeholder': '0'">
+                    </div>
+
+                    <div class="col-lg align-self-center d-grid">
+                        <input type="button" id="delete-` + tarjetasCont + `" class="btn btn-primary btn-block" value="Eliminar" />
+                    </div>
+
+                </div>`;
+            $("#table-tarjetas").append($(inputGroup).hide().fadeIn());
+            $(".input-mask").inputmask()
+            $("#tarjetas-" + tarjetasCont).select2({ theme: "bootstrap" });
+            tarjetasCont++;
+        });
+
+        //Para eliminar fila a los detalles
+        $("#table-bancos").on("click", ".btn", function () {
+            let id = $(this).attr("id").split("-")[1];
+            console.log(id);
+            $("#metodoBanco-" + id).fadeOut("normal", function () {
+                $(this).remove();
+            });
+        });
+        $("#table-tarjetas").on("click", ".btn", function () {
+            let id = $(this).attr("id").split("-")[1];
+            console.log(id);
+            $("#metodoTarjeta-" + id).fadeOut("normal", function () {
+                $(this).remove();
+            });
+        });
+
+        let bancosCont = 1;
+        let tarjetasCont = 1;
+
+    });
+</script>

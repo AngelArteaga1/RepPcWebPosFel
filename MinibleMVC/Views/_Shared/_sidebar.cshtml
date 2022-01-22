@@ -90,17 +90,14 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="uil-store"></i>
-                        <span>Ecommerce</span>
+                        <span>Punto de Venta</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href=@Url.Action("Index", "EcommerceProducts")>Products</a></li>
-                        <li><a href=@Url.Action("Index", "EcommerceProductDetail")>Product Detail</a></li>
-                        <li><a href=@Url.Action("Index", "EcommerceOrders")>Orders</a></li>
-                        <li><a href=@Url.Action("Index", "EcommerceCustomers")>Customers</a></li>
-                        <li><a href=@Url.Action("Index", "EcommerceCart")>Cart</a></li>
-                        <li><a href=@Url.Action("Index", "EcommerceCheckout")>Checkout</a></li>
-                        <li><a href=@Url.Action("Index", "EcommerceShops")>Shops</a></li>
-                        <li><a href=@Url.Action("Index", "EcommerceAddProduct")>Add Product</a></li>
+                        <li><a href=@Url.Action("Index", "inicioVenta")>Iniciar Transacción</a></li>
+                        <li><a href=@Url.Action("Index", "productos")>Productos</a></li>
+                        <li><a href=@Url.Action("Index", "listaProductos")>Lista de Productos</a></li>
+                        <li><a href=@Url.Action("Index", "carrito")>Carrito</a></li>
+                        <li><a href=@Url.Action("Index", "finalVenta")>Finalizar Transacción</a></li>
                     </ul>
                 </li>
 
@@ -135,6 +132,23 @@
                         <li><a href=@Url.Action("Index", "ContactsGrid")>User Grid</a></li>
                         <li><a href=@Url.Action("Index", "ContactsList")>User List</a></li>
                         <li><a href=@Url.Action("Index", "ContactsProfile")>Profile</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="uil-store"></i>
+                        <span>Ecommerce</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href=@Url.Action("Index", "EcommerceProducts")>Products</a></li>
+                        <li><a href=@Url.Action("Index", "EcommerceProductDetail")>Product Detail</a></li>
+                        <li><a href=@Url.Action("Index", "EcommerceOrders")>Orders</a></li>
+                        <li><a href=@Url.Action("Index", "EcommerceCustomers")>Customers</a></li>
+                        <li><a href=@Url.Action("Index", "EcommerceCart")>Cart</a></li>
+                        <li><a href=@Url.Action("Index", "EcommerceCheckout")>Checkout</a></li>
+                        <li><a href=@Url.Action("Index", "EcommerceShops")>Shops</a></li>
+                        <li><a href=@Url.Action("Index", "EcommerceAddProduct")>Add Product</a></li>
                     </ul>
                 </li>
 
@@ -191,7 +205,35 @@
                         <span>Catalogos</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href=@Url.Action("Index", "articulosinvs")>Articulos</a></li>
                         <li><a href=@Url.Action("Index", "bodegasinvs")>Bodegas</a></li>
+                        <li><a href=@Url.Action("Index", "familiasinvs")>Familias</a></li>
+                        <li><a href=@Url.Action("Index", "medidasinvs")>Medidas</a></li>
+                        <li><a href=@Url.Action("Index", "proveedores")>Proveedores</a></li>
+                        <li><a href=@Url.Action("Index", "marcasinvs")>Marcas</a></li>
+                        <li><a href=@Url.Action("Index", "clientes")>Clientes</a></li>
+                        <li><a href=@Url.Action("Index", "localidades")>Localidades</a></li>
+                        <li><a href=@Url.Action("Index", "paises")>Paises</a></li>
+                        <li><a href=@Url.Action("Index", "clases")>Clases</a></li>
+                        <li><a href=@Url.Action("Index", "cobradores")>Cobradores</a></li>
+                        <li><a href=@Url.Action("Index", "rutas")>Rutas</a></li>
+                        <li><a href=@Url.Action("Index", "zonas")>Zonas</a></li>
+                        <li><a href=@Url.Action("Index", "vendedores")>Vendedores</a></li>
+                        <li><a href=@Url.Action("Index", "sectores")>Sectores</a></li>
+                        <li><a href=@Url.Action("Index", "tiposcargosimportacionesinvs")>Tipo Cargo Importacion</a></li>
+                        <li><a href=@Url.Action("Index", "tiposmovimientosinvs")>Tipos de Movimientos</a></li>
+
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="uil-money-withdrawal"></i>
+                        <span>Transacciones</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href=@Url.Action("Index", "puntoDeVenta")>Pto de Venta</a></li>
                         <li><a href=@Url.Action("Index", "familiasinvs")>Familias</a></li>
                         <li><a href=@Url.Action("Index", "medidasinvs")>Medidas</a></li>
                         <li><a href=@Url.Action("Index", "proveedores")>Proveedores</a></li>

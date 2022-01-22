@@ -107,7 +107,8 @@
                     { "data": "rutas", "name": "rutas" },
                     {
                         "data": "idInternoSectores", "render": function (data) {
-                            return '<a href=@Url.Action("Edit", "sectores")?id=' + data + ' class="px-3 text-primary"><i class="uil uil-pen font-size-18"></i></a>' +
+                            return '<a href=@Url.Action("Details", "sectores")?id=' + data + ' class="px-3 text-primary"><i class="uil uil-eye font-size-18"></i></a>' +
+                                '<a href=@Url.Action("Edit", "sectores")?id=' + data + ' class="px-3 text-primary"><i class="uil uil-pen font-size-18"></i></a>' +
                                 '<a href="javascript:void(0);" onclick="Delete(' + data + ')" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>'
                         },
                         "orderable": false,

@@ -1,0 +1,302 @@
+﻿@model Minible5.Models.ViewModels.EditBodegasViewModel
+
+@{
+    ViewBag.Title = "Detalle Bodegas";
+    ViewBag.pTitle = "Detalle Bodegas";
+    ViewBag.pageTitle = "Bodegas";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+
+}
+
+<!-- plugin css -->
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<!-- dropzone css -->
+<link href="~/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/font-awesome/css/font-awesome.min.css">
+
+<!-- daterange picker -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+<!-- bootstrap datepicker -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="~/assets/LTE/plugins/iCheck/all.css">
+
+<!-- Bootstrap time Picker -->
+<link rel="stylesheet" href="~/assets/LTE/plugins/timepicker/bootstrap-timepicker.min.css">
+
+<!-- Theme style -->
+<link rel="stylesheet" href="~/assets/LTE/dist/css/AdminLTE.min.css">
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="p-4 border-top">
+
+
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Encabezado</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.IdBodega)
+                                    @Html.TextBoxFor(d => d.IdBodega, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.Descripcion)
+                                    @Html.TextBoxFor(d => d.Descripcion, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.Tipo)
+                                    @Html.TextBoxFor(d => d.Tipo, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.Encargado)
+                                    @Html.TextBoxFor(d => d.Encargado, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.Direccion)
+                                    @Html.TextBoxFor(d => d.Direccion, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.Telefono)
+                                    @Html.TextBoxFor(d => d.Telefono, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.cta_bodega_inventario)
+                                    @Html.TextBoxFor(d => d.cta_bodega_inventario, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.idcentrocosto)
+                                    @Html.TextBoxFor(d => d.idcentrocosto, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.cta_bodega_inventario)
+                                    @Html.TextBoxFor(d => d.cta_bodega_inventario, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(d => d.idcentrocosto)
+                                    @Html.TextBoxFor(d => d.idcentrocosto, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+
+
+<div id="hiddenEmpresas"></div>
+
+<div class="row mb-4">
+    <div class="col text-end">
+        <a href="@Url.Action("Index", "bodegasinvs")" class="btn btn-primary"> <i class="uil-arrow-left font-size-18"></i> Regresar </a>
+        <a href="@Url.Action("Edit", "bodegasinvs", new { id = Model.IdInternoBodegas})" class="btn btn btn-success"> <i class="uil uil-pen font-size-18"></i> Editar </a>
+        <a href="javascript:void(0);" onclick="@("Delete("+Model.IdInternoBodegas )@(")")" class="btn btn-danger"><i class="uil uil-trash-alt font-size-18"></i>Elimanar</a>
+    </div> <!-- end col -->
+</div> <!-- end row-->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+
+<!-- Required datatable js -->
+<script src="~/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+<script src="~/assets/js/pages/form-validation.init.js"></script>
+<script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- dropzone plugin -->
+<script src="~/assets/libs/dropzone/min/dropzone.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/ecommerce-add-product.init.js"></script>
+<script src="~/assets/js/app.js"></script>
+
+
+
+
+
+<!-- Bootstrap 3.3.7 -->
+<script src="~/assets/LTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="~/assets/LTE/bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="~/assets/LTE/bower_components/moment/min/moment.min.js"></script>
+<script src="~/assets/LTE/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="~/assets/LTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<!-- bootstrap time picker -->
+<script src="~/assets/LTE/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- SlimScroll -->
+<!-- iCheck 1.0.1 -->
+<script src="~/assets/LTE/plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<!-- AdminLTE App -->
+<script src="~/assets/LTE/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+
+
+@section scripts{
+    <script>
+
+    
+        $(function () {
+
+
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            })
+            //Red color scheme for iCheck
+            $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                checkboxClass: 'icheckbox_minimal-red',
+                radioClass: 'iradio_minimal-red'
+            })
+            //Flat red color scheme for iCheck
+            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+            })
+
+        });
+
+
+        function deleteData(id) {
+             return $.ajax({
+                type: "POST",
+                url: '@Url.Action("Delete", "bodegasinvs")/?id=' + id,
+                success: function (data) {
+                    if (data.success) {
+                        //usersTable.ajax.reload();
+                    }
+                }
+            });
+        }
+
+        function Delete(id) {
+            Swal.fire({
+                title: "Estas seguro?", text: "No hay forma de rehacer esta función!", icon: "warning", showCancelButton: !0, confirmButtonText: "Si, Eliminar!", cancelButtonText: "No, Cancelar!", confirmButtonClass: "btn btn-success mt-2", cancelButtonClass: "btn btn-danger ms-2 mt-2", buttonsStyling: !1
+            }).then(async function (t) {
+                if (t.value) {
+                    //SI CONFIRMA
+                    await deleteData(id)
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Eliminado!',
+                        showConfirmButton: false,
+                        text: "La bodega ha sido eliminado.",
+                        timer: 2000
+                    })
+
+                    setTimeout(function () { window.location.href = "Index"; }, 2500);
+
+                } else {
+                    //SI CANCELA
+                    t.dismiss === Swal.DismissReason.cancel && Swal.fire({ title: "Cancelado", text: "La bodega no se ha eliminado :)", icon: "error" })
+                }
+            })
+        }
+
+
+
+    </script>
+
+}

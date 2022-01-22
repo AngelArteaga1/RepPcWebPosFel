@@ -1,0 +1,840 @@
+﻿@model Minible5.Models.articulosinv
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>articulosinv</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdArticulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdArticulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreArticulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreArticulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VentaMinima_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VentaMinima_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VentaMinima_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VentaMinima_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VentaMinima_3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VentaMinima_3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioVenta_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioVenta_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioVenta_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioVenta_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioVenta_3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioVenta_3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioCompraActual_Q)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioCompraActual_Q)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioCompraAnterior_Q)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioCompraAnterior_Q)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioCompraAnterior_D)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioCompraAnterior_D)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoPromedioActual_Q)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoPromedioActual_Q)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoPromedioAnterior_Q)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoPromedioAnterior_Q)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoReposicionActual_Q)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoReposicionActual_Q)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoReposicionAnterior_Q)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoReposicionAnterior_Q)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExistenciaInicial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExistenciaInicial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntradasActuales)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntradasActuales)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idbodega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idbodega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalidasActuales)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalidasActuales)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExistenciaActual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExistenciaActual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnidadesPedidas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnidadesPedidas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proveedorlocal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proveedorlocal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProveedorExtrangero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProveedorExtrangero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnidadesPedidasClientes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnidadesPedidasClientes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.No_Meses_Garantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No_Meses_Garantia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioVenta_4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioVenta_4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VentaMinima_4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VentaMinima_4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoBarras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoBarras)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioVenta_Q)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioVenta_Q)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioFOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioFOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescuentoMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescuentoMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductoServicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductoServicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorRef1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorRef1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorRef2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorRef2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorRef3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorRef3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorRef4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorRef4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorRef5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorRef5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoFOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoFOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoProximoAnterior)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoProximoAnterior)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoFOBProximoAnteriord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoFOBProximoAnteriord)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoDDPActual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoDDPActual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoDDPAnterior)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoDDPAnterior)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductoRelacionado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductoRelacionado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrdenEspecial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrdenEspecial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usalote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usalote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idcolor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idcolor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compDescripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compDescripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correlativoarticulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correlativoarticulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descuentocombo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descuentocombo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeDescuentoCombo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeDescuentoCombo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcenutilidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcenutilidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.existenciaminima)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.existenciaminima)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comisioncontado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comisioncontado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comisioncredito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comisioncredito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioventa_5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioventa_5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioventa_6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioventa_6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioventa_7)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioventa_7)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usaseries)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usaseries)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.segunda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.segunda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statusfechavenc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statusfechavenc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statusactualiza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statusactualiza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statusactualiza2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statusactualiza2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statusmenudeo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statusmenudeo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeganancia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeganancia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeganancia1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeganancia1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeganancia2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeganancia2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeganancia22)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeganancia22)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeganancia3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeganancia3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeganancia4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeganancia4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.preciomenudeo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preciomenudeo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioventa1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioventa1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioventa2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioventa2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioventa3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioventa3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioventa4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioventa4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estatusactualiza1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estatusactualiza1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estatusactualiza2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estatusactualiza2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GrabadaExenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrabadaExenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigoarticulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigoarticulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descuento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idpresentacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idpresentacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idtalla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idtalla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusActualiza1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusActualiza1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioventa_1_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioventa_1_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioventa_2_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioventa_2_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PorcentajeGanancia2_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PorcentajeGanancia2_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genmar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genmar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PorcentajeGanancia3_3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PorcentajeGanancia3_3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PorcentajeDescuento1_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PorcentajeDescuento1_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PorcentajeDescuento2_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PorcentajeDescuento2_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PorcentajeDescuento3_3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PorcentajeDescuento3_3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_baja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_baja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo_Empresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo_Empresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.articulosdetallegenericos.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.articulosdetallegenericos.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.familiasinv.IdFamilia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.familiasinv.IdFamilia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marcasinv.IdMarca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marcasinv.IdMarca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.medidasinv.IdMedida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.medidasinv.IdMedida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proveedores.IdProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proveedores.IdProveedor)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

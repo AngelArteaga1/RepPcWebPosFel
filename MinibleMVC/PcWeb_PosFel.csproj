@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -45,8 +44,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -55,28 +54,34 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.10.3.0\lib\netstandard2.0\FluentValidation.dll</HintPath>
+      <HintPath>..\packages\FluentValidation.10.3.5\lib\netstandard2.0\FluentValidation.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Protobuf, Version=3.14.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.14.0\lib\net45\Google.Protobuf.dll</HintPath>
+    <Reference Include="Google.Protobuf, Version=3.19.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.19.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
-    <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
-      <HintPath>..\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+    <Reference Include="K4os.Compression.LZ4, Version=1.2.16.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.2.16\lib\net46\K4os.Compression.LZ4.dll</HintPath>
     </Reference>
-    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
-      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.1.11\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.2.16.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.2.16\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
     </Reference>
-    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
-      <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.7.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.7\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MySql.Data, Version=8.0.25.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.8.0.25\lib\net452\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=8.0.27.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.27\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data.EntityFramework, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.EntityFramework.8.0.11\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Web, Version=8.0.25.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -86,18 +91,18 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.8\lib\net40\System.Linq.Dynamic.dll</HintPath>
     </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -152,11 +157,8 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.8.0.25\lib\net452\Ubiety.Dns.Core.dll</HintPath>
+      <HintPath>..\packages\MySql.Data.8.0.27\lib\net452\Ubiety.Dns.Core.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -166,13 +168,8 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.8.0.25\lib\net452\Zstandard.Net.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.27\lib\net452\ZstdNet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +177,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Contants.cs" />
+    <Compile Include="Controllers\Auth\AuthCompanyController.cs" />
     <Compile Include="Controllers\Auth\AuthLockScreenController.cs" />
     <Compile Include="Controllers\Auth\AuthLoginController.cs" />
     <Compile Include="Controllers\Auth\AuthRecoverpwController.cs" />
@@ -238,6 +236,7 @@
     <Compile Include="Controllers\Maps\MapsGoogleController.cs" />
     <Compile Include="Controllers\Maps\MapsLeafletController.cs" />
     <Compile Include="Controllers\Maps\MapsVectorController.cs" />
+    <Compile Include="Controllers\MntDeArticulos\articulosinvsController.cs" />
     <Compile Include="Controllers\MntDeBodegas\bodegasinvsController.cs" />
     <Compile Include="Controllers\MntDeClases\clasesController.cs" />
     <Compile Include="Controllers\MntDeClientes\clientesController.cs" />
@@ -254,10 +253,17 @@
     <Compile Include="Controllers\MntDeTiposMovimientos\tiposmovimientosinvsController.cs" />
     <Compile Include="Controllers\MntDeVendedores\vendedoresController.cs" />
     <Compile Include="Controllers\MntDeZonas\zonasController.cs" />
+    <Compile Include="Controllers\MntPtoDeVenta\puntoDeVentaController.cs" />
     <Compile Include="Controllers\Page\PagesFaqsController.cs" />
     <Compile Include="Controllers\Page\PagesPricingController.cs" />
     <Compile Include="Controllers\Page\PagesStarterController.cs" />
     <Compile Include="Controllers\Page\PagesTimelineController.cs" />
+    <Compile Include="Controllers\PuntoDeVenta\carritoController.cs" />
+    <Compile Include="Controllers\PuntoDeVenta\detalleProductoController.cs" />
+    <Compile Include="Controllers\PuntoDeVenta\finalVentaController.cs" />
+    <Compile Include="Controllers\PuntoDeVenta\inicioVentaController.cs" />
+    <Compile Include="Controllers\PuntoDeVenta\listaProductosController.cs" />
+    <Compile Include="Controllers\PuntoDeVenta\productosController.cs" />
     <Compile Include="Controllers\Security\GroupsController.cs" />
     <Compile Include="Controllers\Security\UsersController.cs" />
     <Compile Include="Controllers\Tables\TablesBasicController.cs" />
@@ -456,6 +462,9 @@
     <Compile Include="Models\security_users.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tarjetasbancos.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tiposcargosimportacionesinv.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
@@ -471,6 +480,16 @@
     <Compile Include="Models\vendedores.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\Articulos\ArticulosViewModels.cs" />
+    <Compile Include="Models\ViewModels\Articulos\EditArticulosdetalle.cs" />
+    <Compile Include="Models\ViewModels\Articulos\TableArticulosDetalleViewModel.cs" />
+    <Compile Include="Models\ViewModels\Articulos\TableArticulosViewModel.cs" />
+    <Compile Include="Models\ViewModels\Articulos\TableArticulos_ArticulosGenericos.cs" />
+    <Compile Include="Models\ViewModels\Articulos\TableArticulos_Bodegas.cs" />
+    <Compile Include="Models\ViewModels\Articulos\TableArticulos_Familias.cs" />
+    <Compile Include="Models\ViewModels\Articulos\TableArticulos_Marcas.cs" />
+    <Compile Include="Models\ViewModels\Articulos\TableArticulos_Medidas.cs" />
+    <Compile Include="Models\ViewModels\Articulos\TableArticulos_Proveedores.cs" />
     <Compile Include="Models\ViewModels\Clases\ClasesViewModels.cs" />
     <Compile Include="Models\ViewModels\Clases\TableClasesViewModel.cs" />
     <Compile Include="Models\ViewModels\Clientes\ClientesViewModels.cs" />
@@ -486,6 +505,7 @@
     <Compile Include="Models\ViewModels\Cobradores\CobradoresViewModels.cs" />
     <Compile Include="Models\ViewModels\Cobradores\TableCobradoresViewModel.cs" />
     <Compile Include="Models\ViewModels\Cobradores\TableCobradores_Rutas.cs" />
+    <Compile Include="Models\ViewModels\Empresas\TableCompaniesViewModel.cs" />
     <Compile Include="Models\ViewModels\Familias\FamiliasViewModels.cs" />
     <Compile Include="Models\ViewModels\Localidades\LocalidadesViewModels.cs" />
     <Compile Include="Models\ViewModels\Localidades\TableLocalidadesViewModel.cs" />
@@ -505,6 +525,12 @@
     <Compile Include="Models\ViewModels\Proveedores\TableProveedores_Localidades.cs" />
     <Compile Include="Models\ViewModels\Proveedores\TableProveedores_Paises.cs" />
     <Compile Include="Models\ViewModels\Proveedores\TableProveedores_Zonas.cs" />
+    <Compile Include="Models\ViewModels\PtoDeVenta\GridPagesViewModel.cs" />
+    <Compile Include="Models\ViewModels\PtoDeVenta\ListBodegasViewModel.cs" />
+    <Compile Include="Models\ViewModels\PtoDeVenta\ListItemsViewModel.cs" />
+    <Compile Include="Models\ViewModels\PtoDeVenta\PtoDeVentaViewModel.cs" />
+    <Compile Include="Models\ViewModels\PtoDeVenta\TableClientesViewModel.cs" />
+    <Compile Include="Models\ViewModels\PtoDeVenta\TableItemsViewModel.cs" />
     <Compile Include="Models\ViewModels\Rutas\RutasViewModels.cs" />
     <Compile Include="Models\ViewModels\Rutas\TableRutasViewModel.cs" />
     <Compile Include="Models\ViewModels\Sectores\SectoresViewModels.cs" />
@@ -517,6 +543,7 @@
     <Compile Include="Models\ViewModels\TiposCargosImportaciones\CargosImportacionesViewModels.cs" />
     <Compile Include="Models\ViewModels\TiposCargosImportaciones\TableCargosImportacionesViewModel.cs" />
     <Compile Include="Models\ViewModels\TiposMovimientos\EditarTiposMovimientosInv.cs" />
+    <Compile Include="Models\ViewModels\TiposMovimientos\TableTiposMovimientosSeriesinvViewModel.cs" />
     <Compile Include="Models\ViewModels\TiposMovimientos\TableTipodMovimientosViewModel.cs" />
     <Compile Include="Models\ViewModels\TiposMovimientos\TiposMovimientosViewModels.cs" />
     <Compile Include="Models\ViewModels\UserViewModel.cs" />
@@ -582,12 +609,20 @@
     <Content Include="assets\images\logo-light.png" />
     <Content Include="assets\images\logo-sm.png" />
     <Content Include="assets\images\maintenance.png" />
+    <Content Include="assets\images\products\Acetaminofen.png" />
+    <Content Include="assets\images\products\Alkaseltzer.png" />
+    <Content Include="assets\images\products\Aspirina.png" />
+    <Content Include="assets\images\products\Default.png" />
+    <Content Include="assets\images\products\Paracetamol.png" />
+    <Content Include="assets\images\products\Suero.png" />
+    <Content Include="assets\images\products\Virogrip.png" />
     <Content Include="assets\images\product\img-1.png" />
     <Content Include="assets\images\product\img-2.png" />
     <Content Include="assets\images\product\img-3.png" />
     <Content Include="assets\images\product\img-4.png" />
     <Content Include="assets\images\product\img-5.png" />
     <Content Include="assets\images\product\img-6.png" />
+    <Content Include="assets\images\products\Jarabe.png" />
     <Content Include="assets\images\register-img.png" />
     <Content Include="assets\images\setup-analytics-amico.svg" />
     <Content Include="assets\images\small\img-1.jpg" />
@@ -606,7 +641,9 @@
     <Content Include="assets\images\users\avatar-7.jpg" />
     <Content Include="assets\images\users\avatar-8.jpg" />
     <Content Include="assets\images\winners-rafiki.svg" />
+    <Content Include="assets\js\AddConceptos.js" />
     <Content Include="assets\js\app.js" />
+    <Content Include="assets\js\DeleteConceptos.js" />
     <Content Include="assets\js\pages\apexcharts.init.js" />
     <Content Include="assets\js\pages\auth-carousel.init.js" />
     <Content Include="assets\js\pages\calendar.init.js" />
@@ -634,6 +671,7 @@
     <Content Include="assets\js\pages\leaflet-us-states.js" />
     <Content Include="assets\js\pages\lightbox.init.js" />
     <Content Include="assets\js\pages\materialdesign.init.js" />
+    <Content Include="assets\js\pages\notificaciones.init.js" />
     <Content Include="assets\js\pages\product-filter-range.init.js" />
     <Content Include="assets\js\pages\range-sliders.init.js" />
     <Content Include="assets\js\pages\rating-init.js" />
@@ -848,12 +886,8 @@
     <Content Include="assets\libs\datatables.net-autofill-bs4\js\autoFill.bootstrap4.min.js" />
     <Content Include="assets\libs\datatables.net-autofill\js\dataTables.autoFill.min.js" />
     <Content Include="assets\libs\datatables.net-autofill\License.txt" />
-    <Content Include="assets\libs\datatables.net-autofill\node_modules\datatables.net\js\jquery.dataTables.min.js" />
-    <Content Include="assets\libs\datatables.net-autofill\node_modules\datatables.net\License.txt" />
     <Content Include="assets\libs\datatables.net-bs4\css\dataTables.bootstrap4.min.css" />
     <Content Include="assets\libs\datatables.net-bs4\js\dataTables.bootstrap4.min.js" />
-    <Content Include="assets\libs\datatables.net-bs4\node_modules\datatables.net\js\jquery.dataTables.min.js" />
-    <Content Include="assets\libs\datatables.net-bs4\node_modules\datatables.net\License.txt" />
     <Content Include="assets\libs\datatables.net-buttons-bs4\css\buttons.bootstrap4.min.css" />
     <Content Include="assets\libs\datatables.net-buttons-bs4\js\buttons.bootstrap4.min.js" />
     <Content Include="assets\libs\datatables.net-buttons\js\buttons.colVis.min.js" />
@@ -862,27 +896,19 @@
     <Content Include="assets\libs\datatables.net-buttons\js\buttons.print.min.js" />
     <Content Include="assets\libs\datatables.net-buttons\js\dataTables.buttons.min.js" />
     <Content Include="assets\libs\datatables.net-buttons\License.txt" />
-    <Content Include="assets\libs\datatables.net-buttons\node_modules\datatables.net\js\jquery.dataTables.min.js" />
-    <Content Include="assets\libs\datatables.net-buttons\node_modules\datatables.net\License.txt" />
     <Content Include="assets\libs\datatables.net-buttons\swf\flashExport.swf" />
     <Content Include="assets\libs\datatables.net-keytable-bs4\css\keyTable.bootstrap4.min.css" />
     <Content Include="assets\libs\datatables.net-keytable-bs4\js\keyTable.bootstrap4.min.js" />
     <Content Include="assets\libs\datatables.net-keytable\js\dataTables.keyTable.min.js" />
     <Content Include="assets\libs\datatables.net-keytable\License.txt" />
-    <Content Include="assets\libs\datatables.net-keytable\node_modules\datatables.net\js\jquery.dataTables.min.js" />
-    <Content Include="assets\libs\datatables.net-keytable\node_modules\datatables.net\License.txt" />
     <Content Include="assets\libs\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css" />
     <Content Include="assets\libs\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js" />
     <Content Include="assets\libs\datatables.net-responsive\js\dataTables.responsive.min.js" />
     <Content Include="assets\libs\datatables.net-responsive\License.txt" />
-    <Content Include="assets\libs\datatables.net-responsive\node_modules\datatables.net\js\jquery.dataTables.min.js" />
-    <Content Include="assets\libs\datatables.net-responsive\node_modules\datatables.net\License.txt" />
     <Content Include="assets\libs\datatables.net-select-bs4\css\select.bootstrap4.min.css" />
     <Content Include="assets\libs\datatables.net-select-bs4\js\select.bootstrap4.min.js" />
     <Content Include="assets\libs\datatables.net-select\js\dataTables.select.min.js" />
     <Content Include="assets\libs\datatables.net-select\License.txt" />
-    <Content Include="assets\libs\datatables.net-select\node_modules\datatables.net\js\jquery.dataTables.min.js" />
-    <Content Include="assets\libs\datatables.net-select\node_modules\datatables.net\License.txt" />
     <Content Include="assets\libs\datatables.net\js\jquery.dataTables.min.js" />
     <Content Include="assets\libs\datatables.net\License.txt" />
     <Content Include="assets\libs\dropzone\basic.css" />
@@ -1040,42 +1066,6 @@
     <Content Include="assets\libs\gmaps\lib\gmaps.styles.js" />
     <Content Include="assets\libs\gmaps\lib\gmaps.utils.js" />
     <Content Include="assets\libs\gulp-rtlcss\index.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\chalk\index.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\chalk\templates.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\at-rule.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\comment.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\container.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\css-syntax-error.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\declaration.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\input.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\lazy-result.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\list.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\map-generator.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\node.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\parse.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\parser.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\postcss.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\previous-map.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\processor.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\result.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\root.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\rule.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\stringifier.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\stringify.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\terminal-highlight.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\tokenize.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\vendor.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\warn-once.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\postcss\lib\warning.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\rtlcss\bin\rtlcss.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\rtlcss\lib\config-loader.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\rtlcss\lib\config.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\rtlcss\lib\directive-parser.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\rtlcss\lib\plugin.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\rtlcss\lib\rtlcss.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\rtlcss\lib\state.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\rtlcss\lib\util.js" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\strip-json-comments\index.js" />
     <Content Include="assets\libs\gulp-rtlcss\test.js" />
     <Content Include="assets\libs\inputmask\inputmask\bindings\inputmask.binding.js" />
     <Content Include="assets\libs\inputmask\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
@@ -1160,6 +1150,7 @@
     <Content Include="assets\libs\jquery.step\jquery.step.min.js" />
     <Content Include="assets\libs\jquery\jquery.min.js" />
     <Content Include="assets\libs\jquery\jquery.slim.min.js" />
+    <Content Include="assets\libs\jquery-editable-table\bstable.js" />
     <Content Include="assets\libs\jszip\jszip.min.js" />
     <Content Include="assets\libs\leaflet\images\layers-2x.png" />
     <Content Include="assets\libs\leaflet\images\layers.png" />
@@ -1393,6 +1384,36 @@
     <Content Include="assets\libs\pdfmake\build\pdfmake.min.js" />
     <Content Include="assets\libs\pdfmake\build\vfs_fonts.js" />
     <Content Include="assets\libs\pdfmake\webpack-standardfonts.config.js" />
+    <Content Include="assets\libs\quagga\css\quagga.css" />
+    <Content Include="assets\libs\quagga\js\quagga.js" />
+    <Content Include="assets\libs\select2-bootstrap\.gitignore" />
+    <Content Include="assets\libs\select2-bootstrap\dist\select2-bootstrap.css" />
+    <Content Include="assets\libs\select2-bootstrap\dist\select2-bootstrap.min.css" />
+    <Content Include="assets\libs\select2-bootstrap\docs\.gitignore" />
+    <Content Include="assets\libs\select2-bootstrap\docs\4.0.0.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\4.0.1.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\4.0.2.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\4.0.3.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\css\bootstrap.min.css" />
+    <Content Include="assets\libs\select2-bootstrap\docs\css\select2-bootstrap.css" />
+    <Content Include="assets\libs\select2-bootstrap\docs\favicon.ico" />
+    <Content Include="assets\libs\select2-bootstrap\docs\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\libs\select2-bootstrap\docs\images\logo.png" />
+    <Content Include="assets\libs\select2-bootstrap\docs\index.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\js\anchor.min.js" />
+    <Content Include="assets\libs\select2-bootstrap\docs\js\bootstrap.min.js" />
+    <Content Include="assets\libs\select2-bootstrap\docs\js\respond.min.js" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_includes\footer-links.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_includes\footer.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_includes\head.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_includes\navbar.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_includes\scripts.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_includes\select2-select.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_layouts\default.html" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_layouts\minimal.html" />
+    <Content Include="assets\libs\select2-bootstrap\Gruntfile.js" />
+    <Content Include="assets\libs\select2-bootstrap\tests\less_test.js" />
+    <Content Include="assets\libs\select2-bootstrap\tests\scss_test.js" />
     <Content Include="assets\libs\select2\css\select2.min.css" />
     <Content Include="assets\libs\select2\js\i18n\af.js" />
     <Content Include="assets\libs\select2\js\i18n\ar.js" />
@@ -1598,6 +1619,279 @@
     <Content Include="assets\libs\waypoints\lib\waypoints.debug.js" />
     <Content Include="assets\libs\waypoints\lib\zepto.waypoints.min.js" />
     <Content Include="assets\libs\waypoints\licenses.txt" />
+    <Content Include="assets\LTE\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker.css" />
+    <Content Include="assets\LTE\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css" />
+    <Content Include="assets\LTE\bower_components\bootstrap-datepicker\dist\js\bootstrap-datepicker.js" />
+    <Content Include="assets\LTE\bower_components\bootstrap-datepicker\dist\js\bootstrap-datepicker.min.js" />
+    <Content Include="assets\LTE\bower_components\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="assets\LTE\bower_components\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\js\npm.js" />
+    <Content Include="assets\LTE\bower_components\font-awesome\css\font-awesome.css" />
+    <Content Include="assets\LTE\bower_components\font-awesome\css\font-awesome.min.css" />
+    <Content Include="assets\LTE\bower_components\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\LTE\bower_components\jquery\dist\jquery.js" />
+    <Content Include="assets\LTE\bower_components\jquery\dist\jquery.min.js" />
+    <Content Include="assets\LTE\bower_components\moment\min\locales.js" />
+    <Content Include="assets\LTE\bower_components\moment\min\locales.min.js" />
+    <Content Include="assets\LTE\bower_components\moment\min\moment-with-locales.js" />
+    <Content Include="assets\LTE\bower_components\moment\min\moment-with-locales.min.js" />
+    <Content Include="assets\LTE\bower_components\moment\min\moment.min.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\css\select2.css" />
+    <Content Include="assets\LTE\bower_components\select2\dist\css\select2.min.css" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\af.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\ar.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\az.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\bg.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\bs.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\ca.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\cs.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\da.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\de.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\dsb.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\el.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\en.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\es.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\et.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\eu.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\fa.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\fi.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\fr.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\gl.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\he.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\hi.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\hr.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\hsb.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\hu.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\hy.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\id.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\is.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\it.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\ja.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\km.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\ko.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\lt.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\lv.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\mk.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\ms.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\nb.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\nl.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\pl.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\ps.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\pt-BR.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\pt.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\ro.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\ru.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\sk.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\sl.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\sr-Cyrl.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\sr.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\sv.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\th.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\tr.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\uk.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\vi.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\zh-CN.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\i18n\zh-TW.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\select2.full.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\select2.full.min.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\select2.js" />
+    <Content Include="assets\LTE\bower_components\select2\dist\js\select2.min.js" />
+    <Content Include="assets\LTE\dist\css\AdminLTE.css" />
+    <Content Include="assets\LTE\dist\css\AdminLTE.min.css" />
+    <Content Include="assets\LTE\dist\css\alt\AdminLTE-bootstrap-social.css" />
+    <Content Include="assets\LTE\dist\css\alt\AdminLTE-bootstrap-social.min.css" />
+    <Content Include="assets\LTE\dist\css\alt\AdminLTE-fullcalendar.css" />
+    <Content Include="assets\LTE\dist\css\alt\AdminLTE-fullcalendar.min.css" />
+    <Content Include="assets\LTE\dist\css\alt\AdminLTE-select2.css" />
+    <Content Include="assets\LTE\dist\css\alt\AdminLTE-select2.min.css" />
+    <Content Include="assets\LTE\dist\css\alt\AdminLTE-without-plugins.css" />
+    <Content Include="assets\LTE\dist\css\alt\AdminLTE-without-plugins.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-black-light.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-black-light.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-black.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-black.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-blue-light.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-blue-light.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-blue.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-blue.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-green-light.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-green-light.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-green.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-green.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-purple-light.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-purple-light.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-purple.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-purple.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-red-light.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-red-light.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-red.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-red.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-yellow-light.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-yellow-light.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-yellow.css" />
+    <Content Include="assets\LTE\dist\css\skins\skin-yellow.min.css" />
+    <Content Include="assets\LTE\dist\css\skins\_all-skins.css" />
+    <Content Include="assets\LTE\dist\css\skins\_all-skins.min.css" />
+    <Content Include="assets\LTE\dist\img\avatar.png" />
+    <Content Include="assets\LTE\dist\img\avatar04.png" />
+    <Content Include="assets\LTE\dist\img\avatar2.png" />
+    <Content Include="assets\LTE\dist\img\avatar3.png" />
+    <Content Include="assets\LTE\dist\img\avatar5.png" />
+    <Content Include="assets\LTE\dist\img\credit\american-express.png" />
+    <Content Include="assets\LTE\dist\img\credit\cirrus.png" />
+    <Content Include="assets\LTE\dist\img\credit\mastercard.png" />
+    <Content Include="assets\LTE\dist\img\credit\mestro.png" />
+    <Content Include="assets\LTE\dist\img\credit\paypal.png" />
+    <Content Include="assets\LTE\dist\img\credit\paypal2.png" />
+    <Content Include="assets\LTE\dist\img\credit\visa.png" />
+    <Content Include="assets\LTE\dist\img\default-50x50.gif" />
+    <Content Include="assets\LTE\dist\img\icons.png" />
+    <Content Include="assets\LTE\dist\img\photo1.png" />
+    <Content Include="assets\LTE\dist\img\photo2.png" />
+    <Content Include="assets\LTE\dist\img\photo3.jpg" />
+    <Content Include="assets\LTE\dist\img\photo4.jpg" />
+    <Content Include="assets\LTE\dist\img\user1-128x128.jpg" />
+    <Content Include="assets\LTE\dist\img\user2-160x160.jpg" />
+    <Content Include="assets\LTE\dist\img\user3-128x128.jpg" />
+    <Content Include="assets\LTE\dist\img\user4-128x128.jpg" />
+    <Content Include="assets\LTE\dist\img\user5-128x128.jpg" />
+    <Content Include="assets\LTE\dist\img\user6-128x128.jpg" />
+    <Content Include="assets\LTE\dist\img\user7-128x128.jpg" />
+    <Content Include="assets\LTE\dist\img\user8-128x128.jpg" />
+    <Content Include="assets\LTE\dist\js\adminlte.js" />
+    <Content Include="assets\LTE\dist\js\adminlte.min.js" />
+    <Content Include="assets\LTE\dist\js\demo.js" />
+    <Content Include="assets\LTE\dist\js\pages\dashboard.js" />
+    <Content Include="assets\LTE\dist\js\pages\dashboard2.js" />
+    <Content Include="assets\LTE\plugins\iCheck\all.css" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\aero%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\aero.css" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\aero.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\blue%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\blue.css" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\blue.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\flat%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\flat.css" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\flat.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\green%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\green.css" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\green.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\grey%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\grey.css" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\grey.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\orange%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\orange.css" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\orange.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\pink%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\pink.css" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\pink.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\purple%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\purple.css" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\purple.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\red%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\red.css" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\red.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\yellow%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\yellow.css" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\yellow.png" />
+    <Content Include="assets\LTE\plugins\iCheck\flat\_all.css" />
+    <Content Include="assets\LTE\plugins\iCheck\futurico\futurico%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\futurico\futurico.css" />
+    <Content Include="assets\LTE\plugins\iCheck\futurico\futurico.png" />
+    <Content Include="assets\LTE\plugins\iCheck\icheck.js" />
+    <Content Include="assets\LTE\plugins\iCheck\icheck.min.js" />
+    <Content Include="assets\LTE\plugins\iCheck\line\aero.css" />
+    <Content Include="assets\LTE\plugins\iCheck\line\blue.css" />
+    <Content Include="assets\LTE\plugins\iCheck\line\green.css" />
+    <Content Include="assets\LTE\plugins\iCheck\line\grey.css" />
+    <Content Include="assets\LTE\plugins\iCheck\line\line%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\line\line.css" />
+    <Content Include="assets\LTE\plugins\iCheck\line\line.png" />
+    <Content Include="assets\LTE\plugins\iCheck\line\orange.css" />
+    <Content Include="assets\LTE\plugins\iCheck\line\pink.css" />
+    <Content Include="assets\LTE\plugins\iCheck\line\purple.css" />
+    <Content Include="assets\LTE\plugins\iCheck\line\red.css" />
+    <Content Include="assets\LTE\plugins\iCheck\line\yellow.css" />
+    <Content Include="assets\LTE\plugins\iCheck\line\_all.css" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\aero%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\aero.css" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\aero.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\blue%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\blue.css" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\blue.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\green%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\green.css" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\green.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\grey%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\grey.css" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\grey.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\minimal%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\minimal.css" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\minimal.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\orange%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\orange.css" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\orange.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\pink%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\pink.css" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\pink.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\purple%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\purple.css" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\purple.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\red%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\red.css" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\red.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\yellow%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\yellow.css" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\yellow.png" />
+    <Content Include="assets\LTE\plugins\iCheck\minimal\_all.css" />
+    <Content Include="assets\LTE\plugins\iCheck\polaris\polaris%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\polaris\polaris.css" />
+    <Content Include="assets\LTE\plugins\iCheck\polaris\polaris.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\aero%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\aero.css" />
+    <Content Include="assets\LTE\plugins\iCheck\square\aero.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\blue%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\blue.css" />
+    <Content Include="assets\LTE\plugins\iCheck\square\blue.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\green%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\green.css" />
+    <Content Include="assets\LTE\plugins\iCheck\square\green.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\grey%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\grey.css" />
+    <Content Include="assets\LTE\plugins\iCheck\square\grey.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\orange%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\orange.css" />
+    <Content Include="assets\LTE\plugins\iCheck\square\orange.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\pink%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\pink.css" />
+    <Content Include="assets\LTE\plugins\iCheck\square\pink.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\purple%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\purple.css" />
+    <Content Include="assets\LTE\plugins\iCheck\square\purple.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\red%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\red.css" />
+    <Content Include="assets\LTE\plugins\iCheck\square\red.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\square%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\square.css" />
+    <Content Include="assets\LTE\plugins\iCheck\square\square.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\yellow%402x.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\yellow.css" />
+    <Content Include="assets\LTE\plugins\iCheck\square\yellow.png" />
+    <Content Include="assets\LTE\plugins\iCheck\square\_all.css" />
+    <Content Include="assets\LTE\plugins\input-mask\jquery.inputmask.date.extensions.js" />
+    <Content Include="assets\LTE\plugins\input-mask\jquery.inputmask.extensions.js" />
+    <Content Include="assets\LTE\plugins\input-mask\jquery.inputmask.js" />
+    <Content Include="assets\LTE\plugins\timepicker\bootstrap-timepicker.css" />
+    <Content Include="assets\LTE\plugins\timepicker\bootstrap-timepicker.js" />
+    <Content Include="assets\LTE\plugins\timepicker\bootstrap-timepicker.min.css" />
+    <Content Include="assets\LTE\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
@@ -1661,26 +1955,25 @@
     <Content Include="bin\System.Web.WebPages.Razor.xml" />
     <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\WebGrease.dll" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\DataBase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataBase.edmx</DependentUpon>
-      <LastGenOutput>DataBase.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\DataBase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataBase.edmx</DependentUpon>
-      <LastGenOutput>DataBase.cs</LastGenOutput>
-    </Content>
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\css\app-dark-rtl.min.css.map" />
     <Content Include="assets\css\app-dark.min.css.map" />
     <Content Include="assets\css\app-rtl.min.css.map" />
@@ -1757,9 +2050,6 @@
     <Content Include="assets\libs\gmaps\jsdoc.json" />
     <Content Include="assets\libs\gmaps\umd.hbs" />
     <Content Include="assets\libs\gmaps\yarn-error.log" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\chalk\index.js.flow" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\chalk\license" />
-    <Content Include="assets\libs\gulp-rtlcss\node_modules\strip-json-comments\license" />
     <Content Include="assets\libs\jquery-steps\build\jquery.steps-1.1.0.zip" />
     <Content Include="assets\libs\jquery-steps\build\jQuery.Steps.1.1.0.nupkg" />
     <Content Include="assets\libs\jquery-steps\nuget\jQuery.Steps.nuspec" />
@@ -1821,6 +2111,51 @@
     <Content Include="bin\roslyn\vbc.exe.config" />
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="assets\js\pages\form-validation-custom.init.js" />
+    <Content Include="assets\libs\select2-bootstrap\bower.json" />
+    <Content Include="assets\libs\select2-bootstrap\LICENSE" />
+    <Content Include="assets\libs\select2-bootstrap\package.json" />
+    <Content Include="assets\libs\select2-bootstrap\README.md" />
+    <Content Include="assets\libs\select2-bootstrap\docs\css\gh-pages.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\libs\select2-bootstrap\docs\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\libs\select2-bootstrap\docs\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\libs\select2-bootstrap\docs\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_config.yml" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_alert.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_anchorjs.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_buttons.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_common.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_extends.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_footer.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_home.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_jumbotron.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_mixins.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_navbar.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_select2-result-repository.sass" />
+    <Content Include="assets\libs\select2-bootstrap\docs\_sass\_variables.sass" />
+    <Content Include="assets\libs\select2-bootstrap\src\build.less" />
+    <Content Include="assets\libs\select2-bootstrap\src\build.scss" />
+    <Content Include="assets\libs\select2-bootstrap\src\select2-bootstrap.less" />
+    <Content Include="assets\libs\select2-bootstrap\src\select2-bootstrap.scss" />
+    <Content Include="assets\libs\select2-bootstrap\tests\support\less.patch" />
+    <Content Include="assets\libs\select2-bootstrap\tests\support\scss.patch" />
+    <Content Include="Models\DataBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataBase.edmx</DependentUpon>
+      <LastGenOutput>DataBase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DataBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataBase.edmx</DependentUpon>
+      <LastGenOutput>DataBase.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\DataBase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DataBase.Designer.cs</LastGenOutput>
@@ -1828,12 +2163,35 @@
     <Content Include="Models\DataBase.edmx.diagram">
       <DependentUpon>DataBase.edmx</DependentUpon>
     </Content>
-    <Content Include="assets\js\pages\form-validation-custom.init.js" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\LTE\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\LTE\bower_components\font-awesome\css\font-awesome.css.map" />
+    <Content Include="assets\LTE\bower_components\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\LTE\bower_components\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\LTE\bower_components\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\LTE\bower_components\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\LTE\bower_components\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="assets\LTE\dist\css\adminlte.css.map" />
+    <Content Include="assets\LTE\dist\css\adminlte.min.css.map" />
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\dropzone\basic.css" />
+    <Content Include="Scripts\dropzone\basic.min.css" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\dropzone\dropzone.css" />
+    <Content Include="Scripts\dropzone\dropzone.js" />
+    <Content Include="Scripts\dropzone\dropzone.min.css" />
+    <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -2045,6 +2403,21 @@
     <Content Include="Views\tiposmovimientosinvs\Details.cshtml" />
     <Content Include="Views\tiposmovimientosinvs\Edit.cshtml" />
     <Content Include="Views\tiposmovimientosinvs\Index.cshtml" />
+    <Content Include="Views\AuthCompany\Index.cshtml" />
+    <Content Include="Views\MntPntDeVenta\Index.cshtml" />
+    <Content Include="Views\puntoDeVenta\Index.cshtml" />
+    <Content Include="Views\inicioVenta\Index.cshtml" />
+    <Content Include="Views\Carrito\Index.cshtml" />
+    <Content Include="Views\listaProductos\Index.cshtml" />
+    <Content Include="Views\productos\Index.cshtml" />
+    <Content Include="Views\detalleProducto\Index.cshtml" />
+    <Content Include="Views\finalVenta\Index.cshtml" />
+    <Content Include="Views\bodegasinvs\Details.cshtml" />
+    <Content Include="Views\articulosinvs\Create.cshtml" />
+    <Content Include="Views\articulosinvs\Delete.cshtml" />
+    <Content Include="Views\articulosinvs\Details.cshtml" />
+    <Content Include="Views\articulosinvs\Edit.cshtml" />
+    <Content Include="Views\articulosinvs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2054,11 +2427,6 @@
     <Folder Include="assets\libs\gmaps\docs\" />
     <Folder Include="assets\libs\gmaps\examples\" />
     <Folder Include="assets\libs\gmaps\test\" />
-    <Folder Include="assets\libs\gulp-rtlcss\node_modules\chalk\types\" />
-    <Folder Include="assets\libs\gulp-rtlcss\node_modules\postcss\docs\" />
-    <Folder Include="assets\libs\gulp-rtlcss\node_modules\rtlcss\docs\" />
-    <Folder Include="assets\libs\gulp-rtlcss\node_modules\rtlcss\node_modules\" />
-    <Folder Include="assets\libs\gulp-rtlcss\node_modules\rtlcss\test\" />
     <Folder Include="assets\libs\ion-rangeslider\less\skins\" />
     <Folder Include="assets\libs\jquery-sparkline\src\" />
     <Folder Include="assets\libs\jquery-steps\demo\" />
@@ -2078,19 +2446,34 @@
     <Folder Include="assets\libs\toastr\tests\" />
     <Folder Include="assets\libs\waypoints\src\" />
     <Folder Include="assets\libs\waypoints\test\" />
+    <Folder Include="Views\MntPtoDeVenta\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -2125,10 +2508,11 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -8,82 +8,99 @@
     List<SelectListItem> companies = (List<SelectListItem>)ViewBag.companies;
 }
 
+
 <!-- plugin css -->
 <link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+
 <!-- Sweet Alert-->
 <link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 <!-- dropzone css -->
 <link href="~/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/font-awesome/css/font-awesome.min.css">
+
+<!-- daterange picker -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+<!-- bootstrap datepicker -->
+<link rel="stylesheet" href="~/assets/LTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="~/assets/LTE/plugins/iCheck/all.css">
+
+<!-- Bootstrap time Picker -->
+<link rel="stylesheet" href="~/assets/LTE/plugins/timepicker/bootstrap-timepicker.min.css">
+
+<!-- Theme style -->
+<link rel="stylesheet" href="~/assets/LTE/dist/css/AdminLTE.min.css">
+
 @using (Html.BeginForm("Create", "clases", FormMethod.Post, new { role = "form", @class = "needs-validation ", Novalidate = true }))
 {
     <div class="row">
         <div class="col-lg-12">
-            <div id="addproduct-accordion" class="custom-accordion">
-                <div class="card">
-                    <a href="#addproduct-billinginfo-collapse" class="text-dark" data-bs-toggle="collapse" aria-expanded="true" aria-controls="addproduct-billinginfo-collapse">
-                        <div class="p-4">
+            <div class="card">
+                <div class="p-4 border-top">
 
-                            <div class="media align-items-center">
-                                <div class="me-3">
-                                    <div class="avatar-xs">
-                                        <div class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                            01
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="media-body overflow-hidden">
-                                    <h5 class="font-size-16 mb-1">Crear Clase</h5>
-                                    <p class="text-muted text-truncate mb-0">Complete toda la información a continuación</p>
-                                </div>
-                                <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Encabezado</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
                             </div>
-
                         </div>
-                    </a>
-
-                    <div id="addproduct-billinginfo-collapse" class="collapse show" data-bs-parent="#addproduct-accordion">
-                        <div class="p-4 border-top">
+                        <div class="box-body">                            
 
                             <div class="text-danger mb-3 row">
                                 @Html.ValidationSummary(false)
                             </div>
 
-                            <div class="mb-3 row">
-                                @Html.LabelFor(d => d.idClase, new { @class = "col-md-2 col-form-label" })
-                                <div class="col-md-10">
-                                    <div class="input-group has-validation">
-                                        @Html.TextBoxFor(d => d.idClase, new { @class = "form-control", placeholder = "Codigo Clase", Required = true })
-                                        <div class="invalid-feedback">
-                                            Porfavor, el Codigo de Clase.
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.idClase)
+                                        <div class="has-validation">
+                                            @Html.TextBoxFor(d => d.idClase, new { @class = "form-control", placeholder = "Codigo clase", Required = true })
+                                            <div class="invalid-feedback">
+                                                Por favor, el codigo de Clase.
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(d => d.descripcion)
+                                        <div class="has-validation">
+                                            @Html.TextBoxFor(d => d.descripcion, new { @class = "form-control", placeholder = "Descripcion", Required = true })
+                                            <div class="invalid-feedback">
+                                                Por favor, ingresar la descripcion.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- /.col -->
                             </div>
-
-
-                            <div class="mb-3 row">
-                                @Html.LabelFor(d => d.descripcion, new { @class = "col-md-2 col-form-label" })
-                                <div class="col-md-10">
-                                    <div class="input-group has-validation">
-                                        @Html.TextBoxFor(d => d.descripcion, new { @class = "form-control", placeholder = "Descripcion", Required = true })
-                                        <div class="invalid-feedback">
-                                            Porfavor, ingrese la descripcion.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <!-- /.row -->
 
 
                         </div>
+                        <!-- /.box-body -->
                     </div>
-                </div>
+                    <!-- /.box -->
 
+                </div>
             </div>
         </div>
     </div>
     <!-- end row -->
+
 
     <div id="hiddenEmpresas"></div>
 
@@ -111,8 +128,7 @@
 <script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
-<!-- plugins -->
-<script src="~/assets/libs/select2/js/select2.min.js"></script>
+
 
 <!-- Sweet Alerts js -->
 <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
@@ -129,8 +145,30 @@
 
 <script src="~/assets/js/app.js"></script>
 
-<script>
-    $(document).ready(function () { $("#Group").select2(); });
-    $(document).ready(function () { $("#empresas").select2(); });
 
-</script>
+
+<!-- jQuery 3 -->
+<script src="~/assets/LTE/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="~/assets/LTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="~/assets/LTE/bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="~/assets/LTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="~/assets/LTE/bower_components/moment/min/moment.min.js"></script>
+<script src="~/assets/LTE/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="~/assets/LTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<!-- bootstrap time picker -->
+<script src="~/assets/LTE/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- SlimScroll -->
+<!-- iCheck 1.0.1 -->
+<script src="~/assets/LTE/plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<!-- AdminLTE App -->
+<script src="~/assets/LTE/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->

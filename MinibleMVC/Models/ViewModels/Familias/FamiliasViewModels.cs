@@ -16,41 +16,24 @@ namespace Minible5.Models.ViewModels
         [Display(Name = "Descripcion")]
         public string descripcion { get; set; }
 
-        
+        [Display(Name = "Cuenta contable ventas")]
         public string ctaVentas { get; set; }
 
-        
+        [Display(Name = "Cuenta contable costos")]
         public string ctaCostos { get; set; }
 
-        
+        [Display(Name = "Cuenta contable inventario")]
         public string ctaInventario { get; set; }
 
-        
+        [Display(Name = "Cuenta contable impuesto")]
         public string ctaImpuesto { get; set; }
 
-        
+        [Display(Name = "Cuenta contable rebajas")]
         public string ctaRebaja { get; set; }
 
-        
-        public decimal desviacionBlanco { get; set; }
-
-        
-        public decimal desviacionAmarillo { get; set; }
-
-        
-        public decimal desviacionRojo { get; set; }
-
-        
-        public string ctaCostoExcento { get; set; }
-
-        
+        [Display(Name = "Cuenta contable producto procesados")]
         public string ctaProdProceso { get; set; }
 
-        
-        public decimal porcentajeComision { get; set; }
-
-   
-        public string ctaVentaExcento { get; set; }
 
     }
 
@@ -82,25 +65,12 @@ namespace Minible5.Models.ViewModels
         [Display(Name = "Cuenta Contable Rebaja")]
         public string ctaRebaja { get; set; }
 
-        [Display(Name = "Desviacion Blanco")]
-        public decimal desviacionBlanco { get; set; }
-
-        [Display(Name = "Desviacion Amarillo")]
-        public decimal desviacionAmarillo { get; set; }
-
-        [Display(Name = "Desviacion Rojo")]
-        public decimal desviacionRojo { get; set; }
-
         [Display(Name = "Cuenta Contable Costo Excento")]
         public string ctaCostoExcento { get; set; }
 
         [Display(Name = "Cuenta Contable Producto Proceso")]
         public string ctaProdProceso { get; set; }
 
-        [Display(Name = "Porcentaje Comision")]
-        public decimal porcentajeComision { get; set; }
-
-        [Display(Name = "Cuenta Contable Ventas Excento")]
-        public string ctaVentaExcento { get; set; }
+        
     }
 }
