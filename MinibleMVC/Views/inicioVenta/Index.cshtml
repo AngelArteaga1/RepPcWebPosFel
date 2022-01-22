@@ -1,0 +1,376 @@
+﻿@model Minible5.Models.ViewModels.PtoDeVenta.PtoDeVentaViewModel
+@{
+    ViewBag.Title = "Apertura de Venta";
+    ViewBag.pTitle = "Apertura";
+    ViewBag.pageTitle = "Punto de Venta";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+    //Layout = "~/Views/_Shared/Layouts/_layout_colored_sidebar.cshtml";
+    List<SelectListItem> vendedores = (List<SelectListItem>)ViewBag.vendedores;
+    List<SelectListItem> bodegas = (List<SelectListItem>)ViewBag.bodegas;
+    List<SelectListItem> tipos = (List<SelectListItem>)ViewBag.tipos;
+}
+
+<!-- toastr Alert-->
+<link rel="stylesheet" type="text/css" href="~/assets/libs/toastr/build/toastr.min.css">
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<!-- DataTables -->
+<link href="~/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<!-- Select2 css -->
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/libs/select2-bootstrap/dist/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- Responsive datatable examples -->
+<link href="~/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <div class="col-xl-12">
+        @using (Html.BeginForm("Index", "inicioVenta", FormMethod.Post, new { role = "form", @class = "needs-validation ", Novalidate = true }))
+        {
+
+            @Html.ValidationSummary("", new { id = "validartions-errors", @class = "hidden" })
+            <div class="custom-accordion" id="datos-factura">
+                <div class="card">
+                    <a href="#checkout-billinginfo-collapse" class="text-dark" data-bs-toggle="collapse" aria-expanded="true" aria-controls="checkout-billinginfo-collapse">
+                        <div class="p-4">
+
+                            <div class="media align-items-center">
+                                <div class="me-3">
+                                    <i class="uil uil-receipt text-primary h2"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h5 class="font-size-16 mb-1">Información del Cliente</h5>
+                                    <p class="text-muted text-truncate mb-0">Ingrese los datos del cliente a facturar</p>
+                                </div>
+                                <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                            </div>
+
+                        </div>
+                    </a>
+
+                    <div id="checkout-billinginfo-collapse" class="collapse show" data-bs-parent="#datos-factura">
+                        <div class="p-4 border-top">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        @Html.LabelFor(d => d.nit)
+                                        <div class="input-group has-validation">
+                                            <button type="button" class="input-group-text" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable"><i class="uil-search"></i></button>
+                                            @Html.TextBoxFor(d => d.nit, new { @class = "form-control", placeholder = "Ingrese NIT", id = "nit-input", Required = true })
+                                            <div class="invalid-feedback">
+                                                Porfavor, ingrese el nit del cliente.
+                                            </div>
+                                        </div>
+                                        <p id="log"></p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        @Html.LabelFor(d => d.nombre)
+                                        @Html.TextBoxFor(d => d.nombre, new { @class = "form-control", placeholder = "Ingrese nombre", id = "nombre-input", Required=true })
+                                        <div class="invalid-feedback">
+                                            Porfavor, ingrese el nombre del cliente.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        @Html.LabelFor(d => d.email)
+                                        @Html.TextBoxFor(d => d.email, new { @class = "form-control", placeholder = "Ingrese email", id = "email-input" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3 has-validation form-group">
+                                        @Html.LabelFor(d => d.vendedor)
+                                        @Html.DropDownListFor(d => d.vendedor, vendedores, "Seleccione el vendedor", new { @class = "form-control select2", required=true })
+                                        <div class="invalid-feedback">
+                                            Porfavor, seleccione el vendedor de la transacción.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-3">
+                                        @Html.LabelFor(d => d.direccion)
+                                        @Html.TextAreaFor(d => d.direccion, new { @class = "form-control", rows = "2", placeholder = "Ingrese dirección completa", id = "direccion-input" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="#checkout-shippinginfo-collapse" class="collapsed text-dark" data-bs-toggle="collapse" aria-haspopup="true" aria-expanded="false" aria-controls="checkout-shippinginfo-collapse">
+                        <div class="p-4">
+
+                            <div class="media align-items-center">
+                                <div class="me-3">
+                                    <i class="uil uil-truck text-primary h2"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h5 class="font-size-16 mb-1">Información de la Bodega</h5>
+                                    <p class="text-muted text-truncate mb-0">Seleccione la bodega donde se tomará la existencia para facturar</p>
+                                </div>
+                                <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                            </div>
+
+                        </div>
+                    </a>
+
+                    <div id="checkout-shippinginfo-collapse" class="collapse" data-bs-parent="#datos-factura">
+                        <div class="p-4 border-top">
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.bodega, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(d => d.bodega, bodegas, "Seleccione la bodega", new { @class = "form-control select2", required = true })
+                                    <div class="invalid-feedback">
+                                        Porfavor, seleccione la bodega a utilizar.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="#checkout-paymentinfo-collapse" class="collapsed text-dark" data-bs-toggle="collapse" aria-haspopup="true" aria-expanded="false" aria-controls="checkout-paymentinfo-collapse">
+                        <div class="p-4">
+
+                            <div class="media align-items-center">
+                                <div class="me-3">
+                                    <i class="uil uil-file-question-alt  text-primary h2"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h5 class="font-size-16 mb-1">Información de la Serie</h5>
+                                    <p class="text-muted text-truncate mb-0">Seleccione la serie y tipo de documento inicial a emitir</p>
+                                    <!--p class="text-muted text-truncate mb-0">Por favor seleccione primero la bodega para poder seleccionar la serie</!--p-->
+                                </div>
+                                <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                            </div>
+
+                        </div>
+                    </a>
+
+                    <div id="checkout-paymentinfo-collapse" class="collapse" data-bs-parent="#datos-factura">
+                        <div class="p-4 border-top">
+                            <div class="mb-3 row">
+                                @Html.LabelFor(d => d.serie, new { @class = "col-md-2 col-form-label" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(d => d.serie, tipos, "Seleccione la serie", new { @class = "form-control select2", required = true })
+                                    <div class="invalid-feedback">
+                                        Porfavor, seleccione la serie a utilizar.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row my-4">
+                <div class="col">
+                    <div class="text-sm-end mt-2 mt-sm-0">
+                        <button type="submit" class="btn btn-success">
+                            <i class="uil uil-shopping-cart-alt me-1"></i> Guardar y Agregar Artículos
+                        </button>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row-->
+        }
+    </div>
+</div>
+<!-- end row -->
+<!-- begin modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Busqueda de cliente</h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive mb-4">
+                    <table class="table table-centered datatable dt-responsive nowrap table-card-list" id="client-table"
+                           style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;">
+                        <thead>
+                            <tr class="bg-transparent">
+                                <th>NIT</th>
+                                <th>Nombre</th>
+                                <th style="width: 120px;">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+<!-- validations plugin -->
+<script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+<script src="~/assets/js/pages/form-validation-inicio-venta.init.js"></script>
+
+<!-- toastr plugin -->
+<script src="~/assets/libs/toastr/build/toastr.min.js"></script>
+<script src="~/assets/js/pages/notificaciones.init.js"></script>
+
+<!-- Required datatable js -->
+<script src="~/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Select2 -->
+<script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+<script>
+    //Esto es para que busque el NIT cada vez que pierda el focus en el input
+    $(document).ready(function () {
+        /************ MOSTRAMOS SI EXISTE ERROR ************/
+        if ("@ViewBag.error" != "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "@ViewBag.error"
+            });
+        }
+        if ($("#validartions-errors").hasClass("validation-summary-errors")) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                html: `@Html.ValidationSummary() `
+            });
+        }
+
+
+        /**************** EVENTOS DE LA WEB ****************/
+        $("#bodega").change(function () {
+            setTiposSeries($("#bodega").val());
+        });
+        $("#checkout-billinginfo-collapse").on('change', '#nit-input', function () {
+            //Aqui tenemos que consular si el NIT existe
+            let nit = $("#nit-input").val();
+            setClient(nit);
+        });
+
+
+        /***** INICIALIZAMOS/SETEAR DROPDOWN DE SERIES *****/
+        setTiposSeries($("#bodega").val());
+        function setTiposSeries(idInternoBodega) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("getTiposSeries", "inicioVenta")/?idInternoBodega=' + idInternoBodega,
+                success: function (data) {
+                    $('#serie').empty();
+                    var defaultOption = new Option("Seleccione la serie", "", false, false);
+                    $("#serie").append(defaultOption);
+                    for (var i = 0; i < data.length; i++) {
+                        var newOption = new Option(data[i].Text, data[i].Value, data[i].Selected, data[i].Selected);
+                        $("#serie").append(newOption);
+                    }
+                }
+            });
+        }
+
+
+        /*********** INICIALIZAMOS LA DATATABLE ************/
+        clientsTable = $("#client-table").DataTable({
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ usuarios",
+                "zeroRecords": "No encontrado, lo sentimos   :'(",
+                "info": "Página _PAGE_ de _PAGES_",
+                "infoEmpty": "No existen registros",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                'loadingRecords': '<div class="spinner"><i class="mdi mdi-spin mdi-loading spin-icon"></i></div>',
+                'processing': '<div class="spinner"><i class="mdi mdi-spin mdi-loading spin-icon"></i></div>',
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "@Url.Content("~/puntoDeVenta/GetClients")",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "pageLength": 10,
+            "filter": true,
+            "data": null,
+            "columns": [
+                { "data": "nit", "name": "nit" },
+                { "data": "nombre", "name": "nombre" },
+                {
+                    "data": "nit2", "render": function (data) {
+                        return '<button type="button" onclick="setClient(\'' + data + '\')" data-bs-dismiss="modal" aria-label="Close" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">Seleccionar</button>'
+                    },
+                    "orderable": false,
+                    "searchable": false
+                }
+            ]
+        });
+
+
+        /************ INICIALIZAMOS LOS SELECTS ************/
+        $("#vendedor").select2({ theme: "bootstrap" });
+        $("#bodega").select2({ theme: "bootstrap" });
+        $("#serie").select2({ theme: "bootstrap" });
+    });
+
+    /*********** SETEAR CLIENTE ************/
+    function setClient(nit) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GetClient", "puntoDeVenta")/?nit=' + nit,
+            success: function (data) {
+                if (data.success) {
+                    //Seteamos los inputs con los valores del cliente
+                    $("#nit-input").val(nit);
+                    $("#nombre-input").val(data.nombre);
+                    $("#email-input").val(data.email);
+                    $("#direccion-input").val(data.direccion);
+                    //notificamos que se encontro el cliente
+                    toastr["success"]("Datos del cliente asignados.");
+                } else {
+                    //Seteamos los inputs con los valores del cliente
+                    $("#nombre-input").val("");
+                    $("#email-input").val("");
+                    $("#direccion-input").val("");
+                    //notificamos que no se encontro el cliente
+                    toastr["info"]("El cliente es nuevo, ingrese sus datos.");
+                }
+            }
+        });
+    }
+</script>

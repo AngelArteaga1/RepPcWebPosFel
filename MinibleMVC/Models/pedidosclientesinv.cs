@@ -17,9 +17,7 @@ namespace Minible5.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public pedidosclientesinv()
         {
-            this.movimientosinv = new HashSet<movimientosinv>();
             this.pedidosclientesinvdetalle = new HashSet<pedidosclientesinvdetalle>();
-            this.traslados = new HashSet<traslados>();
         }
     
         public int IdInternoPedidosClientes { get; set; }
@@ -57,19 +55,18 @@ namespace Minible5.Models
         public string Aceptacheques { get; set; }
         public Nullable<System.DateTime> Fecha_baja { get; set; }
         public string status { get; set; }
+        public string nit { get; set; }
+        public string direccion { get; set; }
+        public string facturado { get; set; }
         public string Codigo_Empresa { get; set; }
         public int IdInternoBodegas { get; set; }
         public int IdInternoVendedores { get; set; }
         public int IdInternoTIposMovimientosSeries { get; set; }
     
-        public virtual bodegasinv bodegasinv { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<movimientosinv> movimientosinv { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pedidosclientesinvdetalle> pedidosclientesinvdetalle { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<traslados> traslados { get; set; }
-        public virtual tiposmovimientosseriesinv tiposmovimientosseriesinv { get; set; }
         public virtual vendedores vendedores { get; set; }
+        public virtual bodegasinv bodegasinv { get; set; }
+        public virtual tiposmovimientosseriesinv tiposmovimientosseriesinv { get; set; }
     }
 }

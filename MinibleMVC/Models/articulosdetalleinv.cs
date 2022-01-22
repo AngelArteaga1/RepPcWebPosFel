@@ -19,6 +19,7 @@ namespace Minible5.Models
         {
             this.cotizacionesinvdetalle = new HashSet<cotizacionesinvdetalle>();
             this.movimientosdetalleinv = new HashSet<movimientosdetalleinv>();
+            this.pedidosclientesinvdetalle = new HashSet<pedidosclientesinvdetalle>();
         }
     
         public int IdInternoArticulosDetalle { get; set; }
@@ -67,6 +68,8 @@ namespace Minible5.Models
         public virtual ICollection<cotizacionesinvdetalle> cotizacionesinvdetalle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<movimientosdetalleinv> movimientosdetalleinv { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<pedidosclientesinvdetalle> pedidosclientesinvdetalle { get; set; }
         public virtual articulosinv articulosinv { get; set; }
         public virtual bodegasinv bodegasinv { get; set; }
     }

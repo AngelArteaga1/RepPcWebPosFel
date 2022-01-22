@@ -17,6 +17,7 @@ namespace Minible5.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public security_users()
         {
+            this.movimientoscaja = new HashSet<movimientoscaja>();
             this.security_company_users = new HashSet<security_company_users>();
         }
     
@@ -33,7 +34,11 @@ namespace Minible5.Models
         public Nullable<System.DateTime> Fecha_baja { get; set; }
         public string status { get; set; }
         public int IdInternoSecurityGroup { get; set; }
+        public string Acceso_multibodegas { get; set; }
+        public Nullable<int> IdInternoBodegas { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<movimientoscaja> movimientoscaja { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<security_company_users> security_company_users { get; set; }
         public virtual security_groups security_groups { get; set; }

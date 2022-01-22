@@ -43,6 +43,7 @@ namespace Minible5.Models
         public string status { get; set; }
         public string Codigo_Empresa { get; set; }
         public int IdInternoTiposMovimientos { get; set; }
+        public Nullable<int> IdInternoBodegas { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<importacionescargosinv> importacionescargosinv { get; set; }

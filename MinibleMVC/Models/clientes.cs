@@ -97,7 +97,6 @@ namespace Minible5.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<bitacora> bitacora { get; set; }
-        public virtual bodegasinv bodegasinv { get; set; }
         public virtual clases clases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cotizacionesinv> cotizacionesinv { get; set; }
@@ -107,5 +106,6 @@ namespace Minible5.Models
         public virtual sectores sectores { get; set; }
         public virtual vendedores vendedores { get; set; }
         public virtual zonas zonas { get; set; }
+        public virtual bodegasinv bodegasinv { get; set; }
     }
 }

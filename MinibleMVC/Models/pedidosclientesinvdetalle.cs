@@ -23,6 +23,7 @@ namespace Minible5.Models
         public Nullable<decimal> PorcentajeDescuento { get; set; }
         public Nullable<decimal> Descuento { get; set; }
         public Nullable<decimal> Impuesto { get; set; }
+        public string IdBodega { get; set; }
         public Nullable<double> unidades_e { get; set; }
         public string Codigo_Empresa { get; set; }
         public Nullable<double> Precio_UnitarioE { get; set; }
@@ -30,10 +31,12 @@ namespace Minible5.Models
         public string Autorizacion { get; set; }
         public string NombreArticulo { get; set; }
         public Nullable<decimal> TasaCambio { get; set; }
+        public string descripcionarticulo { get; set; }
+        public int IdInternoArticulosDetalle { get; set; }
+        public string es_exento { get; set; }
         public int IdInternoPedidosClientes { get; set; }
-        public int IdInternoArticulos { get; set; }
     
-        public virtual articulosinv articulosinv { get; set; }
+        public virtual articulosdetalleinv articulosdetalleinv { get; set; }
         public virtual pedidosclientesinv pedidosclientesinv { get; set; }
     }
 }

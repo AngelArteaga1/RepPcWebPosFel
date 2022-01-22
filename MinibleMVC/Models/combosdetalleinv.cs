@@ -17,7 +17,6 @@ namespace Minible5.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public combosdetalleinv()
         {
-            this.movimientosdetalleinv = new HashSet<movimientosdetalleinv>();
             this.movimientosdetallehistoricosinv = new HashSet<movimientosdetallehistoricosinv>();
         }
     
@@ -32,8 +31,6 @@ namespace Minible5.Models
         public int IdInternoArticulos { get; set; }
     
         public virtual articulosinv articulosinv { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<movimientosdetalleinv> movimientosdetalleinv { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<movimientosdetallehistoricosinv> movimientosdetallehistoricosinv { get; set; }
     }

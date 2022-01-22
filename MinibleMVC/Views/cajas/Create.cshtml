@@ -1,0 +1,253 @@
+﻿@model Minible5.Models.ViewModels.Cajas.CajasViewModel
+@{
+    ViewBag.Title = "Crear Caja";
+    ViewBag.pTitle = "Crear Caja";
+    ViewBag.pageTitle = "Cajas";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+}
+
+<!-- toastr Alert-->
+<link rel="stylesheet" type="text/css" href="~/assets/libs/toastr/build/toastr.min.css">
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<!-- DataTables -->
+<link href="~/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<!-- Select2 css -->
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/libs/select2-bootstrap/dist/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- Responsive datatable examples -->
+<link href="~/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <div class="col-xl-12">
+        @using (Html.BeginForm("Index", "inicioVenta", FormMethod.Post, new { role = "form", @class = "needs-validation ", Novalidate = true }))
+        {
+
+            @Html.ValidationSummary("", new { id = "validartions-errors", @class = "hidden" })
+            <div class="custom-accordion" id="datos-factura">
+                <div class="card">
+                    <a href="#checkout-billinginfo-collapse" class="text-dark" data-bs-toggle="collapse" aria-expanded="true" aria-controls="checkout-billinginfo-collapse">
+                        <div class="p-4">
+
+                            <div class="media align-items-center">
+                                <div class="me-3">
+                                    <i class="uil uil-moneybag text-primary h2"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h5 class="font-size-16 mb-1">Información de la Caja</h5>
+                                    <p class="text-muted text-truncate mb-0">Ingrese los datos de la caja a crear</p>
+                                </div>
+                                <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                            </div>
+
+                        </div>
+                    </a>
+
+                    <div id="checkout-billinginfo-collapse" class="collapse show" data-bs-parent="#datos-factura">
+                        <div class="p-4 border-top">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        @Html.LabelFor(d => d.fechaInicio)
+                                        <div class="input-group has-validation">
+                                            @Html.TextBoxFor(d => d.fechaInicio, new { @class = "form-control", type = "datetime-local", Required = true })
+                                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                            <div class="invalid-feedback">
+                                                Porfavor, ingrese el nit del cliente.
+                                            </div>
+                                        </div>
+                                        <p id="log"></p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        @Html.LabelFor(d => d.fechaFinal)
+                                        <div class="input-group has-validation">
+                                            @Html.TextBoxFor(d => d.fechaFinal, new { @class = "form-control", type = "datetime-local", Required = true })
+                                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                            <div class="invalid-feedback">
+                                                Porfavor, ingrese el nit del cliente.
+                                            </div>
+                                        </div>
+                                        <p id="log"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-3">
+                                        @Html.LabelFor(d => d.valorInicial)
+                                        @Html.TextBoxFor(d => d.valorInicial, new { @class = "form-control input-mask text-start", id = "input-valor-inicial" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="#checkout-shippinginfo-collapse" class="collapsed text-dark" data-bs-toggle="collapse" aria-haspopup="true" aria-expanded="false" aria-controls="checkout-shippinginfo-collapse">
+                        <div class="p-4">
+
+                            <div class="media align-items-center">
+                                <div class="me-3">
+                                    <i class="uil-money-insert text-primary h2"></i>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h5 class="font-size-16 mb-1">Información de los Ingresos/Salidas</h5>
+                                    <p class="text-muted text-truncate mb-0">Agregue detalles de la caja en cuestión</p>
+                                </div>
+                                <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                            </div>
+
+                        </div>
+                    </a>
+
+                    <div id="checkout-shippinginfo-collapse" class="collapse" data-bs-parent="#datos-factura">
+                        <div class="p-4 border-top">
+                            <!--div class="repeater">
+        <div id="table-bancos">
+            <div class="row">
+                <div class="mb-3  col-md-6">
+                    <label class="form-label" for="tipo-0">Tipo</label>
+                    <input type="text" id="tipo-0" class="form-control form-control-sm" value="Efectivo" readonly/>
+                </div>
+
+                <div class="mb-3  col-md-6">
+                    <label class="form-label" for="fecha-0">Fecha</label>
+                    <input id="fecha-0" class="form-control form-control-sm" type="datetime-local" />
+                </div>
+
+                <div class="mb-3  col-md-6">
+                    <label class="form-label" for="ensabu-0">En/Sa/Vu</label>
+                    <input type="text" id="tipo-0" class="form-control form-control-sm" value="Salida" readonly/>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label" for="tipomov-0">Tipo</label>
+                    <input type="text" id="tipomov-0" class="form-control form-control-sm" />
+                </div>
+
+                <div class="mb-3  col-md-6">
+                    <label class="form-label" for="serie-0">Serie</label>
+                    <input type="text" id="serie-0" class="form-control form-control-sm" />
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label" for="numero-0">Numero</label>
+                    <input type="text" id="numero-0" class="form-control form-control-sm" />
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label" for="descripcion-0">Descripción</label>
+                    <textarea id="descripcion-0" class="form-control form-control-sm"></textarea>
+                </div>
+
+                <div class=" col-md-6 align-self-center d-grid">
+                    <input type="button" class="btn btn-primary btn-block" value="Eliminar" />
+                </div>
+            </div>
+            <input type="button" id="addCheque" class="btn btn-success mt-3 mt-lg-0" value="Añadir" />
+        </div>
+    </!--div-->
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a href='@Url.Action("Create", "cajas")' type="button" class="btn btn-success waves-effect waves-light mb-3"><i class="mdi mdi-plus me-1"></i> Agregar Caja</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <div class="table-responsive mb-4">
+                                        <table class="table table-centered datatable dt-responsive nowrap table-card-list" id="articulosTable"
+                                               style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;">
+                                            <thead>
+                                                <tr class="bg-transparent">
+                                                    <th>Tipo</th>
+                                                    <th>Fecha</th>
+                                                    <th>En/Sa/Vu</th>
+                                                    <th>Tipo</th>
+                                                    <th>Serie</th>
+                                                    <th>Número</th>
+                                                    <th>Descripción</th>
+                                                    <th style="width: 120px;">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-4">
+                <div class="col">
+                    <div class="text-sm-end mt-2 mt-sm-0">
+                        <button type="submit" class="btn btn-success">
+                            <i class="uil uil-shopping-cart-alt me-1"></i> Guardar
+                        </button>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row-->
+        }
+    </div>
+</div>
+<!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+<!-- validations plugin -->
+<script src="~/assets/libs/parsleyjs/parsley.min.js"></script>
+<script src="~/assets/js/pages/form-validation-inicio-venta.init.js"></script>
+
+<!-- Select2 -->
+<script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+<!-- form mask -->
+<script src="~/assets/libs/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+<script>
+    //Esto es para que busque el NIT cada vez que pierda el focus en el input
+    $(document).ready(function () {
+        /************ MOSTRAMOS SI EXISTE ERROR ************/
+        if ("@ViewBag.error" != "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "@ViewBag.error"
+            });
+        }
+        if ($("#validartions-errors").hasClass("validation-summary-errors")) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                html: `@Html.ValidationSummary() `
+            });
+        }
+
+        $("#input-valor-inicial").inputmask({
+            'alias': 'numeric',
+            'groupSeparator': ',',
+            'digits': 2,
+            'digitsOptional': false,
+            'prefix': 'Q ',
+            'placeholder': '0'
+        });
+    });
+</script>

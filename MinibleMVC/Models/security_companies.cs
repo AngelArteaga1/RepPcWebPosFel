@@ -60,6 +60,24 @@ namespace Minible5.Models
         public string CuentaContableCliente { get; set; }
         public Nullable<System.DateTime> Fecha_baja { get; set; }
         public string status { get; set; }
+        public string fel_emisor_afiliacion_iva { get; set; }
+        public Nullable<int> fel_emisor_codigo_establecimiento { get; set; }
+        public string fel_emisor_codigo_postal { get; set; }
+        public string fel_emisor_correo_emisor { get; set; }
+        public string fel_emisor_pais { get; set; }
+        public string fel_emisor_departamento { get; set; }
+        public string fel_emisor_municipio { get; set; }
+        public string fel_emisor_nit { get; set; }
+        public string fel_emisor_razon_social { get; set; }
+        public string fel_emisor_nombre_comercial { get; set; }
+        public string fel_usuario { get; set; }
+        public string fel_llave_general { get; set; }
+        public string fel_llave_pfx { get; set; }
+        public string fel_almacenar_local { get; set; }
+        public string fel_enviar_correo_cliente { get; set; }
+        public string fel_emisor_direccion { get; set; }
+        public string fel_almacenar_xml { get; set; }
+        public string maneja_sucursales { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<security_company_users> security_company_users { get; set; }

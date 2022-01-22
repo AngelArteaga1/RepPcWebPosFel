@@ -31,8 +31,8 @@ namespace Minible5.Models
         public string Codigo_Empresa { get; set; }
         public int IdInternoBodegas { get; set; }
     
-        public virtual bodegasinv bodegasinv { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ofertasdetalle> ofertasdetalle { get; set; }
+        public virtual bodegasinv bodegasinv { get; set; }
     }
 }

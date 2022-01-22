@@ -76,10 +76,10 @@ namespace Minible5.Models
         public int IdInternoVendedores { get; set; }
         public int IdInternoTIposMovimientosSeries { get; set; }
     
-        public virtual bodegasinv bodegasinv { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<movimientosdetallehistoricosinv> movimientosdetallehistoricosinv { get; set; }
-        public virtual tiposmovimientosseriesinv tiposmovimientosseriesinv { get; set; }
         public virtual vendedores vendedores { get; set; }
+        public virtual bodegasinv bodegasinv { get; set; }
+        public virtual tiposmovimientosseriesinv tiposmovimientosseriesinv { get; set; }
     }
 }

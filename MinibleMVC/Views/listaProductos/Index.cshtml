@@ -1,0 +1,189 @@
+﻿@model Minible5.Models.ViewModels.PtoDeVenta.PtoDeVentaViewModel
+@{
+    ViewBag.Title = "Lista de Productos";
+    ViewBag.pTitle = "Lista de Productos";
+    ViewBag.pageTitle = "Punto de Venta";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+}
+
+<!-- DataTables -->
+<link href="~/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Responsive datatable examples -->
+<link href="~/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Sweet Alert-->
+<link rel="stylesheet" type="text/css" href="~/assets/libs/toastr/build/toastr.min.css">
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+
+    <div class="col-xl-8">
+        <br />
+        <div class="table-responsive mb-4">
+            <table class="table table-centered datatable dt-responsive nowrap table-card-list" id="productsTable"
+                   style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;">
+                <thead>
+                    <tr class="bg-transparent">
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Código</th>
+                        <th>Existencia</th>
+                        <th>U. de Medida</th>
+                        <th style="width: 120px;">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="mt-5 mt-lg-0">
+            <div class="card border shadow-none">
+                <div class="card-header bg-transparent border-bottom py-3 px-4">
+                    <h5 class="font-size-16 mb-0">Resumen de Orden <span class="float-end">#@Model.numdoc</span></h5>
+                    <p class="font-size-16 mb-0">Serie: <span class="float-end">@Model.nombreSerie</span></p>
+                    <br />
+                    <p class="font-size-16 mb-0">NIT: <span class="float-end">@Model.nit</span></p>
+                    <p class="font-size-16 mb-0">Cliente: <span class="float-end">@Model.nombre</span></p>
+                    <br />
+                    <p class="font-size-16 mb-0">Bodega: <span class="float-end">@Model.nombrebodega</span></p>
+                    <p class="font-size-16 mb-0">Vendedor: <span class="float-end">@Model.nombreVendedor</span></p>
+
+                </div>
+                <div class="card-body p-4">
+
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <tbody>
+                                <tr>
+                                    <td>Sub Total :</td>
+                                    <td class="text-end">Q @String.Format("{0:0.00}", Model.subtotal)</td>
+                                </tr>
+                                <tr>
+                                    <td>Descuento : </td>
+                                    <td class="text-end">- Q @String.Format("{0:0.00}", Model.descuento)</td>
+                                </tr>
+                                <tr class="bg-light">
+                                    <th>Total :</th>
+                                    <td class="text-end">
+                                        <span class="fw-bold">
+                                            Q @String.Format("{0:0.00}", Model.total)
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end table-responsive -->
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-sm-6">
+                <a href=@Url.Action("Index", "carrito") class="btn btn-link text-muted">
+                    <i class="uil uil-arrow-left me-1"></i> Ir al Carrito
+                </a>
+            </div> <!-- end col -->
+        </div> <!-- end row-->
+    </div>
+</div>
+<!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+<!-- Required datatable js -->
+<script src="~/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- toastr plugin -->
+<script src="~/assets/libs/toastr/build/toastr.min.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+<!-- init js -->
+<script>
+    $(document).ready(function () {
+        /************ INICIALIZAMOS LA DATATABLE ************/
+        productsTable = $("#productsTable").DataTable({
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ usuarios",
+                "zeroRecords": "No encontrado, lo sentimos   :'(",
+                "info": "Página _PAGE_ de _PAGES_",
+                "infoEmpty": "No existen registros",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                'loadingRecords': '<div class="spinner"><i class="mdi mdi-spin mdi-loading spin-icon"></i></div>',
+                'processing': '<div class="spinner"><i class="mdi mdi-spin mdi-loading spin-icon"></i></div>',
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "@Url.Content("~/listaProductos/GetItems")",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "pageLength": 10,
+            "filter": true,
+            "data": null,
+            "columns": [
+                {
+                    "data": "descripcion", "name": "descripcion", "render": function (data, type, row) {
+                        return '<img src="' + row.foto + '" class="avatar-xs rounded-circle me-2">' +
+                            '<a class="text-body" href="@Url.Action("Index", "detalleProducto")/?id=' + row.id + '"> ' + data + '</a>'
+                    }
+                },
+                {
+                    "data": "precio", "name": "precio", "render": function (data) {
+                        return 'Q ' + data
+                    }
+                },
+                { "data": "codigo", "name": "codigo" },
+                { "data": "existencia", "name": "existencia" },
+                { "data": "unidadMedida", "name": "unidadMedida" },
+                {
+                    "data": "id", "render": function (data) {
+                        return '<button type="button" onclick="addProduct(' + data + ')" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"><i class="uil-shopping-cart-alt"></i> Añadir</button>'
+                },
+                    "orderable": false,
+                    "searchable": false
+                }
+            ]
+        })
+    });
+    /************ FUNCION PARA AGREGAR AL CARRITO ************/
+    function addProduct(id) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddProduct", "carrito")/?id=' + id,
+                success: function (data) {
+                    if (data.success) {
+                            var url = '@Url.Action("Index", "carrito")';
+                            window.location.href = url;
+                    } else {
+                        toastr["info"]("El cliente es nuevo, ingrese sus datos.");
+                    }
+                }
+            });
+        }
+</script>

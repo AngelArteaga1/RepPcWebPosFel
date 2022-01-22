@@ -1,0 +1,558 @@
+﻿@model Minible5.Models.ViewModels.PtoDeVenta.PtoDeVentaViewModel
+@using Minible5.Models.ViewModels.PtoDeVenta
+@{
+    ViewBag.Title = "Carrito";
+    ViewBag.pTitle = "Carrito";
+    ViewBag.pageTitle = "Punto de Venta";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+    List<ListItemsViewModel> articulos = (List<ListItemsViewModel>)ViewBag.articulos;
+}
+
+<!-- bootstrap-touchspin -->
+<link href="~/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+<!-- Sweet Alert-->
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<!-- Quagga Reader-->
+<link href="~/assets/libs/quagga/css/quagga.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <div class="col-xl-8">
+
+        <!-- Dynamic items list -->
+        @if (articulos.Count() == 0)
+        {
+            <div class="row" id="empty-info">
+                <div class="col-lg-12">
+                    <div class="text-center">
+
+                        <div class="row justify-content-center mt-5">
+                            <div class="col-lg-4 col-sm-5">
+                                <div class="maintenance-img">
+                                    <img src="~/assets/images/coming-soon-img.png" alt="" class="img-fluid mx-auto d-block">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-5">No se han agregado artículos</h4>
+                        <p class="text-muted">Por favor agregue los articulos que desee facturar.</p>
+
+                        <div class="row justify-content-center mt-5">
+                            <div class="col-lg-10">
+                                <div data-countdown="2021/12/31" class="counter-number"></div>
+
+                            </div> <!-- end col-->
+                        </div> <!-- end row-->
+
+                    </div>
+                </div>
+            </div>
+            <div class="overflow-auto d-none" style="max-height:700px;" id="list-items"></div>
+        }
+        else
+        {
+            <div class="row d-none" id="empty-info">
+                <div class="col-lg-12">
+                    <div class="text-center">
+
+                        <div class="row justify-content-center mt-5">
+                            <div class="col-lg-4 col-sm-5">
+                                <div class="maintenance-img">
+                                    <img src="~/assets/images/coming-soon-img.png" alt="" class="img-fluid mx-auto d-block">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-5">No se han agregado artículos</h4>
+                        <p class="text-muted">Por favor agregue los articulos que desee facturar.</p>
+
+                        <div class="row justify-content-center mt-5">
+                            <div class="col-lg-10">
+                                <div data-countdown="2021/12/31" class="counter-number"></div>
+
+                            </div> <!-- end col-->
+                        </div> <!-- end row-->
+
+                    </div>
+                </div>
+            </div>
+            <div style="max-height:700px;" class="overflow-auto" id="list-items">
+                @foreach (var articulo in articulos)
+                {
+                    <div class="card border shadow-none" id="@articulo.id">
+                        <div class="card-body">
+
+                            <div class="media border-bottom pb-3">
+                                <div class="me-4">
+                                    <img src="@articulo.foto" alt="" class="avatar-lg">
+                                </div>
+                                <div class="media-body align-self-center overflow-hidden">
+                                    <div>
+                                        <h5 class="text-truncate font-size-16"><a href="@Url.Action("Index", "detalleProducto")/?id=@articulo.id" class="text-dark">@articulo.descripcion</a></h5>
+                                        <p class="mb-1">Unidad de Medida : <span class="fw-medium">@articulo.unidadMedida</span></p>
+                                        <p>Existencia : <span class="fw-medium">@articulo.existencia</span></p>
+                                    </div>
+                                </div>
+                                <div class="ml-2">
+                                    <ul class="list-inline mb-0 font-size-16">
+                                        <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                            <a href="#" class="text-muted px-2 eliminar" id="eliminar-@articulo.id">
+                                                <i class="uil uil-trash-alt"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="Add Wishlist">
+                                            <a href="#" class="text-muted px-2">
+                                                <i class="uil uil-heart"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mt-3">
+                                            <p class="text-muted mb-2">Precio</p>
+                                            <h5 class="font-size-16" id="precio-@articulo.id">Q @String.Format("{0:0.00}", articulo.precio)</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mt-3">
+                                            <p class="text-muted mb-2">Unidades</p>
+                                            <div style="width: 110px;" class="product-cart-touchspin">
+                                                <input type="text" id="unidades-@articulo.id" value="@articulo.unidades">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mt-3">
+                                            <p class="text-muted mb-2">% Descuento</p>
+                                            <div style="width: 110px;" class="product-cart-touchspin">
+                                                <input data-toggle="touchspin" type="text" id="porcentaje-@articulo.id" value="@articulo.descuento">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mt-3">
+                                            <p class="text-muted mb-2">Descuento</p>
+                                            <h5 class="font-size-16" id="descuento-@articulo.id">- Q @String.Format("{0:0.00}", articulo.descuentoPrecio)</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mt-3">
+                                            <p class="text-muted mb-2">Total</p>
+                                            <h5 class="font-size-16" id="subtotal-@articulo.id">Q @String.Format("{0:0.00}", articulo.subtotal)</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end card -->
+                }
+            </div>
+        }
+
+    </div>
+
+    <div class="col-xl-4">
+        <div class="mt-5 mt-lg-0">
+            <div class="card border shadow-none">
+                <div class="card-header bg-transparent border-bottom py-3 px-4">
+                    <h5 class="font-size-16 mb-0">Resumen de Orden <span class="float-end">#@Model.numdoc</span></h5>
+                    <p class="font-size-16 mb-0">Serie: <span class="float-end">@Model.nombreSerie</span></p>
+                    <br />
+                    <p class="font-size-16 mb-0">NIT: <span class="float-end">@Model.nit</span></p>
+                    <p class="font-size-16 mb-0">Cliente: <span class="float-end">@Model.nombre</span></p>
+                    <br />
+                    <p class="font-size-16 mb-0">Bodega: <span class="float-end">@Model.nombrebodega</span></p>
+                    <p class="font-size-16 mb-0">Vendedor: <span class="float-end">@Model.nombreVendedor</span></p>
+
+                </div>
+                <div class="card-body p-4">
+
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <tbody>
+                                <tr>
+                                    <td>Sub Total :</td>
+                                    <td class="text-end" id="subtotal">Q @String.Format("{0:0.00}", Model.subtotal)</td>
+                                </tr>
+                                <tr>
+                                    <td>Descuento : </td>
+                                    <td class="text-end" id="descuento">- Q @String.Format("{0:0.00}", Model.descuento)</td>
+                                </tr>
+                                <tr class="bg-light">
+                                    <th>Total :</th>
+                                    <td class="text-end">
+                                        <span class="fw-bold" id="total">
+                                            Q @String.Format("{0:0.00}", Model.total)
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end table-responsive -->
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-sm-6">
+                <a href=@Url.Action("Index", "productos") class="btn btn-link text-muted">
+                    <i class="uil uil-arrow-left me-1"></i> Agregar Productos
+                </a>
+            </div> <!-- end col -->
+            <div class="col-sm-6">
+                <a href=@Url.Action("Index", "listaProductos") class="btn btn-link text-muted">
+                    <i class="uil uil-arrow-left me-1"></i> Agregar Desde Listado
+                </a>
+            </div> <!-- end col -->
+        </div>
+        <div class="row mt-4">
+            <div class="col-sm-6">
+                <div class="text-sm-end mt-2 mt-sm-0 input-group">
+                    <button type="button" class="input-group-text" data-bs-toggle="modal" data-bs-target="#modal-scanner" id="lector-button"><i class="uil uil-camera"></i></button>
+                    <input type="text" , class="form-control" placeholder="Código de Barras" id="input-barras" />
+                </div>
+            </div> <!-- end col -->
+            <div class="col-sm-6">
+                <div class="text-sm-end mt-2 mt-sm-0">
+                    <a href=@Url.Action("Index", "finalVenta") class="btn btn-success">
+                        <i class="uil uil-shopping-cart-alt me-1"></i> Finalizar Orden
+                    </a>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row-->
+    </div>
+</div>
+<!-- end row -->
+<!-- begin modal -->
+<div class="modal fade" id="modal-scanner" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Lector de Código de Barras</h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id='barcode-scanner'></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+<!-- Bootrstrap touchspin -->
+<script src="~/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+<!-- Quagga Reader -->
+<script src="~/assets/libs/quagga/js/quagga.js"></script>
+<!-- init js -->
+<script src="~/assets/js/pages/ecommerce-cart.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+<script>
+    $(document).ready(function () {
+        //MOSTRAMOS SI EXISTE ERROR
+        if ("@ViewBag.error" != "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "@ViewBag.error"
+            });
+        }
+
+        //FUNCION PARA BAJAR LA SCROLL
+        setScrollBar();
+        function setScrollBar() {
+            var messageBody = document.querySelector('#list-items');
+            messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+        }
+
+        //INICIALIZAMOS LOS TOUCHSPINS
+        @foreach (var articulo in articulos)
+        {
+            @:$("#unidades-@articulo.id").TouchSpin({ min: 1 })
+        }
+
+        /************ EVENTOS DE LOS INPUTS ************/
+        $("#list-items").on('change', 'input', function () {
+            //Aqui obtenemos el valor y el id
+            id = parseInt($(this).attr("id").split("-")[1]);
+            unidades = parseInt($("#unidades-" + id).val());
+            descuento = parseInt($("#porcentaje-" + id).val());
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateProduct", "carrito")',
+                data: {
+                    id: id,
+                    unidades: unidades,
+                    descuento: descuento
+                },
+                success: function (data) {
+                    if (data.success) {
+                        //Seteamos los inputs con los valores del cliente
+                        $("#precio-" + id).text("Q " + data.item.precio.toFixed(2));
+                        $("#unidades-" + id).val(data.item.unidades);
+                        $("#porcentaje-" + id).val(data.item.descuento);
+                        $("#descuento-" + id).text("- Q " + data.item.descuentoPrecio.toFixed(2));
+                        $("#subtotal-" + id).text("Q " + data.item.total.toFixed(2));
+                        //Ahora seteamos los campos totales
+                        $("#subtotal").text("Q " + data.subtotal.toFixed(2));
+                        $("#descuento").text("- Q " + data.descuento.toFixed(2));
+                        $("#total").text("Q " + data.total.toFixed(2));
+                    } else {
+                        //Efe
+                        alert("Efe :c");
+                    }
+                }
+            });
+        });
+        $("#list-items").on('click', '.eliminar', function () {
+            //Aqui obtenemos el valor y el id
+            id = parseInt($(this).attr("id").split("-")[1]);
+            Swal.fire({
+            title: "Estas seguro?", text: "No hay forma de rehacer esta función!", icon: "warning", showCancelButton: !0, confirmButtonText: "Si, Eliminar!", cancelButtonText: "No, Cancelar!", confirmButtonClass: "btn btn-success mt-2", cancelButtonClass: "btn btn-danger ms-2 mt-2", buttonsStyling: !1
+            }).then(async function (t) {
+                if (t.value) {
+                    //SI CONFIRMA
+                    await deleteProduct(id)
+                    Swal.fire({ title: "Eliminado!", text: "El artículo ha sido eliminado.", icon: "success" })
+                } else {
+                    //SI CANCELA
+                    t.dismiss === Swal.DismissReason.cancel && Swal.fire({ title: "Cancelado", text: "El artículo no se ha eliminado :)", icon: "error" })
+                }
+            })
+        });
+        $(".text-sm-end").on('change', '#input-barras', function () {
+            //Aqui tenemos que consular si el NIT existe
+            let codigo = $("#input-barras").val();
+            addProduct(codigo);
+            $("#input-barras").val("");
+        });
+
+        /************ DELETE Y ADD PRODUCTO ************/
+        function deleteProduct(id) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteProduct", "carrito")',
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    if (data.success) {
+                        //Seteamos los inputs con los valores del cliente
+                        $("#" + id).remove();
+                        //Ahora seteamos los campos totales
+                        $("#subtotal").text("Q " + data.subtotal.toFixed(2));
+                        $("#descuento").text("- Q " + data.descuento.toFixed(2));
+                        $("#total").text("Q " + data.total.toFixed(2));
+                        //Verificamos si ya no hay items
+                        if (data.len == 0) {
+                            //Mostramos la informacion de no tener items
+                            $("#empty-info").removeClass("d-none");
+                            $("#list-items").addClass("d-none");
+                        }
+                    } else {
+                        //Efe
+                        alert("Efe :c");
+                    }
+                }
+            });
+        }
+        function addProduct(codigoBarras) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddProductByCode", "carrito")/?codigoBarras=' + codigoBarras,
+                success: function (data) {
+                    if (data.success) {
+                        //Verificamos si es primera vez que ingresa el item
+                        if (data.newItem) {
+                            //Aqui solo ingresamos el nuevo item al html
+                            var nuevoItem =
+                                `<div class="card border shadow-none" id="` + data.item.id + `">
+                                    <div class="card-body">
+
+                                        <div class="media border-bottom pb-3">
+                                            <div class="me-4">
+                                                <img src="` + data.item.foto + `" alt="" class="avatar-lg">
+                                            </div>
+                                            <div class="media-body align-self-center overflow-hidden">
+                                                <div>
+                                                    <h5 class="text-truncate font-size-16"><a href="@Url.Action("Index", "detalleProducto")/?id=` + data.item.id + `" class="text-dark">` + data.item.descripcion + `</a></h5>
+                                                    <p class="mb-1">Unidad de Medida : <span class="fw-medium">` + data.item.unidadMedida + `</span></p>
+                                                    <p>Existencia : <span class="fw-medium">` + data.item.existencia + `</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="ml-2">
+                                                <ul class="list-inline mb-0 font-size-16">
+                                                    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                        <a href="#" class="text-muted px-2 eliminar" id="eliminar-` + data.item.id + `">
+                                                            <i class="uil uil-trash-alt"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="Add Wishlist">
+                                                        <a href="#" class="text-muted px-2">
+                                                            <i class="uil uil-heart"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mt-3">
+                                                        <p class="text-muted mb-2">Precio</p>
+                                                        <h5 class="font-size-16" id="precio-` + data.item.id + `">Q ` + data.item.precio.toFixed(2) + `</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mt-3">
+                                                        <p class="text-muted mb-2">Unidades</p>
+                                                        <div style="width: 110px;" class="product-cart-touchspin">
+                                                            <input data-toggle="touchspin" type="text" id="unidades-` + data.item.id + `" value="` + data.item.unidades + `">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mt-3">
+                                                        <p class="text-muted mb-2">% Descuento</p>
+                                                        <div style="width: 110px;" class="product-cart-touchspin">
+                                                            <input data-toggle="touchspin" type="text" id="porcentaje-` + data.item.id + `" value="` + data.item.descuento + `">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mt-3">
+                                                        <p class="text-muted mb-2">Descuento</p>
+                                                        <h5 class="font-size-16" id="descuento-` + data.item.id + `">- Q ` + data.item.descuentoPrecio.toFixed(2) + `</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mt-3">
+                                                        <p class="text-muted mb-2">Total</p>
+                                                        <h5 class="font-size-16" id="subtotal-` + data.item.id + `">Q ` + data.item.subtotal.toFixed(2) + `</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>`;
+                            //Verificamos si se visualiza la lista de items
+                            if ($("#list-items").hasClass("d-none")) {
+                                $("#list-items").removeClass("d-none");
+                                $("#empty-info").addClass("d-none");
+                            }
+                            //Agregamos al carrito
+                            $("#list-items").append(nuevoItem);
+                            //Cambiamos los totales
+                            $("#subtotal").text("Q " + data.subtotal.toFixed(2));
+                            $("#descuento").text("- Q " + data.descuento.toFixed(2));
+                            $("#total").text("Q " + data.total.toFixed(2));
+                            //Renderizamos los touchspin
+                            $("#unidades-" + data.item.id).TouchSpin({ min:1 });
+                            $("#porcentaje-" + data.item.id).TouchSpin({ min: 1 });
+                            //Seteamos la scrollBar
+                            setScrollBar();
+                        } else {
+                            //Seteamos los inputs con los valores del cliente
+                            $("#precio-" + data.item.id).text("Q " + data.item.precio.toFixed(2));
+                            $("#unidades-" + data.item.id).val(data.item.unidades);
+                            $("#porcentaje-" + data.item.id).val(data.item.descuento);
+                            $("#descuento-" + data.item.id).text("- Q " + data.item.descuentoPrecio.toFixed(2));
+                            $("#subtotal-" + data.item.id).text("Q " + data.item.subtotal.toFixed(2));
+                            //Ahora seteamos los campos totales
+                            $("#subtotal").text("Q " + data.subtotal.toFixed(2));
+                            $("#descuento").text("- Q " + data.descuento.toFixed(2));
+                            $("#total").text("Q " + data.total.toFixed(2));
+                            //Seteamos la scrollBar
+                            setScrollBar();
+                        }
+                        $("html, body").animate({ scrollTop: 0 }, 350);
+                    } else {
+                        alert("efe :c");
+                    }
+                }
+            });
+        }
+
+
+        /************** LECTOR DE BARCODE **************/
+        function order_by_occurrence(arr) {
+            var counts = {};
+            arr.forEach(function (value) {
+                if (!counts[value]) {
+                    counts[value] = 0;
+                }
+                counts[value]++;
+            });
+
+            return Object.keys(counts).sort(function (curKey, nextKey) {
+                return counts[curKey] < counts[nextKey];
+            });
+        }
+        function load_quagga() {
+            if ($('#barcode-scanner').length > 0 && navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
+
+            var last_result = [];
+            if (Quagga.initialized == undefined) {
+                Quagga.onDetected(function (result) {
+                    var last_code = result.codeResult.code;
+                    last_result.push(last_code);
+                    if (last_result.length > 20) {
+                        code = order_by_occurrence(last_result)[0];
+                        last_result = [];
+                        Quagga.stop();
+                        console.log(code.substring(1, code.length));
+                        addProduct(code.substring(1, code.length));
+                            $('#modal-scanner').modal('hide');
+                    }
+                });
+            }
+
+            Quagga.init({
+            inputStream: {
+                name: "Live",
+                        type: "LiveStream",
+                        numOfWorkers: navigator.hardwareConcurrency,
+                        target: document.querySelector('#barcode-scanner')
+                    },
+                    decoder: {
+                readers: ['ean_reader', 'ean_8_reader', 'code_39_reader', 'code_39_vin_reader', 'codabar_reader', 'upc_reader', 'upc_e_reader']
+                    }
+            }, function (err) {
+                if (err) { console.log(err); return }
+                Quagga.initialized = true;
+                Quagga.start();
+            });
+
+        }
+        };
+
+
+        /************** EVENTOS DEL MODAL **************/
+        $('#modal-scanner').on('shown.bs.modal', function () {
+            load_quagga();
+        })
+        $('#modal-scanner').on('hidden.bs.modal', function () {
+            Quagga.stop();
+        })
+    });
+</script>

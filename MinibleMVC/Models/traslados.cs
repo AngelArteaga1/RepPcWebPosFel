@@ -30,7 +30,6 @@ namespace Minible5.Models
         public int IdInternoTIposMovimientosSeries { get; set; }
         public int IdInternoPedidosClientes { get; set; }
     
-        public virtual pedidosclientesinv pedidosclientesinv { get; set; }
         public virtual tiposmovimientosseriesinv tiposmovimientosseriesinv { get; set; }
     }
 }

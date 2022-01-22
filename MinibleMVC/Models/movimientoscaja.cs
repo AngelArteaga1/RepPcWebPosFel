@@ -32,8 +32,10 @@ namespace Minible5.Models
         public Nullable<System.DateTime> Fecha_baja { get; set; }
         public string status { get; set; }
         public string Codigo_Empresa { get; set; }
+        public Nullable<int> IdInternoSecurityUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<movimientosdetallecaja> movimientosdetallecaja { get; set; }
+        public virtual security_users security_users { get; set; }
     }
 }

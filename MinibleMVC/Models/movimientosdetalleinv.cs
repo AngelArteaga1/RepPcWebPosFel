@@ -60,12 +60,9 @@ namespace Minible5.Models
         public string es_exento { get; set; }
         public int IdInternoMovimientos { get; set; }
         public int IdInternoVendedores { get; set; }
-        public int IdInternoCombosDetalle { get; set; }
         public int IdInternoArticulosDetalle { get; set; }
     
         public virtual articulosdetalleinv articulosdetalleinv { get; set; }
-        public virtual combosdetalleinv combosdetalleinv { get; set; }
         public virtual movimientosinv movimientosinv { get; set; }
-        public virtual vendedores vendedores { get; set; }
     }
 }

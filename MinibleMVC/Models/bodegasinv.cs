@@ -43,6 +43,12 @@ namespace Minible5.Models
         public Nullable<System.DateTime> Fecha_baja { get; set; }
         public string status { get; set; }
         public string Codigo_Empresa { get; set; }
+        public string Es_sucursal { get; set; }
+        public string Usa_multiseries { get; set; }
+        public string Serie_fac_env { get; set; }
+        public string Serie_mov_inv { get; set; }
+        public Nullable<int> fel_emisor_codigo_establecimiento { get; set; }
+        public string fel_emisor_direccion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<articulosdetalleinv> articulosdetalleinv { get; set; }

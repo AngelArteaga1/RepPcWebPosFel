@@ -29,9 +29,9 @@ namespace Minible5.Models
         public int IdInternoProveedores { get; set; }
         public int IdInternoTipCargImportaciones { get; set; }
     
-        public virtual bodegasinv bodegasinv { get; set; }
         public virtual proveedores proveedores { get; set; }
-        public virtual tiposmovimientosseriesinv tiposmovimientosseriesinv { get; set; }
         public virtual tiposcargosimportacionesinv tiposcargosimportacionesinv { get; set; }
+        public virtual bodegasinv bodegasinv { get; set; }
+        public virtual tiposmovimientosseriesinv tiposmovimientosseriesinv { get; set; }
     }
 }

@@ -111,16 +111,14 @@ namespace Minible5.Models
         public string Codigo_Empresa { get; set; }
         public int IdInternoTIposMovimientosSeries { get; set; }
         public int IdInternoVendedores { get; set; }
-        public int IdInternoPedidosTransitos { get; set; }
-        public int IdInternoPedidosClientes { get; set; }
+        public Nullable<int> IdInternoPedidosTransitos { get; set; }
+        public Nullable<int> IdInternoPedidosClientes { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<movimientosdetallecombosinv> movimientosdetallecombosinv { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<movimientosdetalleinv> movimientosdetalleinv { get; set; }
-        public virtual pedidosclientesinv pedidosclientesinv { get; set; }
-        public virtual pedidostransitoinv pedidostransitoinv { get; set; }
-        public virtual tiposmovimientosseriesinv tiposmovimientosseriesinv { get; set; }
         public virtual vendedores vendedores { get; set; }
+        public virtual tiposmovimientosseriesinv tiposmovimientosseriesinv { get; set; }
     }
 }

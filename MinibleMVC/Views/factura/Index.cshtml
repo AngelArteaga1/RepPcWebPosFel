@@ -1,0 +1,171 @@
+﻿@model Minible5.Models.ViewModels.PtoDeVenta.FacturaViewModel
+@{
+    ViewBag.Title = "Detalle de Factura";
+    ViewBag.pTitle = "Detalle de Factura";
+    ViewBag.pageTitle = "Punto de Venta";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="invoice-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-4">
+                                <img src="~/assets/images/logo-dark.png" alt="logo" height="20" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4 class="float-end font-size-16">Factura #@Model.numdocFEL <span class="badge bg-success font-size-12 ms-2">Pagado</span></h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="text-muted">
+                                <p class="mb-1">Nit: @Model.nitEmpresa</p>
+                                <p class="mb-1">@Model.direccionEmpresa</p>
+                                <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> @Model.correoEmpresa</p>
+                                <p><i class="uil uil-phone me-1"></i> @Model.telefonoEmpresa</p>
+                            </div>
+                        </div>                        
+                        <div class="col-sm-6">
+                            @if (!String.IsNullOrEmpty(Model.numeroAutorizacion))
+                            {
+                            <div class="text-muted text-sm-end">
+                                <div>
+                                    <h5 class="font-size-16 mb-1">Número de Autorización:</h5>
+                                    <p>@Model.numeroAutorizacion</p>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+
+                <hr class="my-2">
+
+                <div class="row">
+                    <div class="col-sm-6 mb-4">
+                        <div class="text-muted">
+                            <h5 class="font-size-15 mb-2">@Model.nombreCliente</h5>
+                            <p class="mb-1">Nit: @Model.nitCliente</p>
+                            <p class="mb-1">@Model.direccionCliente</p>
+                            <p class="mb-1">@Model.correoCliente</p>
+                        </div>
+                        @if (!String.IsNullOrEmpty(Model.numeroAutorizacion))
+                        {
+                            <div class="mt-4 text-muted">
+                                <h5 class="font-size-15 mb-2">INFILE, S.A.</h5>
+                                <p class="mb-1">Nit: 12521337</p>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-muted text-sm-end">
+                            <div>
+                                <h5 class="font-size-16 mb-1">Serie:</h5>
+                                <p>@Model.serieFEL</p>
+                            </div>
+                            <div class="mt-4">
+                                <h5 class="font-size-16 mb-1">Fecha:</h5>
+                                <p>@Model.fecha</p>
+                            </div>
+                            <div class="mt-4">
+                                <h5 class="font-size-16 mb-1">Ref. Interna:</h5>
+                                <p>#@Model.refInterna</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="py-2">
+                    <h5 class="font-size-15">Resumen de Factura</h5>
+
+                    <div class="table-responsive">
+                        <table class="table table-nowrap table-centered mb-0">
+                            <thead>
+                                <tr>
+                                    <th style="width: 70px;">No.</th>
+                                    <th>Descripción del Artículo</th>
+                                    <th>Precio U.</th>
+                                    <th>Cantidad</th>
+                                    <th class="text-end" style="width: 120px;">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for(int i = 0; i < Model.articulos.Count(); i++)
+                                {
+                                    <tr>
+                                        <th scope="row">@((i+1).ToString("D2"))</th>
+                                        <td>
+                                            <h5 class="font-size-15 mb-1">@Model.articulos[i].descripcion</h5>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">Código : <span class="fw-medium">@Model.articulos[i].codigo</span></li>
+                                            </ul>
+                                        </td>
+                                        <td>Q @String.Format("{0:0.00}", Model.articulos[i].precio)</td>
+                                        <td>@Model.articulos[i].unidades</td>
+                                        <td class="text-end">Q @String.Format("{0:0.00}", Model.articulos[i].total)</td>
+                                    </tr>
+                                }
+
+
+                                <tr>
+                                    <th scope="row" colspan="4" class="text-end">Sub Total</th>
+                                    <td class="text-end">Q @String.Format("{0:0.00}", Model.subtotal)</td>
+                                </tr>
+                                @if (Model.descuento > 0)
+                                {
+                                    <tr>
+                                        <th scope="row" colspan="4" class="border-0 text-end">
+                                            Descuento :
+                                        </th>
+                                        <td class="border-0 text-end">- Q @String.Format("{0:0.00}", Model.descuento)</td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <th scope="row" colspan="4" class="border-0 text-end">Total</th>
+                                    <td class="border-0 text-end"><h4 class="m-0">Q @String.Format("{0:0.00}", Model.total)</h4></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="4" class="border-0 text-end">
+                                        Vuelto :
+                                    </th>
+                                    <td class="border-0 text-end">Q @String.Format("{0:0.00}", Model.vuelto)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-print-none mt-4">
+                        <div class="float-end">
+                            <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light me-1"><i class="fa fa-print"></i> Factura</a>
+                            @if (!String.IsNullOrEmpty(ViewBag.url))
+                            {
+                                <a class="btn btn-info waves-effect waves-light me-1" onclick="openFEL()"><i class="fa fa-print"></i> Factura FEL</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="~/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+<script>
+    function openFEL() {
+        window.open("@ViewBag.url");
+    }
+</script>
